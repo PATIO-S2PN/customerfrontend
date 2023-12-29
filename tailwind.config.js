@@ -7,9 +7,9 @@ module.exports = {
   extend: {
     padding: {
       'custom': '100px',
-    },
-  },
+    }
+    
   },
   plugins: [],
 }
-
+}
