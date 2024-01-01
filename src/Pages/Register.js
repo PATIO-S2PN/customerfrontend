@@ -39,7 +39,7 @@ function Register() {
     <div className='flex flex-col items-start w-full h-screen md:flex-row'>
      
       <div className='relative w-full md:w-1/2 h-half md:h-full'>
-        <img src={register} alt='login' className='object-cover w-full h-full' />
+      <img src={register} alt='login' className='object-cover w-full h-screen' />
       </div>
       
       <div className='w-full md:w-1/2 h-half md:h-full bg-[#101E21] flex flex-col p-custom'>
@@ -93,10 +93,15 @@ function Register() {
         </div>
         
         <a href='#' className='text-[#1889F2] font-serif text-sm mb-12'>Forgot Password?</a>   
-
-        <div className='flex justify-center '>
-            <button onClick={handleSubmit} className=' text-white bg-[#A34031] rounded-lg h-10 w-60 justify-center mb-6 text-xl '>Register</button>   
-        </div> 
+        
+        <div className='flex justify-center'>
+            <button onClick={handleSubmit} class="relative h-10 w-60 inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
+            <span class="relative flex items-center justify-center w-full h-full px-5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              Register
+            </span>
+            </button>
+        </div>
+        
         
         <div className='flex'>
             <p className='text-[#E3D0D0] font-serif'>Already have an account?</p>

@@ -6,7 +6,9 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import * as Icon from 'react-bootstrap-icons';
 import ReactStars from "react-rating-stars-component";
 import Chicken from '../Assets/fried-chicken.jpg'
-
+import Sandwiches from '../Assets/sandwiches.jpg'
+import Macaroni from '../Assets/macaroni.jpg'
+import Bagels from '../Assets/bagels.jpg'
 
 export default function MenuItems() {
   return (
@@ -41,8 +43,8 @@ export default function MenuItems() {
 
       <div className='shadow hover:shadow-lg w-64 h-96'>
         <div className='flex flex-col'>
-            <img className='h-52 w-64 transform transition-all duration-500 hover:scale-110 mb-2 rounded-full' src={prawnCake} alt="Prawn Cake" />
-            <label className='text-xl font-bold text-center'>Club Sandwich</label>
+            <img className='h-52 w-64 transform transition-all duration-500 hover:scale-110 mb-2 rounded-full' src={Sandwiches} alt="Prawn Cake" />
+            <label className='text-xl font-bold text-center'>Sandwiches</label>
             <label className='text-md text-center'>LKR 1200.000</label>
             <div className='justify-center flex'>
                 <ReactStars classNames="items-center" count={5} size={24} color="gray" a11y={true} edit={true} isHalf="true" activeColor="#ffd700"/>
@@ -55,8 +57,8 @@ export default function MenuItems() {
 
       <div className='shadow hover:shadow-lg w-64 h-96'>
         <div className='flex flex-col'>
-            <img className='h-52 w-64 transform transition-all duration-500 hover:scale-110 mb-2' src={prawnCake} alt="Prawn Cake" />
-            <label className='text-xl font-bold text-center'>Prawn Cake</label>
+            <img className='h-52 w-64 transform transition-all duration-500 hover:scale-110 mb-2' src={Macaroni} alt="Prawn Cake" />
+            <label className='text-xl font-bold text-center'>Macaroni</label>
             <label className='text-md text-center'>LKR 1200.000</label>
             <div className='justify-center flex'>
                 <ReactStars classNames="items-center" count={5} size={24} color="gray" a11y={true} edit={true} isHalf="true" activeColor="#ffd700"/>
@@ -69,8 +71,8 @@ export default function MenuItems() {
 
       <div className='shadow hover:shadow-lg w-64 h-96'>
         <div className='flex flex-col'>
-            <img className='h-52 w-64 transform transition-all duration-500 hover:scale-110 mb-2' src={prawnCake} alt="Prawn Cake" />
-            <label className='text-xl font-bold text-center'>Prawn Cake</label>
+            <img className='h-52 w-64 transform transition-all duration-500 hover:scale-110 mb-2' src={Bagels} alt="Prawn Cake" />
+            <label className='text-xl font-bold text-center'>Potato Bagels</label>
             <label className='text-md text-center'>LKR 1200.000</label>
             <div className='justify-center flex'>
                 <ReactStars classNames="items-center" count={5} size={24} color="gray" a11y={true} edit={true} isHalf="true" activeColor="#ffd700"/>

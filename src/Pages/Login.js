@@ -63,7 +63,7 @@ function Login() {
           />
         </div>
 
-        <div className='flex justify-between items-center space-x-3 space-y-0 mb-7'>
+        <div className='flex items-center justify-between space-x-3 space-y-0 mb-7'>
             <div className='flex items-center space-x-2'>
                 <input type="checkbox" className="w-4 h-4 text-blue-600 border border-black form-checkbox" />
                 <p className='text-[#E3D0D0] font-serif text-sm'>Remember me</p>
@@ -71,8 +71,12 @@ function Login() {
             <a href='#' className='text-[#1889F2] font-serif text-sm mb-12'>Forgot Password?</a>   
         </div>
 
-        <div className='flex justify-center '>
-            <button className='text-xl text-white bg-[#854703] rounded-lg h-10 w-60 justify-center mb-10'>Login</button>   
+        <div className='flex justify-center mb-5'>
+            <button class="relative h-10 w-60 inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
+            <span class="relative flex items-center justify-center w-full h-full px-5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              Login
+            </span>
+            </button>
         </div>
              
         <div className='flex items-center space-x-2'>
