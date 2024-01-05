@@ -12,73 +12,88 @@ import Bagels from '../Assets/bagels.jpg'
 
 export default function MenuItems() {
   return (
-    <div className='flex mt-5 justify-around flex-wrap'>
-      <div className='shadow hover:shadow-lg w-64 h-96 mb-4'>
+    <div className='flex flex-wrap justify-around mt-5'>
+      <div className='w-64 mb-4 shadow hover:shadow-lg h-96'>
         <div className='flex flex-col'>
-            <img className='h-52 w-64 transform transition-all duration-500 hover:scale-110 mb-2' src={prawnCake} alt="Prawn Cake" />
+            <img className='w-64 mb-2 transition-all duration-500 transform h-52 hover:scale-110' src={prawnCake} alt="Prawn Cake" />
             <label className='text-xl font-bold text-center'>Prawn Cake</label>
-            <label className='text-md text-center'>LKR 1200.000</label>
-            <div className='justify-center flex'>
+            <label className='text-center text-md'>LKR 1200.000</label>
+            <div className='flex justify-center'>
                 <ReactStars classNames="items-center" count={5} size={24} color="gray" a11y={true} edit={true} isHalf="true" activeColor="#ffd700"/>
             </div>
             <div className='flex justify-around'>
-                <Button className='shadow w-52 h-10 bg-[#542822] text-xl text-bold text-white rounded-lg'>Add to Cart</Button>
+              <button
+                  class="px-6 py-2 transition ease-in duration-200 uppercase rounded-full w-52 bg-[#ddd7d6] h-10 hover:border-[#a35959] marker:rounded-full hover:bg-[#542822] hover:text-white border-2 border-gray-900 focus:outline-none">Add
+                to cart
+              </button>            
             </div>
         </div>
       </div>
          
-      <div className='shadow hover:shadow-lg w-64 h-96'>
+      <div className='w-64 shadow hover:shadow-lg h-96'>
         <div className='flex flex-col'>
-            <img className='h-52 w-64 transform transition-all duration-500 hover:scale-110 mb-2' src={Chicken} alt="Prawn Cake" />
+            <img className='w-64 mb-2 transition-all duration-500 transform h-52 hover:scale-110' src={Chicken} alt="Prawn Cake" />
             <label className='text-xl font-bold text-center'>Fried Chicken</label>
-            <label className='text-md text-center'>LKR 1200.000</label>
-            <div className='justify-center flex'>
+            <label className='text-center text-md'>LKR 1200.000</label>
+            <div className='flex justify-center'>
                 <ReactStars classNames="items-center" count={5} size={24} color="gray" a11y={true} edit={true} isHalf="true" activeColor="#ffd700"/>
             </div>
             <div className='flex justify-around'>
-                <Button className='shadow w-52 h-10 bg-[#542822] text-xl text-bold text-white rounded-lg'>Add to Cart</Button>
+              <button
+                  class="px-6 py-2 transition ease-in duration-200 uppercase rounded-full w-52 bg-[#ddd7d6] h-10 hover:border-[#a35959] marker:rounded-full hover:bg-[#542822] hover:text-white border-2 border-gray-900 focus:outline-none">Add
+                to cart
+              </button>            
             </div>
         </div>
       </div> 
 
-      <div className='shadow hover:shadow-lg w-64 h-96'>
+      <div className='w-64 shadow hover:shadow-lg h-96'>
         <div className='flex flex-col'>
-            <img className='h-52 w-64 transform transition-all duration-500 hover:scale-110 mb-2 rounded-full' src={Sandwiches} alt="Prawn Cake" />
+            <img className='w-64 mb-2 transition-all duration-500 transform rounded-full h-52 hover:scale-110' src={Sandwiches} alt="Prawn Cake" />
             <label className='text-xl font-bold text-center'>Sandwiches</label>
-            <label className='text-md text-center'>LKR 1200.000</label>
-            <div className='justify-center flex'>
+            <label className='text-center text-md'>LKR 1200.000</label>
+            <div className='flex justify-center'>
                 <ReactStars classNames="items-center" count={5} size={24} color="gray" a11y={true} edit={true} isHalf="true" activeColor="#ffd700"/>
             </div>
             <div className='flex justify-around'>
-                <Button className='shadow w-52 h-10 bg-[#542822] text-xl text-bold text-white rounded-lg'>Add to Cart</Button>
+            <button
+                  class="px-6 py-2 transition ease-in duration-200 uppercase rounded-full w-52 bg-[#ddd7d6] h-10 hover:border-[#a35959] marker:rounded-full hover:bg-[#542822] hover:text-white border-2 border-gray-900 focus:outline-none">Add
+                to cart
+            </button>
             </div>
         </div>
       </div> 
 
-      <div className='shadow hover:shadow-lg w-64 h-96'>
+      <div className='w-64 shadow hover:shadow-lg h-96'>
         <div className='flex flex-col'>
-            <img className='h-52 w-64 transform transition-all duration-500 hover:scale-110 mb-2' src={Macaroni} alt="Prawn Cake" />
+            <img className='w-64 mb-2 transition-all duration-500 transform h-52 hover:scale-110' src={Macaroni} alt="Prawn Cake" />
             <label className='text-xl font-bold text-center'>Macaroni</label>
-            <label className='text-md text-center'>LKR 1200.000</label>
-            <div className='justify-center flex'>
+            <label className='text-center text-md'>LKR 1200.000</label>
+            <div className='flex justify-center'>
                 <ReactStars classNames="items-center" count={5} size={24} color="gray" a11y={true} edit={true} isHalf="true" activeColor="#ffd700"/>
             </div>
             <div className='flex justify-around'>
-                <Button className='shadow w-52 h-10 bg-[#542822] text-xl text-bold text-white rounded-lg'>Add to Cart</Button>
+              <button
+                  class="px-6 py-2 transition ease-in duration-200 uppercase rounded-full w-52 bg-[#ddd7d6] h-10 hover:border-[#a35959] marker:rounded-full hover:bg-[#542822] hover:text-white border-2 border-gray-900 focus:outline-none">Add
+                to cart
+              </button>
             </div>
         </div>
       </div> 
 
-      <div className='shadow hover:shadow-lg w-64 h-96'>
+      <div className='w-64 shadow hover:shadow-lg h-96'>
         <div className='flex flex-col'>
-            <img className='h-52 w-64 transform transition-all duration-500 hover:scale-110 mb-2' src={Bagels} alt="Prawn Cake" />
+            <img className='w-64 mb-2 transition-all duration-500 transform h-52 hover:scale-110' src={Bagels} alt="Prawn Cake" />
             <label className='text-xl font-bold text-center'>Potato Bagels</label>
-            <label className='text-md text-center'>LKR 1200.000</label>
-            <div className='justify-center flex'>
+            <label className='text-center text-md'>LKR 1200.000</label>
+            <div className='flex justify-center'>
                 <ReactStars classNames="items-center" count={5} size={24} color="gray" a11y={true} edit={true} isHalf="true" activeColor="#ffd700"/>
             </div>
             <div className='flex justify-around'>
-                <Button className='shadow w-52 h-10 bg-[#542822] text-xl text-bold text-white rounded-lg'>Add to Cart</Button>
+              <button
+                  class="px-6 py-2 transition ease-in duration-200 uppercase rounded-full w-52 bg-[#ddd7d6] h-10 hover:border-[#a35959] marker:rounded-full hover:bg-[#542822] hover:text-white border-2 border-gray-900 focus:outline-none">Add
+                to cart
+              </button>            
             </div>
         </div>
       </div>  
