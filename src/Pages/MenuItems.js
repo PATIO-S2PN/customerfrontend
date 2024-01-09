@@ -49,7 +49,7 @@ export default function MenuItems() {
 
       <div className='w-64 shadow hover:shadow-lg h-96'>
         <div className='flex flex-col'>
-            <img className='w-64 mb-2 transition-all duration-500 transform rounded-full h-52 hover:scale-110' src={Sandwiches} alt="Prawn Cake" />
+            <img className='w-64 mb-2 transition-all duration-500 transform h-52 hover:scale-110' src={Sandwiches} alt="Prawn Cake" />
             <label className='text-xl font-bold text-center'>Sandwiches</label>
             <label className='text-center text-md'>LKR 1200.000</label>
             <div className='flex justify-center'>
