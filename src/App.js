@@ -7,6 +7,7 @@ import ResetPassword from './Pages/ResetPassword';
 import Test1 from './Pages/Test1';
 
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import AdminMenu from './Pages/AdminMenu';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/menuone" element={<MenuOne/>}/>
         <Route path="resetpassword" element={<ResetPassword/>}/>
         <Route path="/test" element={<Test1/>}/>
+        <Route path="/admin-menu" element={<AdminMenu/>}/>
       </Routes>
      </Router>
     </div>
