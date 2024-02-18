@@ -7,13 +7,16 @@ import ResetPassword from './Pages/ResetPassword';
 import Test1 from './Pages/Test1';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './Pages/Home';
+import Navbar from './Components/Navbar';
 
 function App() {
+ 
   return (
     <div className="App">
      <Router>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/navbar" element={<Navbar/>}/> 
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/menuitems" element={<MenuItems/>}/>
