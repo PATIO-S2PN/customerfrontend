@@ -8,14 +8,25 @@ import Test1 from './Pages/Test1';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './Pages/Home';
 import Navbar from './Components/Navbar';
+import About from './Pages/About';
+import { useState } from 'react';
+import Profile from './Pages/Profile';
 
 function App() {
- 
+  const [isOpen,setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen((prev) => !prev)
+  }
   return (
+    
+    
     <div className="App">
-     <Router>
+      
+        
+
+      <Router>
       <Routes>
-        <Route path="/" element={<Home/>}/>
         <Route path="/navbar" element={<Navbar/>}/> 
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
@@ -23,8 +34,14 @@ function App() {
         <Route path="/menuone" element={<MenuOne/>}/>
         <Route path="resetpassword" element={<ResetPassword/>}/>
         <Route path="/test" element={<Test1/>}/>
+        <Route path="/about" element={<About/>}/>
+        <Route path="/profile" element={<Profile/>}/>
       </Routes>
      </Router>
+        
+
+      
+     
     </div>
   );
 }

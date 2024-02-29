@@ -2,9 +2,11 @@ import React from 'react'
 
 const About = () => {
   return (
-    <div>
-      <h1>ABOUT</h1>
-    </div>
+    <div className='flex items-center justify-center bg-[#101E21] h-screen'>
+  
+</div>
+
+
   )
 }
 

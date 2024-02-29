@@ -6,13 +6,13 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 const Nav = () => {
     let Links =[
-      {name:"Home",link:"/"},
-      {name:"About",link:"/about"},
-      {name:"Menu",link:"/menu"},
-      {name:"Specials",link:"/specials"},
-      {name:"Chefs",link:"/chefs"},
-      {name:"Gallery",link:"/gallery"},
-      {name:"Contact",link:"/contact"},
+      {name:"Home",href:"/"},
+      {name:"About",href:"#about"},
+      {name:"Menu",href:"#menu"},
+      {name:"Specials",href:"#specials"},
+      {name:"Chefs",href:"#chefs"},
+      {name:"Gallery",href:"#gallery"},
+      {name:"Contact",href:"#contact"},
 
     ];
     
@@ -35,7 +35,7 @@ const Nav = () => {
             {
                 Links.map((link)=>(
                 <li key={link.name} className='text-lg md:ml-8 md:my-0 my-7'>
-                 <a href={link.link} className='duration-500 text-gray-50 hover:text-[#E44848]'>{link.name}</a>
+                 <a href={link.href} className='duration-500 text-gray-50 hover:text-[#E44848]'>{link.name}</a>
                 </li>
                 ))
             }

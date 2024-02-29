@@ -5,6 +5,8 @@ import bgFour from '../Assets/B5.jpg';
 import { Nav } from 'react-bootstrap';
 import Navbar from '../Components/Navbar';
 import About from './About';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -15,10 +17,26 @@ const slides = [
   { 
     image: bgTwo, 
     text: {
-      line1: { text: 'Line 1 for image 1', fontFamily: 'Font Family 1' },
-      line2: { text: 'Line 2 for image 1', fontFamily: 'Font Family 2' },
-      line3: { text: 'Line 3 for image 1', fontFamily: 'Font Family 2' },
-    } 
+      line1: { text: 'Line 1 for image 1', fontFamily: 'Roboto' },
+      line2: { text: 'Line 2 for image 1', fontFamily: 'Roboto' },
+      line3: { text: 'Line 3 for image 1', fontFamily: 'Roboto' },
+    },
+  },
+  { 
+    image: bgThree, 
+    text: {
+      line1: { text: 'Line 1 for image 1', fontFamily: 'Roboto' },
+      line2: { text: 'Line 2 for image 1', fontFamily: 'Roboto' },
+      line3: { text: 'Line 3 for image 1', fontFamily: 'Roboto' },
+    },
+  },
+  { 
+    image: bgFour, 
+    text: {
+      line1: { text: 'Line 1 for image 1', fontFamily: 'Roboto' },
+      line2: { text: 'Line 2 for image 1', fontFamily: 'Roboto' },
+      line3: { text: 'Line 3 for image 1', fontFamily: 'Roboto' },
+    },
   },
   // Repeat for other images
 ];
@@ -43,7 +61,6 @@ export default function Home() {
   return (
     <div className="w-full h-full min-h-[100vh] bg-white">
         <div className="relative w-screen h-[90vh] overflow-hidden">
-          <Navbar />
             {slides.map((slide, i) => (
               <div className={`absolute w-full h-full transition-all
                 duration-1000 ease-in-out transform ${i === index ? '-translate-x-0' : i < index ? '-translate-x-full' : 'translate-x-full'}`}>
@@ -53,20 +70,20 @@ export default function Home() {
                   alt=""
                   className="object-cover w-full h-full"
                 />
-                <div className="absolute text-white top-40 left-20">
+                <div className="absolute text-white top-60 left-40">
                   <p style={{ fontFamily: slide.text.line1.fontFamily }}>{slide.text.line1.text}</p>
                   <p style={{ fontFamily: slide.text.line2.fontFamily }}>{slide.text.line2.text}</p>
                   <p style={{ fontFamily: slide.text.line3.fontFamily }}>{slide.text.line3.text}</p>
-                  <button className="px-4 py-2 mt-4 text-white bg-blue-500 rounded">Order Now</button>
+                  <button className="px-4 flex py-2 mt-4 text-black border-white border-2 items-center bg-[#FFCF87] 
+                    justify-center h-[40px] w-[200px] font-bold font-serif rounded-full">
+                    <span className="mr-2">ORDER NOW</span>
+                    <FontAwesomeIcon icon={faAngleDoubleRight} size='lg' />            
+                  </button>
                 </div>
               </div>
           ))}
         </div>
 
-        <section id='about'
-                 className="w-full bg-[#061130] py-20">
-                 <About/>
-        </section>
     </div>
   );
 }

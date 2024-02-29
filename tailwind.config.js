@@ -7,8 +7,10 @@ module.exports = {
   extend: {
     padding: {
       'custom': '100px',
-    }
-    
+    }, 
+    borderRadius: {
+      'custom': '40px',
+    },  
   },
   plugins: [],
 }
