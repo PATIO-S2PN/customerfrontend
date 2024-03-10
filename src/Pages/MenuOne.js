@@ -1,11 +1,18 @@
 import React from 'react'
 import bg3 from '../Assets/burgerBg.jpg'
 import MenuItems from './MenuItems'
+import logo from '../Assets/logonew.svg';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function MenuOne() {
-  
+  const navigate = useNavigate();
+
   return (
+    
     <div className="w-screen h-screen bg-fixed" style={{ backgroundImage: `url(${bg3})` }}>
+      <img src={logo} alt='logo' className='absolute z-10 h-[50px] w-[170px] top-10 left-10' onClick={() => navigate("/")} />
+
       <div className='z-10 h-screen px-4 pt-64 pb-10 overflow-auto'>
         <div className="px-5 py-5 rounded-lg bg-slate-800">
           <h1 className="mb-2 text-4xl font-bold text-center text-white">Burger Delights</h1>

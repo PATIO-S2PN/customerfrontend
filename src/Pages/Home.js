@@ -61,6 +61,7 @@ export default function Home() {
               alt=""
               className="object-cover w-full h-full"
             />
+            
             <div className="absolute text-white top-[350px] left-[120px] ">
               <p style={{fontFamily: slide.text.heading, fontSize:"50px"}}></p>
               <p style={{ fontFamily: slide.text.paragraph.fontFamily, textAlign: 'left', whiteSpace: 'pre-line' 

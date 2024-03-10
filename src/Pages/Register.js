@@ -5,9 +5,12 @@ import { FcGoogle } from "react-icons/fc";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import logo from '../Assets/logonew.svg';
+import { useNavigate } from 'react-router-dom';
+
 
 function Register() {
-
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -40,6 +43,8 @@ function Register() {
      
       <div className='relative w-full md:w-1/2 h-half md:h-full'>
       <img src={register} alt='login' className='object-cover w-full h-screen' />
+      <img src={logo} alt='logo' className='absolute z-10 h-[50px] w-[170px] top-10 left-10' onClick={() => navigate("/")} />
+
       </div>
       
       <div className='w-full md:w-1/2 h-half md:h-full bg-[#101E21] flex flex-col p-custom'>
@@ -105,7 +110,7 @@ function Register() {
         
         <div className='flex'>
             <p className='text-[#E3D0D0] font-serif'>Already have an account?</p>
-            <a href='#' className='text-[#1889F2] font-serif text-sm ml-2'>Log in</a>
+            <a href='/login' className='text-[#1889F2] font-serif text-sm ml-2'>Log in</a>
         </div>    
         
     </div>

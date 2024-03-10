@@ -4,8 +4,40 @@ import login from '../Assets/Login.jpg';
 import { FcGoogle } from "react-icons/fc";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import logo from '../Assets/logonew.svg';
+
 
 function Login() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState(''); // Initialize email and password
+  const [password, setPassword] = useState('');
+  const [loginMessage, setLoginMessage] = useState('');
+
+  const handleLoginClick = async () => {
+    console.log("bkhfk");
+    try {
+      const response = await axios.post('http://localhost:8001/login', {
+        Email: email,
+        Password: password,
+      });
+
+      if (response.status === 200) {
+        // Login was successful
+        setLoginMessage('Login successful');
+        navigate('/');
+        console.log(response.data.Email);
+      } else {
+        // Handle login failure with a more informative message
+        setLoginMessage('Invalid email or password');
+      }
+    } catch (error) {
+      // Handle network or other errors
+      console.error('Login error:', error);
+    }
+  }
+  
   const [showPassword, setShowPassword] = useState(false);
 
   const handleToggle = () => {
@@ -15,7 +47,9 @@ function Login() {
   return (
     <div className='flex flex-col items-start w-full h-screen md:flex-row'>
       <div className='relative w-full md:w-1/2 h-half md:h-full'>
-        <img src={login} alt='login' className='object-cover w-full h-full' />
+        <img src={login} alt='login' className='z-0 object-cover w-full h-full' />
+        <img src={logo} alt='logo' className='absolute z-10 h-[50px] w-[170px] top-10 left-10' onClick={() => navigate("/")} />
+        
       </div>
       
       <div className='w-full md:w-1/2 h-half md:h-full bg-[#101E21] flex flex-col p-custom'>
@@ -47,7 +81,10 @@ function Login() {
             <hr className="flex-grow border-white"/>
         </div>
         
-        <input type='text' className='mb-8 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 border-[#FADBCF] focus:outline-none'  placeholder='Email*' required/>        
+        <input type='text' 
+               className='mb-8 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 border-[#FADBCF] focus:outline-none'  
+               placeholder='Email*' required
+               onChange={(e) => setEmail(e.target.value)}/>        
         
         <div className='relative'>
           <input
@@ -55,6 +92,8 @@ function Login() {
             className='mb-3 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 w-full border-[#FADBCF] focus:outline-none'
             placeholder='Password*'
             required
+            onChange={(e) => setPassword(e.target.value)}       
+
           />
           <FontAwesomeIcon
             icon={showPassword ? faEyeSlash : faEye}
@@ -72,16 +111,19 @@ function Login() {
         </div>
 
         <div className='flex justify-center mb-5'>
-            <button class="relative h-10 w-60 inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
-            <span class="relative flex items-center justify-center w-full h-full px-5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+            <button class="relative h-10 w-60 inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400
+             group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800" onClick={handleLoginClick}>
+            <span class="relative flex items-center justify-center w-full h-full px-5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0" >
               Login
             </span>
             </button>
+
+            <button onClick={handleLoginClick}>hi</button>
         </div>
              
         <div className='flex items-center space-x-2'>
             <p className='text-[#E3D0D0] font-serif'>Don't have an account yet?</p>
-            <a href='#' className='text-[#1889F2] font-serif ml-2'>Create Account</a>
+            <a href='/register' className='text-[#1889F2] font-serif ml-2'>Create Account</a>
         </div>
  
     </div>

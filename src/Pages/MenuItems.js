@@ -2,6 +2,8 @@ import React from 'react'
 import prawnCake from '../Assets/prawn-cake.jpg' 
 import ReactStars from "react-rating-stars-component";
 import Chicken from '../Assets/fried-chicken.jpg'
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 export default function MenuItems() {
   const menuItems = [
