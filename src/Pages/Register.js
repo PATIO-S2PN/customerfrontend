@@ -35,6 +35,7 @@ function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     signUp();
+    navigate('/');
   };
 
   return (
