@@ -10,6 +10,9 @@ import Navbar from './Components/Navbar';
 import About from './Pages/About';
 import Profile from './Pages/Profile';
 import Main from './Pages/Main';
+import Cart from './Pages/Cart';
+import Categories from './Pages/Categories';
+
 
 function App() {
   
@@ -27,7 +30,11 @@ function App() {
         <Route path="/test" element={<Test1/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/profile" element={<Profile/>}/>
-        <Route path="/categories" element="<Categories/>"/>  
+        <Route path="/cart" element={<Cart/>}/>
+        <Route path="/categories" element={<Categories/>}/>
+
+
+ 
       </Routes>
      </Router>
     </div>
