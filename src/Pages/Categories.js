@@ -4,6 +4,7 @@ import chicken from '../Assets/burgers.png'
 import { Link } from 'react-router-dom';
 import logo from '../Assets/logonew.svg';
 import bg from '../Assets/menu.jpg'
+import qlogo from '../Assets/qlogo.png'
 
 const Categories = () => {
   return (
@@ -11,12 +12,27 @@ const Categories = () => {
         <div className='relative'>
             <img src={bg} alt='menu' className='w-screen h-[400px]' />
 
-            <div className='absolute inset-0 flex items-center justify-around'>
-                <div className='w-[300px] h-[150px] bg-slate-900 flex-row items-center justify-center'>
-                    
-                </div>
-                <div className='w-[300px] h-[150px] bg-slate-900'></div>
-                <div className='w-[300px] h-[150px] bg-slate-900'></div>
+            <div className='absolute inset-0 flex items-center justify-around'
+            data-aos='fade-down'
+            data-aos-offset = '200'
+            data-aos-delay='50'
+            data-aos-duration='1000'
+            data-aos-easing = 'ease-in-out'>
+           <div className='w-[300px] h-[150px] bg-slate-900 flex-col flex items-center justify-center rounded-2xl transform transition-transform hover:scale-110'>
+                <h1 className='font-serif text-2xl font-bold text-orange-50'>Quality Food</h1>
+            </div>
+
+
+
+            <div className='w-[300px] h-[150px] bg-slate-900 flex-col flex items-center justify-center rounded-2xl transform transition-transform hover:scale-110'>
+                <h1 className='font-serif text-2xl font-bold text-orange-50'>Original Recipies</h1>
+            </div>
+            
+            <div className='w-[300px] h-[150px] bg-slate-900 flex-col flex items-center justify-center rounded-2xl transform transition-transform hover:scale-110'>
+                <h1 className='font-serif text-2xl font-bold text-orange-50'>Quick Process</h1>
+            </div>
+
+
             </div>
         </div>
 
