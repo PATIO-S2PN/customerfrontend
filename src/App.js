@@ -12,6 +12,7 @@ import Profile from './Pages/Profile';
 import Main from './Pages/Main';
 import Cart from './Pages/Cart';
 import Categories from './Pages/Categories';
+import EmailVerification from './Components/EmailVerification';
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/categories" element={<Categories/>}/>
+        <Route path="/verify/:token" component={EmailVerification} />
 
 
  
