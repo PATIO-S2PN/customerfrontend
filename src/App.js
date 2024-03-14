@@ -12,6 +12,7 @@ import Profile from './Pages/Profile';
 import Main from './Pages/Main';
 import Cart from './Pages/Cart';
 import Categories from './Pages/Categories';
+import EmailVerification from './Components/EmailVerification';
 import Specials from './Pages/Specials';
 import PlaceOrder from './Pages/PlaceOrder';
 import OrderTracking from './Pages/OrderTracking';
@@ -35,6 +36,7 @@ function App() {
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/categories" element={<Categories/>}/>
+        <Route path="/verify/:token" component={EmailVerification} />
         <Route path="/specials" element={<Specials/>}/>
         <Route path="/place-order" element={<PlaceOrder/>}/>
         <Route path="/order-tracking" element={<OrderTracking/>}/>
