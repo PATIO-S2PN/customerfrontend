@@ -10,7 +10,11 @@ module.exports = {
     }, 
     borderRadius: {
       'custom': '40px',
-    },  
+    }, 
+    fontFamily: {
+      'open-sans': ['Open Sans', 'sans-serif'],
+      'roboto': ['Roboto', 'sans-serif'],
+    }, 
   },
   plugins: [],
 }

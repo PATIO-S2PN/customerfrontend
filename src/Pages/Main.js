@@ -4,6 +4,7 @@ import About from './About';
 import Home from './Home';
 import Navbar from '../Components/Navbar';
 import Categories from './Categories';
+import Specials from './Specials';
 
 
 const Main = () => {
@@ -34,6 +35,11 @@ const Main = () => {
         <section  id='categories'
                   className="">
           <Categories/>
+        </section>
+
+        <section  id='specials'
+                  className="">
+          <Specials/>
         </section>
 
 </div>

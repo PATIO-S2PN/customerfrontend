@@ -1,0 +1,9 @@
+@media (max-width: 768px) {
+    .vertical-border::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 64px;
+      border-left: 2px solid orange;
+    }
+  }
