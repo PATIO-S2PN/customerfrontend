@@ -19,9 +19,9 @@ const Nav = () => {
     let [open,setOpen]=useState(false);
     
     return (
-     <nav className='fixed z-50 w-full'>     
+     <nav className='fixed z-50 w-full '>     
       <div className='fixed left-0 w-full shadow-md top-4'>
-        <div className='items-center justify-between bg-transparent md:flex md:px-10 px-7'>
+        <div className='flex-wrap items-center justify-between bg-transparent md:flex md:px-10 px-7'>
           <a href='/'>
               <img src = {logo} className='w-[170px] h-[50px] curser-pointer'></img>
           </a>

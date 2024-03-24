@@ -16,6 +16,9 @@ import EmailVerification from './Components/EmailVerification';
 import Specials from './Pages/Specials';
 import PlaceOrder from './Pages/PlaceOrder';
 import OrderTracking from './Pages/OrderTracking';
+import { Check } from 'react-bootstrap-icons';
+import Chefs from './Pages/Chefs';
+import Gallery from './Pages/Gallery';
 
 
 function App() {
@@ -40,6 +43,8 @@ function App() {
         <Route path="/specials" element={<Specials/>}/>
         <Route path="/place-order" element={<PlaceOrder/>}/>
         <Route path="/order-tracking" element={<OrderTracking/>}/>
+        <Route path="/chefs" element={<Chefs/>}/>
+        <Route path="/gallery" element={<Gallery/>}/>
 
 
 

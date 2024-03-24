@@ -13,7 +13,7 @@ const slides = [
   { 
     image: bgTwo, 
     text: {
-      heading: { text: 'Flavor Flavor Haven: Take-Away Bliss!', fontFamily: 'Roboto'},
+      heading: { text: 'Flavor Flavor Haven: Take-Away Bliss!'},
       paragraph: { text: 'Flavor Haven: Take-Away Bliss\nIndulge in a symphony of flavors,\nnow available for take-away.', fontFamily: 'Roboto'},
     },
   },
@@ -62,10 +62,10 @@ export default function Home() {
               className="object-cover w-full h-full"
             />
             
-            <div className="absolute text-white top-[350px] left-[120px] ">
-              <p style={{fontFamily: slide.text.heading, fontSize:"50px"}}></p>
-              <p style={{ fontFamily: slide.text.paragraph.fontFamily, textAlign: 'left', whiteSpace: 'pre-line' 
-                ,color: "#ffedd5", fontSize:"50px",fontStyle:"Italic"}}>{slide.text.paragraph.text}</p>
+            <div className="absolute text-white top-[350px] left-[120px] w-[400px] md:w-[600px]">
+              <p style={{fontFamily: slide.text.heading}} className='text-orange-800 font-roboto'></p>
+              <p style={{ fontFamily: slide.text.paragraph,}} 
+                 className='justify-center text-2xl orange-100 text- font-roboto-Regular-400 md:text-[40px] md:justify-center'>{slide.text.paragraph.text}</p>
               <button className="px-4 flex py-2 mt-4 text-black border-white border-2 items-center bg-[#FFCF87] 
                 justify-center h-[40px] w-[200px] font-bold font-serif rounded-full">
                 <span className="mr-2">ORDER NOW</span>

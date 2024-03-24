@@ -7,7 +7,27 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import logo from '../Assets/logonew.svg';
+import Swal from 'sweetalert2';
 
+function showToast(status, message) {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    background: '#fff7ed',
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
+
+  Toast.fire({
+    icon: status,
+    title: message
+  });
+}
 
 function Login() {
   const navigate = useNavigate();
@@ -16,25 +36,35 @@ function Login() {
   const [loginMessage, setLoginMessage] = useState('');
 
   const handleLoginClick = async () => {
-    console.log("bkhfk");
+   //navigate('/');
     try {
       const response = await axios.post('http://localhost:8001/login', {
-        Email: email,
-        Password: password,
+        email: email,
+        password: password,
       });
 
       if (response.status === 200) {
         // Login was successful
-        setLoginMessage('Login successful');
+        showToast('success', 'Login Successful!');
         navigate('/');
         console.log(response.data.Email);
+// tocken***************************************************
+        const tocken = response.data.verifyToken;
+
+        localStorage.setItem('token', tocken);
+
+        // ***********************************************
       } else {
-        // Handle login failure with a more informative message
-        setLoginMessage('Invalid email or password');
+
       }
     } catch (error) {
+      showToast('error', 'Login Failed!');
+
       // Handle network or other errors
+
       console.error('Login error:', error);
+      setLoginMessage('Login error: ' + error.message);
+
     }
   }
   
@@ -111,13 +141,13 @@ function Login() {
         </div>
 
         <div className='flex justify-center mb-5'>
-            <button onClick={handleLoginClick} className="relative h-10 w-60 inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400
-             group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800" >
-            <span class="relative flex items-center justify-center w-full h-full px-5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0" >
+        <button onClick={handleLoginClick} class="relative h-10 w-60 inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br 
+        from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white
+         dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
+            <span class="relative flex items-center justify-center w-full h-full px-5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
               Login
             </span>
             </button>
-
         </div>
              
         <div className='flex items-center space-x-2'>

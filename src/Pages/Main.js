@@ -5,6 +5,8 @@ import Home from './Home';
 import Navbar from '../Components/Navbar';
 import Categories from './Categories';
 import Specials from './Specials';
+import Chefs from './Chefs';
+import Gallery from './Gallery';
 
 
 const Main = () => {
@@ -40,6 +42,16 @@ const Main = () => {
         <section  id='specials'
                   className="">
           <Specials/>
+        </section>
+
+        <section  id='chefs'
+                  className="">
+          <Chefs/>
+        </section>
+
+        <section  id='gallery'
+                  className="">
+          <Gallery/>
         </section>
 
 </div>

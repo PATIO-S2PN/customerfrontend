@@ -1,18 +1,93 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import bg from '../Assets/profile.jpg';
 import profile from '../Assets/profile2.png';
+import axios from 'axios';
+import { useNavigate, useLocation } from 'react-router-dom';
+import logo from '../Assets/logonew.svg';
 
-const Profile = () => {
-  const [activeTab, setActiveTab] = useState('app');
 
-  const handleTabClick = (tabId) => {
-    setActiveTab(tabId);
-  };
+function Profile() {
+    const [activeTab, setActiveTab] = useState('app');
+    const navigate = useNavigate();
+
+    /*const navigate = useNavigate();
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const userIdParam = queryParams.get('userId'); // Change variable name to userIdParam
+  
+    const [user, setUser] = useState({
+      FirstName: '',
+      LastName: '',
+      Email: '',
+      Password: '',
+      Address: '',
+      Phone: ''
+    });
+    
+    const [loading, setLoading] = useState(true); // Add a loading state
+    
+    useEffect(() => {
+      async function fetchUserData() {
+        try {
+          const response = await axios.get('http://localhost:8001/profile');
+  
+          if (response.data && response.data.length > 0) {
+            const userData = response.data[0]; // Assuming there's only one user with Status: true
+  
+            setUser({
+              FirstName: userData.FirstName,
+              LastName: userData.LastName,
+              Email: userData.Email,
+              Password: userData.Password,
+              Address: userData.Address,
+              Phone: userData.Phone
+            });
+          } else {
+            console.error('No user with Status: true found');
+          }
+        } catch (error) {
+          console.error('Error fetching user data:', error);
+        } finally {
+          setLoading(false); // Set loading to false after fetching data
+        }
+      }
+  
+      fetchUserData();
+    }, []); // No need for userId dependency since we're fetching by Status: true
+  
+    const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      setUser({ ...user, [name]: value });
+    };
+  
+    const handleSave = async () => {
+        try {
+            const response = await axios.put(`http://localhost:3002/api/v1/users/`, user);
+            console.log('User updated:', response.data);
+            navigate('/'); // Redirect to the home page or the appropriate route
+        } catch (error) {
+            console.error('Error updating user:', error);
+        }
+    }
+    const handleDeleteAccount = async () => {
+        try {
+          await axios.delete(`http://localhost:3002/api/v1/users/`);
+          navigate('/'); // Redirect to the home page after successful deletion
+        } catch (error) {
+          console.error('Error deleting user:', error);
+        }
+      };*/
+  
+    const handleTabClick = (tabId) => {
+        setActiveTab(tabId);
+    };
 
   return (
     <div>
+        <img src={logo} alt='logo' className='absolute z-10 h-[50px] w-[170px] top-10 left-10' onClick={() => navigate("/")} />
+
         <div>
-            <img src={bg} className="object-cover w-full h-[15vh]" alt="Background" />
+            <img src={bg} className="object-cover w-screen h-[15vh]" alt="Background" />
         </div>
         
         <div>
@@ -51,7 +126,7 @@ const Profile = () => {
                         
                     </ul>
                     <div data-tab-content="" className="">
-                        <div className={activeTab === 'app' ? " bg-[#F7EBE8] h-[80vh] w-screen flex flex-row opacity-100" : "hidden opacity-0"} id="app" role="tabpanel">
+                        <div className={activeTab === 'app' ? " bg-[#F7EBE8] h-auto md:h-[80vh] w-screen flex flex-row flex-wrap opacity-100" : "hidden opacity-0"} id="app" role="tabpanel">
                             <div>
                                 <div className='flex flex-col items-center justify-center h-[450px] rounded-3xl w-[400px] bg-[#D9D9D9] m-10 '>
                                     <img src={profile} className='h-[200px] w-[200px] mb-5'/>
@@ -62,24 +137,26 @@ const Profile = () => {
                                     <p className='font-serif text-3xl  text-[#991C1C]'>GOOD FOOD,</p>
                                     <p className='font-serif text-3xl text-[#991C1C]'>GOOD MOOD!</p>
                                     <p className='mt-3 font-serif text-2xl italic text-black'>Welcome to a </p>
-                                    <p className='font-serif text-2xl italic text-black'>taste-filled experience!</p>
+                                    <p className='mb-5 font-serif text-2xl italic text-black'>taste-filled experience!</p>
                                 </div>
                             </div>
                             
                             
-                            <div className='flex flex-col justify-center m-10'>
+                            <div className='flex flex-col flex-wrap justify-center m-10'>
                                 <p className='font-serif text-4xl font-bold text-black'>Account Information</p>
-                                <div className='flex flex-row justify-between w-[900px]'>
+                                <div className='flex md:flex-row flex-wrap justify-between md:w-[900px]'>
                                     <div class="mb-5">
                                         <label for="fname" class="block mb-2 text-lg font-serif text-gray-900 ">First Name</label>
-                                        <input type="fname" id="fname" class="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                        <input 
+                                        //value={user.FirstName}
+                                        type="fname" id="fname" class="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
                                     </div>
                                     <div class="mb-5">
                                         <label for="lname" class="block mb-2 text-lg font-serif text-gray-900 ">Last Name</label>
                                         <input type="lname" id="lname" class="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
                                     </div>
                                 </div>
-                                <div className='flex flex-row justify-between w-[900px]'>
+                                <div className='flex flex-row flex-wrap justify-between md:w-[900px] w-[300px]'>
                                     <div class="mb-5">
                                         <label for="address" class="block mb-2 text-lg font-serif text-gray-900 ">Address</label>
                                         <input type="address" id="address" class="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
@@ -92,7 +169,9 @@ const Profile = () => {
                                 <div className='flex flex-row justify-between w-[900px]'>
                                     <div class="mb-5">
                                         <label for="email" class="block mb-2 text-lg font-serif text-gray-900 ">Email</label>
-                                        <input type="email" id="email" class="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[450px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                        <input type="email" 
+                                               id="email"
+                                               className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[450px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
                                     </div>
                                     
                                 </div>
