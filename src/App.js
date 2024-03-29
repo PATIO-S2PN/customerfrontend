@@ -19,6 +19,8 @@ import OrderTracking from './Pages/OrderTracking';
 import { Check } from 'react-bootstrap-icons';
 import Chefs from './Pages/Chefs';
 import Gallery from './Pages/Gallery';
+import Contact from './Pages/Contact';
+
 
 
 function App() {
@@ -45,6 +47,8 @@ function App() {
         <Route path="/order-tracking" element={<OrderTracking/>}/>
         <Route path="/chefs" element={<Chefs/>}/>
         <Route path="/gallery" element={<Gallery/>}/>
+        <Route path="/contact" element={<Contact/>}/>
+
 
 
 
