@@ -7,6 +7,7 @@ import Categories from './Categories';
 import Specials from './Specials';
 import Chefs from './Chefs';
 import Gallery from './Gallery';
+import Contact from './Contact';
 
 
 const Main = () => {
@@ -52,6 +53,11 @@ const Main = () => {
         <section  id='gallery'
                   className="">
           <Gallery/>
+        </section>
+
+        <section  id='contact'
+                  className="">
+          <Contact/>
         </section>
 
 </div>
