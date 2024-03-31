@@ -20,6 +20,8 @@ import { Check } from 'react-bootstrap-icons';
 import Chefs from './Pages/Chefs';
 import Gallery from './Pages/Gallery';
 import Contact from './Pages/Contact';
+import Footer from './Pages/Footer';
+
 
 
 
@@ -48,6 +50,8 @@ function App() {
         <Route path="/chefs" element={<Chefs/>}/>
         <Route path="/gallery" element={<Gallery/>}/>
         <Route path="/contact" element={<Contact/>}/>
+        <Route path="/footer" element={<Footer/>}/>
+
 
 
 
