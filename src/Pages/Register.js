@@ -7,6 +7,8 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';
+import { useGoogleLogin } from '@react-oauth/google';
+
 
 
 function Register() {
@@ -38,6 +40,26 @@ function Register() {
     navigate('/');
   };
 
+  const signinClick = useGoogleLogin({
+      onSuccess: async (codeResponse) => {
+        console.log(codeResponse);
+        if (codeResponse && codeResponse.profileObj) {
+          const { email, givenName: firstName, familyName: lastName } = codeResponse.profileObj;
+          // Assuming you have a phone number, otherwise you'll need to handle this
+          const phone = codeResponse.profileObj.phoneNumber || '';
+
+          try {
+            const response = await axios.post('http://localhost:8001/signup', { email, password, firstName, lastName, phone });
+            console.log(response);
+          } catch (error) {
+            console.error(error);
+          }
+        }
+      },
+    }); // Add a closing parenthesis here
+
+
+
   return (
     
     <div className='flex flex-col items-start w-full h-screen md:flex-row'>
@@ -48,14 +70,14 @@ function Register() {
 
       </div>
       
-      <div className='w-full md:w-1/2 h-half md:h-full bg-[#101E21] flex flex-col p-custom'>
+      <div className='w-full md:w-1/2 h-half md:h-screen bg-[#101E21] flex flex-col p-custom'>
         
         <div className='justify-center'>
-            <h1 className='font-serif text-3xl text-[#FFFFFF] text-center mb-10 mt-20'>Create Account</h1>
+            <h1 className='font-serif text-3xl text-[#FFFFFF] text-center mb-10 '>Create Account</h1>
         </div>
         <div className='flex justify-center mb-4 space-x-5'>
         <a href="#" className="cursor-pointer">
-                    <FcGoogle size={30} />
+                    <FcGoogle size={30} onClick={() => signinClick()}/>
             </a> 
             <a href="#" className="cursor-pointer">
               <svg xmlns="http://www.w3.org/2000/svg" className="text-blue-600 h-7 w-7"

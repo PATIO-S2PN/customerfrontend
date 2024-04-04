@@ -8,18 +8,35 @@ import Specials from './Specials';
 import Chefs from './Chefs';
 import Gallery from './Gallery';
 import Contact from './Contact';
-
+import Animation from './Animation';
+import { useEffect } from 'react';
+import Footer from './Footer';
 
 const Main = () => {
   const [isOpen,setIsOpen] = useState(false);
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  const [isLoading, setIsLoading] = useState(true);
+  //**************************************** */
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // Adjust the time as needed
+  
+    return () => clearTimeout(timer); // Clean up the timer
+  }, []);
+
+  //************************************************************* */
   const toggleMenu = () => {
     setIsOpen((prev) => !prev)
   }
   return (
       <div className=''>
+        {isLoading ? <Animation /> :(
+
       <div className="">
         <div className="">
+          
             <Navbar isOpen={isOpen}
                     toggleMenu={toggleMenu}
             />
@@ -60,7 +77,13 @@ const Main = () => {
           <Contact/>
         </section>
 
+        <section  id='footer'
+                  className="">
+          <Footer/>
+        </section>
+
 </div>
+)}
 </div>
   )
 }

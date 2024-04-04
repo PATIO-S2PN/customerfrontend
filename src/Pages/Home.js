@@ -4,6 +4,8 @@ import bgThree from '../Assets/B3.jpg';
 import bgFour from '../Assets/B5.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
+import Animation from './Animation';
+
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -33,6 +35,18 @@ const slides = [
 ];
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+  //**************************************** */
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // Adjust the time as needed
+  
+    return () => clearTimeout(timer); // Clean up the timer
+  }, []);
+  //************************************************************* */
+
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -49,8 +63,13 @@ export default function Home() {
     setIsOpen((prev) => !prev);
   };
 
+
+
   return (
+    <div>
+
     <div className="w-full h-full min-h-[100vh] bg-white">
+
       <div className="relative w-screen h-[90vh] overflow-hidden">
         {slides.map((slide, i) => (
           <div className={`absolute w-full h-full transition-all
@@ -75,6 +94,7 @@ export default function Home() {
             
           </div>
         ))}
+      </div>
       </div>
     </div>
   );

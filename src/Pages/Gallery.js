@@ -11,13 +11,13 @@ import side03 from '../Assets/side03.jpg';
 const Gallery = () => {
   return (
     <div>
-      <section className="relative h-60 bg-fixed bg-cover p-16" style={{backgroundImage: "url('https://i.pinimg.com/originals/f5/e5/ca/f5e5cabca59e75fe4b54eed93bfa0b3c.jpg')"}}>
+      <section className="relative p-16 bg-fixed bg-cover h-60" style={{backgroundImage: "url('https://i.pinimg.com/originals/f5/e5/ca/f5e5cabca59e75fe4b54eed93bfa0b3c.jpg')"}}>
         <div className="container mx-auto text-center">
-          <h1 className="text-5xl text-yellow-500 font-bold p-8">Luxdine Gallery</h1>
+          <h1 className="p-8 text-5xl font-bold text-yellow-500">Luxdine Gallery</h1>
         </div>
       </section>
 
-      <div class="grid grid-cols-2 gap-4 md:grid-cols-4 p-6 bg-yellow-600">
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-4 p-6 bg-orange-50">
   <div class="grid gap-4">
     <div>
       <img
