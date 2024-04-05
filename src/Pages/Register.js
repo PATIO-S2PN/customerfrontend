@@ -8,8 +8,28 @@ import axios from 'axios';
 import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
+import Swal from 'sweetalert2';
 
+// login alert
+function showToast(status, message) {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    background: '#fff7ed',
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
 
+  Toast.fire({
+    icon: status,
+    title: message
+  });
+}
 
 function Register() {
   const navigate = useNavigate();
@@ -18,28 +38,39 @@ function Register() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
+  const [loginMessage, setLoginMessage] = useState('');
 
   const [showPassword, setShowPassword] = useState(false);
 
+  // Function to toggle password visibility
   const handleToggle = () => {
     setShowPassword(!showPassword);
   };
 
+  // Function to sign up
   const signUp = async () => {
     try {
       const response = await axios.post('http://localhost:8001/signup', { email, password, firstName, lastName, phone });
       console.log(response.data);
+
+      // after successfull login, user is already logged in
+      const loginResponse = await axios.post('http://localhost:8001/login', { email, password });
+      console.log(loginResponse.data);
+      console.log("login successful");
     } catch (error) {
       console.error(error);
     }
   };
 
+  // Function to handle form submission(register button)
   const handleSubmit = (e) => {
     e.preventDefault();
     signUp();
+  //  handleLoginClick();
     navigate('/');
   };
 
+  // Google sign in
   const signinClick = useGoogleLogin({
       onSuccess: async (codeResponse) => {
         console.log(codeResponse);
@@ -56,9 +87,42 @@ function Register() {
           }
         }
       },
-    }); // Add a closing parenthesis here
+    }); 
 
-
+    // Function to handle login
+    /*const handleLoginClick = async () => {
+      //navigate('/');
+       try {
+         const response = await axios.post('http://localhost:8001/login', {
+           email: email,
+           password: password,
+         });
+   
+         if (response.status === 200) {
+           // Login was successful
+           showToast('success', 'Login Successful!');
+           navigate('/');
+           console.log(response.data.Email);
+   // tocken***************************************************
+           const tocken = response.data.verifyToken;
+   
+           localStorage.setItem('token', tocken);
+   
+           // ***********************************************
+         } else {
+   
+         }
+       } catch (error) {
+         showToast('error', 'Login Failed!');
+   
+         // Handle network or other errors
+   
+         console.error('Login error:', error);
+         setLoginMessage('Login error: ' + error.message);
+   
+       }
+     }*/
+     
 
   return (
     
