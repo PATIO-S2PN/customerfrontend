@@ -22,6 +22,7 @@ import Gallery from './Pages/Gallery';
 import Contact from './Pages/Contact';
 import Footer from './Pages/Footer';
 import Cartnew from './Pages/Cartnew';
+import LoginNew from './Pages/LoginNew';
 
 
 
@@ -53,6 +54,8 @@ function App() {
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/footer" element={<Footer/>}/>
         <Route path="/cartnew" element={<Cartnew/>}/>
+        <Route path="/loginnew" element={<LoginNew/>}/>
+
 
         
 

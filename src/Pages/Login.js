@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'tailwindcss/tailwind.css';
-import login from '../Assets/Login.jpg';
+import loginI from '../Assets/Login.jpg';
 import { FcGoogle } from "react-icons/fc";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -11,9 +11,8 @@ import Swal from 'sweetalert2';
 import { GoogleLogin } from '@react-oauth/google';
 import { useGoogleLogin } from '@react-oauth/google';
 import Animation from './Animation';
-
-
-
+import { login } from '../Slices/userSlice';
+import { useDispatch } from 'react-redux';
 
 function showToast(status, message) {
   const Toast = Swal.mixin({
@@ -36,13 +35,14 @@ function showToast(status, message) {
 }
 
 function Login() {
+  const dispatch = useDispatch();
+  
   const navigate = useNavigate();
   const [email, setEmail] = useState(''); // Initialize email and password
   const [password, setPassword] = useState('');
   const [loginMessage, setLoginMessage] = useState('');
 
   const handleLoginClick = async () => {
-   //navigate('/');
     try {
       const response = await axios.post('http://localhost:8001/login', {
         email: email,
@@ -54,12 +54,13 @@ function Login() {
         showToast('success', 'Login Successful!');
         navigate('/');
         console.log(response.data.Email);
-// tocken***************************************************
-        const tocken = response.data.verifyToken;
+        // token
+        const token = response.data.token;
 
-        localStorage.setItem('token', tocken);
+        console.log('Token:', token);
 
-        // ***********************************************
+        localStorage.setItem('token', token);
+        
       } else {
 
       }
@@ -87,7 +88,7 @@ function Login() {
   return (
     <div className='flex flex-col items-start w-full h-screen md:flex-row'>
       <div className='relative w-full md:w-1/2 h-half md:h-full'>
-        <img src={login} alt='login' className='z-0 object-cover w-full h-full' />
+        <img src={loginI} alt='login' className='z-0 object-cover w-full h-full' />
         <img src={logo} alt='logo' className='absolute z-10 h-[50px] w-[170px] top-10 left-10' onClick={() => navigate("/")} />
         
       </div>
