@@ -72,7 +72,9 @@ export default function Home() {
 
       <div className="relative w-screen h-[90vh] overflow-hidden">
         {slides.map((slide, i) => (
-          <div className={`absolute w-full h-full transition-all
+          <div
+            key={i} 
+            className={`absolute w-full h-full transition-all
             duration-1000 ease-in-out transform ${i === index ? '-translate-x-0' : i < index ? '-translate-x-full' : 'translate-x-full'}`}>
             <img
               key={i}

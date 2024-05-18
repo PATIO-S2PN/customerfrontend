@@ -51,7 +51,7 @@ const products = [
   // More products...
 ]
 
-export default function Example() {
+export default function Cartnew() {
   const [open, setOpen] = useState(true);
   const navigate = useNavigate();
 
