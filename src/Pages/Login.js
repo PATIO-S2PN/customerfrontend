@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'tailwindcss/tailwind.css';
 import loginI from '../Assets/Login.jpg';
-import { FcGoogle } from "react-icons/fc";
+//import { FcGoogle } from "react-icons/fc";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
@@ -99,9 +99,12 @@ function Login() {
         </div>
 
         <div className='flex justify-center mb-4 space-x-5'>
+          {/*
             <a href="#" className="cursor-pointer">
                     <FcGoogle size={30} onClick={() => loginclick()}/>
             </a> 
+            */}
+            
             <a href="#" className="cursor-pointer">
               <svg xmlns="http://www.w3.org/2000/svg" className="text-blue-600 h-7 w-7"
                  fill="currentColor" viewBox="0 0 24 24">

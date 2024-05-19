@@ -1,8 +1,10 @@
 import React from 'react';
+/*
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { FaSquareTwitter } from "react-icons/fa6";
 import { FaFacebookMessenger } from "react-icons/fa";
+*/
 import Paymentcard from '../Assets/paymentcard.jpg';
 
 
@@ -22,10 +24,13 @@ const Footer = () => {
             <div className="bg-black h-90 w-full">
               <div className="flex justify-between items-start self-center mt-11 w-full  max-md:flex-wrap max-md:mt-10 max-md:max-w-full">
                 <div className="flex flex-col items-center mt-11 ml-4">
+                  
+                  {/*
                   <FaFacebookSquare size='3rem' color='white'/>
                   <FaSquareInstagram size='3rem' color='white' className='mt-4'/>
                   <FaSquareTwitter size='3rem' color='white' className='mt-4'/>
                   <FaFacebookMessenger size='3rem' color='white' className='mt-4'/>
+                  */}
                 </div>
 
                 <div className="flex flex-col mt-2.5">
