@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import logo from '../Assets/logonew.svg'
-import { FaUser } from 'react-icons/fa';
+// import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const Nav = () => {
@@ -42,12 +42,12 @@ const Nav = () => {
         
           </ul>
           <div className='relative inline-block text-left'>
-          <div>
-            <FaUser 
+          <div onClick={() => setShowDropdown(!showDropdown)}>  Dropdown
+            {/* <FaUser 
               size={25} 
               className='text-white cursor-pointer' 
               onClick={() => setShowDropdown(!showDropdown)}
-            />
+            /> */}
           </div>
       
             {showDropdown && (
