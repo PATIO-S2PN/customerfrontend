@@ -9,7 +9,7 @@ export default function MenuItems() {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:8002/');
+        const response = await axios.get('http://18.234.113.85/');
         setMenuItems(response.data.products);
 
         
@@ -33,7 +33,7 @@ export default function MenuItems() {
           <img 
             className='w-64 mb-2 transition-all duration-500 transform h-52 hover:scale-110' 
             // src={item.images && item.images[0] ? `${baseUrl}${item.images[0].replace(/\\/g, '/')}` : defaultImage}
-            src={item.images && item.images[0] ? `http://localhost:8002/${item.images[0]}` : defaultImage}
+            src={item.images && item.images[0] ? `http://18.234.113.85/${item.images[0]}` : defaultImage}
 
             alt={item.name} 
           />
