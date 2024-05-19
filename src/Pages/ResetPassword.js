@@ -35,7 +35,7 @@ export default function ResetPassword() {
         <div className='flex flex-col items-center justify-center px-10 py-2 bg-transparent border shadow w-[500px] rounded-b-2xl hover:shadow-lg'>
             <label className='font-serif text-2xl text-black transform hover:scale-x-[-1] text-bold duration-500 mb-3'>Reset Password</label>
             <form onSubmit={handleSubmit} className='w-[400px]'>
-                <div class="relative z-0 w-full mb-5 group">
+                <div className="relative z-0 w-full mb-5 group">
                     <input type="password" 
                            name="new-password" 
                            id="newPassword" 
@@ -44,13 +44,13 @@ export default function ResetPassword() {
                                       border-0 border-b-2 ${error ? 'border-blue-800' : 'border-gray-800'} appearance-none  
                                       focus:outline-none focus:ring-0 focus:border-blue-800 peer`} placeholder=" " required />
                     <label for="newPassword" 
-                           class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-900 duration-300 
+                           className="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-900 duration-300 
                                   transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 
                                   rtl:peer-focus:left-auto peer-focus:text-blue-800 peer-focus:dark:text-blue-800 peer-placeholder-shown:scale-100 
                                   peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">New Password</label>
                 </div>
                 
-                <div class="relative z-0 w-full mb-5 group">
+                <div className="relative z-0 w-full mb-5 group">
                     <input type="password" 
                            name="confirm-password" 
                            id="confirmPassword" 
@@ -60,7 +60,7 @@ export default function ResetPassword() {
                                       focus:outline-none focus:ring-0 focus:border-blue-800 peer`} placeholder=" " required />
                     {error && <p className="mt-1 text-xs text-red-800">{error}</p>}
                     <label for="confirmPassword" 
-                           class="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-900 duration-300 
+                           className="peer-focus:font-medium absolute text-sm text-gray-900 dark:text-gray-900 duration-300 
                                   transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 
                                   rtl:peer-focus:left-auto peer-focus:text-blue-800 peer-focus:dark:text-blue-800 peer-placeholder-shown:scale-100 
                                   peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm Password</label>

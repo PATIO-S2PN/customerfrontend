@@ -145,30 +145,30 @@ function Profile() {
                             <div className='flex flex-col flex-wrap justify-center m-10'>
                                 <p className='font-serif text-4xl font-bold text-black'>Account Information</p>
                                 <div className='flex md:flex-row flex-wrap justify-between md:w-[900px]'>
-                                    <div class="mb-5">
-                                        <label for="fname" class="block mb-2 text-lg font-serif text-gray-900 ">First Name</label>
+                                    <div className="mb-5">
+                                        <label for="fname" className="block mb-2 font-serif text-lg text-gray-900 ">First Name</label>
                                         <input 
                                         //value={user.FirstName}
-                                        type="fname" id="fname" class="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                        type="fname" id="fname" className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
                                     </div>
-                                    <div class="mb-5">
-                                        <label for="lname" class="block mb-2 text-lg font-serif text-gray-900 ">Last Name</label>
-                                        <input type="lname" id="lname" class="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                    <div className="mb-5">
+                                        <label for="lname" className="block mb-2 font-serif text-lg text-gray-900 ">Last Name</label>
+                                        <input type="lname" id="lname" className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
                                     </div>
                                 </div>
                                 <div className='flex flex-row flex-wrap justify-between md:w-[900px] w-[300px]'>
-                                    <div class="mb-5">
-                                        <label for="address" class="block mb-2 text-lg font-serif text-gray-900 ">Address</label>
-                                        <input type="address" id="address" class="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                    <div className="mb-5">
+                                        <label for="address" className="block mb-2 font-serif text-lg text-gray-900 ">Address</label>
+                                        <input type="address" id="address" className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
                                     </div>
-                                    <div class="mb-5">
-                                        <label for="contact" class="block mb-2 text-lg font-serif text-gray-900 ">Contact</label>
-                                        <input type="contact" id="contact" class="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                    <div className="mb-5">
+                                        <label for="contact" className="block mb-2 font-serif text-lg text-gray-900 ">Contact</label>
+                                        <input type="contact" id="contact" className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
                                     </div>
                                 </div>
                                 <div className='flex flex-row justify-between w-[900px]'>
-                                    <div class="mb-5">
-                                        <label for="email" class="block mb-2 text-lg font-serif text-gray-900 ">Email</label>
+                                    <div className="mb-5">
+                                        <label for="email" className="block mb-2 font-serif text-lg text-gray-900 ">Email</label>
                                         <input type="email" 
                                                id="email"
                                                className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[450px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
@@ -176,9 +176,9 @@ function Profile() {
                                     
                                 </div>
                                 <div className='flex flex-row justify-between w-[900px]'>
-                                    <div class="mb-5">
-                                        <label for="password" class="block mb-2 text-lg font-serif text-gray-900 ">Password</label>
-                                        <input type="password" id="password" class="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[450px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                    <div className="mb-5">
+                                        <label for="password" className="block mb-2 font-serif text-lg text-gray-900 ">Password</label>
+                                        <input type="password" id="password" className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[450px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
                                     </div>
                                     
                                 </div>

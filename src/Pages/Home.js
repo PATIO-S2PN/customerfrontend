@@ -36,7 +36,6 @@ const slides = [
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-  //**************************************** */
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -45,7 +44,6 @@ export default function Home() {
   
     return () => clearTimeout(timer); // Clean up the timer
   }, []);
-  //************************************************************* */
 
   const [index, setIndex] = useState(0);
 
