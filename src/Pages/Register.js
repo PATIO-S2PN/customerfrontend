@@ -10,7 +10,6 @@ import { useNavigate } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
 import Swal from 'sweetalert2';
 
-// login alert
 function showToast(status, message) {
   const Toast = Swal.mixin({
     toast: true,
@@ -39,22 +38,18 @@ function Register() {
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
   const [loginMessage, setLoginMessage] = useState('');
-
   const [showPassword, setShowPassword] = useState(false);
 
-  // Function to toggle password visibility
   const handleToggle = () => {
     setShowPassword(!showPassword);
   };
 
-  // Function to sign up
   const signUp = async () => {
     try {
-      const response = await axios.post('http://localhost:8001/signup', { email, password, firstName, lastName, phone });
+      const response = await axios.post('http://18.234.113.85/customer/signup', { email, password, firstName, lastName, phone });
       console.log(response.data);
 
-      // after successfull login, user is already logged in
-      const loginResponse = await axios.post('http://localhost:8001/login', { email, password });
+      const loginResponse = await axios.post('http://18.234.113.85/customer/login', { email, password });
       console.log(loginResponse.data);
       console.log("login successful");
     } catch (error) {
@@ -62,11 +57,9 @@ function Register() {
     }
   };
 
-  // Function to handle form submission(register button)
   const handleSubmit = (e) => {
     e.preventDefault();
     signUp();
-  //  handleLoginClick();
     navigate('/');
   };
 
@@ -80,7 +73,7 @@ function Register() {
           const phone = codeResponse.profileObj.phoneNumber || '';
 
           try {
-            const response = await axios.post('http://localhost:8001/signup', { email, password, firstName, lastName, phone });
+            const response = await axios.post('http://18.234.113.85/customer/signup', { email, password, firstName, lastName, phone });
             console.log(response);
           } catch (error) {
             console.error(error);
@@ -93,7 +86,7 @@ function Register() {
     /*const handleLoginClick = async () => {
       //navigate('/');
        try {
-         const response = await axios.post('http://localhost:8001/login', {
+         const response = await axios.post('http://18.234.113.85/customer/login', {
            email: email,
            password: password,
          });

@@ -38,23 +38,21 @@ function Login() {
   const dispatch = useDispatch();
   
   const navigate = useNavigate();
-  const [email, setEmail] = useState(''); // Initialize email and password
+  const [email, setEmail] = useState(''); 
   const [password, setPassword] = useState('');
   const [loginMessage, setLoginMessage] = useState('');
 
   const handleLoginClick = async () => {
     try {
-      const response = await axios.post('http://localhost:8001/login', {
+      const response = await axios.post('http://18.234.113.85/customer/login', {
         email: email,
         password: password,
       });
 
       if (response.status === 200) {
-        // Login was successful
         showToast('success', 'Login Successful!');
         navigate('/');
         console.log(response.data.Email);
-        // token
         const token = response.data.token;
 
         console.log('Token:', token);
@@ -66,9 +64,6 @@ function Login() {
       }
     } catch (error) {
       showToast('error', 'Login Failed!');
-
-      // Handle network or other errors
-
       console.error('Login error:', error);
       setLoginMessage('Login error: ' + error.message);
 

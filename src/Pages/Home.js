@@ -4,11 +4,10 @@ import bgThree from '../Assets/B3.jpg';
 import bgFour from '../Assets/B5.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
-import Animation from './Animation';
-
-
+import cart from '../Assets/cartIcon.jpeg';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from 'react-router-dom';
 
 AOS.init();
 const slides = [
@@ -31,18 +30,18 @@ const slides = [
       paragraph: { text: 'Say goodbye to compromise \nand hello to a dining experience\nthat fits your pace.', fontFamily: 'Roboto' },
     },
   },
-  // Repeat for other images
 ];
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // Adjust the time as needed
+    }, 3000); 
   
-    return () => clearTimeout(timer); // Clean up the timer
+    return () => clearTimeout(timer); 
   }, []);
 
   const [index, setIndex] = useState(0);
@@ -50,7 +49,7 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % slides.length);
-    }, 2000); // Change image every 2 seconds
+    }, 2000); 
 
     return () => clearInterval(interval);
   }, []);
@@ -92,8 +91,15 @@ export default function Home() {
               </button>
             </div>
             
+            
           </div>
         ))}
+        <div className="fixed z-20 w-16 h-16 overflow-hidden rounded-full top-[85%] right-4 border-4 border-red-800">
+          <img src={cart} 
+               onClick={() => navigate('/cartnew')} 
+               alt="Cart" 
+               className="object-cover w-full h-full" />
+        </div>
       </div>
       </div>
     </div>
