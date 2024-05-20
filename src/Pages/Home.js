@@ -30,7 +30,6 @@ const slides = [
       paragraph: { text: 'Say goodbye to compromise \nand hello to a dining experience\nthat fits your pace.', fontFamily: 'Roboto' },
     },
   },
-  // Repeat for other images
 ];
 
 export default function Home() {
@@ -40,9 +39,9 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // Adjust the time as needed
+    }, 3000); 
   
-    return () => clearTimeout(timer); // Clean up the timer
+    return () => clearTimeout(timer); 
   }, []);
 
   const [index, setIndex] = useState(0);
@@ -50,7 +49,7 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % slides.length);
-    }, 2000); // Change image every 2 seconds
+    }, 2000); 
 
     return () => clearInterval(interval);
   }, []);
