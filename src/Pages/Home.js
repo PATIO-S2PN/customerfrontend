@@ -4,11 +4,10 @@ import bgThree from '../Assets/B3.jpg';
 import bgFour from '../Assets/B5.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
-import Animation from './Animation';
-
-
+import cart from '../Assets/cartIcon.jpeg';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useNavigate } from 'react-router-dom';
 
 AOS.init();
 const slides = [
@@ -36,6 +35,7 @@ const slides = [
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -92,8 +92,15 @@ export default function Home() {
               </button>
             </div>
             
+            
           </div>
         ))}
+        <div className="fixed z-20 w-16 h-16 overflow-hidden rounded-full top-[85%] right-4 border-4 border-red-800">
+          <img src={cart} 
+               onClick={() => navigate('/cartnew')} 
+               alt="Cart" 
+               className="object-cover w-full h-full" />
+        </div>
       </div>
       </div>
     </div>

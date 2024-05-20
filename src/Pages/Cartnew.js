@@ -61,23 +61,29 @@ export default function Cartnew() {
 
   return (
     
-    <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setOpen}>
-        <Transition.Child
-          as={Fragment}
-          enter="ease-in-out duration-500"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in-out duration-500"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <div className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75 " 
-          style={{ backgroundImage: `url(${cart})`, backgroundSize: 'cover', backgroundPosition: 'left'}}>
-          <img src={logo} alt='logo' className='absolute z-10 h-[50px] w-[170px] top-10 left-10' onClick={() => navigate("/")} />
+   <Transition.Root show={open} as={Fragment}>
+  <Dialog as="div" className="relative z-10" onClose={setOpen} static>
+    <Transition.Child
+      as={Fragment}
+      enter="ease-in-out duration-500"
+      enterFrom="opacity-0"
+      enterTo="opacity-100"
+      leave="ease-in-out duration-500"
+      leaveFrom="opacity-100"
+      leaveTo="opacity-0"
+    >
+      <div className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75 " 
+      style={{ backgroundImage: `url(${cart})`, backgroundSize: 'cover', backgroundPosition: 'left'}}
+      onClick={() => setOpen(false)}
+      >
+      <img src={logo} alt='logo' className='absolute z-10 h-[50px] w-[170px] top-10 left-10' 
+      onClick={(e) => {
+        e.stopPropagation();
+        navigate("/");
+      }} />
 
-          </div>
-        </Transition.Child>
+      </div>
+    </Transition.Child>
 
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
@@ -175,8 +181,8 @@ export default function Cartnew() {
                           or{' '}
                           <button
                             type="button"
+                            onClick={() => navigate('/menuone')} 
                             className="font-medium text-orange-700 hover:text-orange-900"
-                            onClick={() => setOpen(false)}
                           >
                             Continue Shopping
                             <span aria-hidden="true"> &rarr;</span>
