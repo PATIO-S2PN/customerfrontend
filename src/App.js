@@ -6,7 +6,7 @@ import MenuOne from './Pages/MenuOne';
 import ResetPassword from './Pages/ResetPassword';
 import Test1 from './Pages/Test1';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Navbar from './Components/Navbar';
+import Nav from './Components/Navbar';
 import About from './Pages/About';
 import Profile from './Pages/Profile';
 import Main from './Pages/Main';
@@ -16,16 +16,11 @@ import EmailVerification from './Components/EmailVerification';
 import Specials from './Pages/Specials';
 import PlaceOrder from './Pages/PlaceOrder';
 import OrderTracking from './Pages/OrderTracking';
-import { Check } from 'react-bootstrap-icons';
 import Chefs from './Pages/Chefs';
 import Gallery from './Pages/Gallery';
 import Contact from './Pages/Contact';
 import Footer from './Pages/Footer';
 import Cartnew from './Pages/Cartnew';
-import LoginNew from './Pages/LoginNew';
-
-
-
 
 function App() {
   
@@ -34,7 +29,7 @@ function App() {
       <Router>
       <Routes>
         <Route path="/" element={<Main/>}/>
-        <Route path="/navbar" element={<Navbar/>}/> 
+        <Route path="/navbar" element={<Nav/>}/> 
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
         <Route path="/menuitems" element={<MenuItems/>}/>
@@ -54,7 +49,6 @@ function App() {
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/footer" element={<Footer/>}/>
         <Route path="/cartnew" element={<Cartnew/>}/>
-        <Route path="/loginnew" element={<LoginNew/>}/>
 
 
         

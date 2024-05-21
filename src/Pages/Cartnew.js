@@ -3,78 +3,131 @@ import { Dialog, Transition } from '@headlessui/react'
 import cart from '../Assets/cart.jpg'
 import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect } from 'react';
+import img from '../Assets/bagels.jpg';
 
-const products = [
-  {
-    id: 1,
-    name: 'Throwback Hip Bag',
-    href: '#',
-    color: 'Salmon',
-    price: '$90.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
-  },
-  {
-    id: 2,
-    name: 'Medium Stuff Satchel',
-    href: '#',
-    color: 'Blue',
-    price: '$32.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    imageAlt:
-      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-  },
-  {
-    id: 3,
-    name: 'Medium Stuff Satchel',
-    href: '#',
-    color: 'Blue',
-    price: '$32.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    imageAlt:
-      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-  },
-  {
-    id: 4,
-    name: 'Medium Stuff Satchel',
-    href: '#',
-    color: 'Blue',
-    price: '$32.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    imageAlt:
-      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-  },
-  // More products...
-]
-
-export default function Example() {
+export default function Cartnew() {
   const [open, setOpen] = useState(true);
   const navigate = useNavigate();
+  const [products, setProducts] = useState([]); 
+
+  //calculate the total
+  const subtotal = products.reduce((total, item) => {
+    return total + (item.product.price * item.unit);
+  }, 0);
+  
+  const [count, setCount] = useState(1); 
+
+  //update acart items
+  function increment(productId) {
+    setCount(function (prevCount) {
+      const newCount = prevCount + 1;
+      updateQuantity(productId, newCount);
+      return newCount;
+    });
+  }
+  
+  function decrement(productId) {
+    setCount(function (prevCount) {
+      const newCount = prevCount > 0 ? prevCount - 1 : 0;
+      updateQuantity(productId, newCount);
+      return newCount;
+    });
+  }
+  
+  function updateQuantity(productId, quantity) {
+    const token = localStorage.getItem('token');
+    axios.post('http://18.234.113.85/shopping/cart', {
+      product_id: productId,
+      qty: quantity
+    }, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(response => {
+      console.log('Cart updated:', response.data);
+      // Update the products state with the new quantity for the updated product
+      setProducts(products.map(item => 
+        item.product._id === productId 
+          ? { ...item, unit: quantity } 
+          : item
+      ));
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+
+  //get the cart items
+  useEffect(() => {
+    const token = localStorage.getItem('token'); 
+    axios.get('http://18.234.113.85/shopping/cart', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(response => {
+      console.log(response.data);
+    
+      if (Array.isArray(response.data.items)) {
+        setProducts(response.data.items);
+      } else {
+        setProducts([]);
+      }
+    })
+      .catch(error => {
+        console.error('There was an error!', error);
+      });
+  }, []); 
+
+  //delete item
+
+  function deleteItem(id, token) {
+    axios({
+      method: 'delete',
+      url: `http://18.234.113.85/shopping/cart/${id}`,
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(response => {
+      console.log('Item deleted:', response.data);
+      const updatedProducts = products.filter(item => item.product._id !== id);
+      setProducts(updatedProducts);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
 
 
   return (
     
-    <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setOpen}>
-        <Transition.Child
-          as={Fragment}
-          enter="ease-in-out duration-500"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in-out duration-500"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
-          <div className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75 " 
-          style={{ backgroundImage: `url(${cart})`, backgroundSize: 'cover', backgroundPosition: 'left'}}>
-          <img src={logo} alt='logo' className='absolute z-10 h-[50px] w-[170px] top-10 left-10' onClick={() => navigate("/")} />
+   <Transition.Root show={open} as={Fragment}>
+  <Dialog as="div" className="relative z-10" onClose={setOpen} static>
+    <Transition.Child
+      as={Fragment}
+      enter="ease-in-out duration-500"
+      enterFrom="opacity-0"
+      enterTo="opacity-100"
+      leave="ease-in-out duration-500"
+      leaveFrom="opacity-100"
+      leaveTo="opacity-0"
+    >
+      <div className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75 " 
+      style={{ backgroundImage: `url(${cart})`, backgroundSize: 'cover', backgroundPosition: 'left'}}
+      onClick={() => setOpen(false)}
+      >
+      <img src={logo} alt='logo' className='absolute z-10 h-[50px] w-[170px] top-10 left-10' 
+      onClick={(e) => {
+        e.stopPropagation();
+        navigate("/");
+      }} />
 
-          </div>
-        </Transition.Child>
+      </div>
+    </Transition.Child>
 
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
@@ -108,41 +161,55 @@ export default function Example() {
                       <div className="mt-8">
                         <div className="flow-root">
                           <ul role="list" className="-my-6 divide-y divide-gray-200">
-                            {products.map((product) => (
-                              <li key={product.id} className="flex py-6">
-                                <div className="flex-shrink-0 w-24 h-24 overflow-hidden border border-gray-200 rounded-md">
-                                  <img
-                                    src={product.imageSrc}
-                                    alt={product.imageAlt}
-                                    className="object-cover object-center w-full h-full"
-                                  />
-                                </div>
+                          {products.map((item) => (
+                            <li key={item._id} className="flex py-6">
+                              <div className="flex-shrink-0 w-24 h-24 overflow-hidden border border-gray-200 rounded-md">
+                                <img
+                                  src={img} 
+                                  alt = 'bgimg'
+                                  className="object-cover object-center w-full h-full"
+                                /> 
+                                {/* <img
+                                  src={item.imageSrc} // Make sure the API response has this property
+                                  alt={item.imageAlt} // Make sure the API response has this property
+                                  className="object-cover object-center w-full h-full"
+                                />  */}
+                              </div>
 
-                                <div className="flex flex-col flex-1 ml-4">
-                                  <div>
-                                    <div className="flex justify-between text-base font-medium text-gray-900">
-                                      <h3>
-                                        <a href={product.href}>{product.name}</a>
-                                      </h3>
-                                      <p className="ml-4">{product.price}</p>
+                                  <div className="flex flex-col flex-1 ml-4">
+                                    <div>
+                                      <div className="flex justify-between text-base font-medium text-gray-900">
+                                        <h3>
+                                          <a href={item.product.href}>{item.product.name}</a> 
+                                        </h3>
+                                        <p className="ml-4">{item.product.price}</p> 
+                                      </div>
+                                      {/* <p className="mt-1 text-sm text-gray-500">{item.color}</p> // Make sure the API response has this property */}
                                     </div>
-                                    <p className="mt-1 text-sm text-gray-500">{product.color}</p>
-                                  </div>
-                                  <div className="flex items-end justify-between flex-1 text-sm">
-                                    <p className="text-gray-500">Qty {product.quantity}</p>
-
-                                    <div className="flex">
-                                      <button
-                                        type="button"
-                                        className="font-medium text-orange-700 hover:text-orange-900"
-                                      >
-                                        Remove
-                                      </button>
+                                    <div className="flex items-end justify-between flex-1 text-sm">
+                                      <div className='flex flex-row gap-3'>
+                                          <p className="text-gray-500">Qty </p> 
+                                          <div className='flex flex-row gap-1'>
+                                            <button onClick={() => decrement(item.product._id)} className='items-center justify-center w-4 h-4 bg-gray-300'>- </button>
+                                            <p>{item.unit}</p>
+                                            <button onClick={() => increment(item.product._id)} className='w-4 h-4 bg-gray-300'>+</button>
+                                          </div>
+                                          
+                                      </div>
+                                      
+                                      <div className="flex">
+                                        <button
+                                          onClick={() => deleteItem(item.product._id, localStorage.getItem('token'))}
+                                          type="button"
+                                          className="font-medium text-orange-700 hover:text-orange-900"
+                                        >
+                                          Remove
+                                        </button>
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
-                              </li>
-                            ))}
+                                </li>
+                              ))}
                           </ul>
                         </div>
                       </div>
@@ -151,7 +218,7 @@ export default function Example() {
                     <div className="px-4 py-6 border-t border-gray-200 sm:px-6">
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <p>Subtotal</p>
-                        <p>$262.00</p>
+                        <p>${subtotal.toFixed(2)}</p>
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                       <div className="mt-6">
@@ -167,8 +234,8 @@ export default function Example() {
                           or{' '}
                           <button
                             type="button"
+                            onClick={() => navigate('/menuone')} 
                             className="font-medium text-orange-700 hover:text-orange-900"
-                            onClick={() => setOpen(false)}
                           >
                             Continue Shopping
                             <span aria-hidden="true"> &rarr;</span>

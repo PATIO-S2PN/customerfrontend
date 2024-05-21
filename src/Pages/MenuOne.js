@@ -3,6 +3,7 @@ import bg3 from '../Assets/burgerBg.jpg'
 import MenuItems from './MenuItems'
 import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';
+import cart from '../Assets/cartIcon.jpeg';
 
 
 export default function MenuOne() {
@@ -22,6 +23,12 @@ export default function MenuOne() {
           
         </div>
           <MenuItems/>
+          <div className="fixed z-20 w-12 h-12 overflow-hidden rounded-full top-[5%] right-12 border-4 border-red-800">
+          <img src={cart} 
+               onClick={() => navigate('/cartnew')} 
+               alt="Cart" 
+               className="object-cover w-full h-full" />
+        </div>
       </div>
     </div>
   )
