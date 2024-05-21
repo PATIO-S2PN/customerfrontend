@@ -185,7 +185,7 @@ function Profile() {
                                             </div>
                                           </div>
                                           <div className='flex flex-row flex-wrap justify-between md:w-[900px] w-[300px]'>
-                                            <div className="mb-5">
+                                            {/* <div className="mb-5">
                                                 <label 
                                                   htmlFor="address" 
                                                   className="block mb-2 font-serif text-lg text-gray-900 ">Address
@@ -196,7 +196,7 @@ function Profile() {
                                                   type="address" 
                                                   id="address" 
                                                   className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
-                                            </div>
+                                            </div> */}
                                             <div className="mb-5">
                                                 <label 
                                                   htmlFor="contact" 
@@ -225,7 +225,7 @@ function Profile() {
                                             </div>                           
                                           </div>
                                           <div className='flex flex-row justify-between w-[900px]'>
-                                            <div className="mb-5">
+                                            {/* <div className="mb-5">
                                                 <label 
                                                   htmlFor="password" 
                                                   className="block mb-2 font-serif text-lg text-gray-900 ">Password
@@ -236,7 +236,7 @@ function Profile() {
                                                   type="password" 
                                                   id="password" 
                                                   className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[450px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
-                                            </div>
+                                            </div> */}
                                                                                   
                                             </div>
                                                 <button 

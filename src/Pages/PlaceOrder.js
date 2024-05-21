@@ -114,7 +114,7 @@ const PlaceOrder = () => {
                             />
                         </div>
                     </div>
-                    <div className='flex flex-col w-auto gap-1'>
+                    {/* <div className='flex flex-col w-auto gap-1'>
                             <label className="text-[12px] sm:text-lg font-roboto-regular-400 text-orange-50">
                               Address</label>
                             <input
@@ -122,9 +122,9 @@ const PlaceOrder = () => {
                                 onChange={e => setUser({...user, address: e.target.value})}
                                 className="w-64 h-8 pl-2 bg-transparent border-2 border-orange-200 rounded-lg md:h-10 focus:border-orange-500 md:w-72 text-orange-50"                            
                             />
-                        </div>
+                    </div> */}
                     <div className='flex flex-row flex-wrap justify-between gap-2'>
-                    <div className='flex flex-col w-auto gap-1'>
+                    {/* <div className='flex flex-col w-auto gap-1'>
                             <label className="text-[12px] sm:text-lg font-roboto-regular-400 text-orange-50">
                             Card Number
                             </label>
@@ -132,7 +132,7 @@ const PlaceOrder = () => {
                                // onChange={e => setUser({...user, address: e.target.value})}
                                 className="w-64 h-8 pl-2 bg-transparent border-2 border-orange-200 rounded-lg md:h-10 focus:border-orange-500 md:w-72 text-orange-50"                            
                             />
-                        </div>
+                    </div>
                         <div className='flex flex-col w-auto gap-1'>
                             <label className="text-[12px] sm:text-lg font-roboto-regular-400 text-orange-50">
                             CVV
@@ -141,8 +141,8 @@ const PlaceOrder = () => {
                                 // onChange={e => setUser({...user, address: e.target.value})}
                                 className="w-64 h-8 pl-2 bg-transparent border-2 border-orange-200 rounded-lg md:h-10 focus:border-orange-500 md:w-72 text-orange-50"                            
                             />
-                        </div>
-                        </div>
+                        </div> */}
+                    </div>
                     <div className='flex flex-row flex-wrap justify-between gap-2'>
                     <div className='flex flex-col w-auto gap-1'>
                             <label className="text-[12px] sm:text-lg font-roboto-regular-400 text-orange-50">
@@ -154,24 +154,24 @@ const PlaceOrder = () => {
                                 className="w-64 h-8 pl-2 bg-transparent border-2 border-orange-200 rounded-lg md:h-10 focus:border-orange-500 md:w-72 text-orange-50"                            
                             />
                         </div>
-                        <div className='flex flex-col w-auto gap-1'>
+                        {/* <div className='flex flex-col w-auto gap-1'>
                             <label className="text-[12px] sm:text-lg font-roboto-regular-400 text-orange-50">
                             Post Code
                             </label>
                             <input
                                 className="w-64 h-8 pl-2 bg-transparent border-2 border-orange-200 rounded-lg md:h-10 focus:border-orange-500 md:w-72 text-orange-50"                            
                             />
-                        </div>
+                        </div> */}
                     </div>
                     <div className='flex flex-row flex-wrap justify-between gap-2'>
-                    <div className='flex flex-col w-auto gap-1'>
+                    {/* <div className='flex flex-col w-auto gap-1'>
                             <label className="text-[12px] sm:text-lg font-roboto-regular-400 text-orange-50">
                             Apartment
                             </label>
                             <input
                                 className="w-64 h-8 pl-2 bg-transparent border-2 border-orange-200 rounded-lg md:h-10 focus:border-orange-500 md:w-72 text-orange-50 "                            
                             />
-                        </div>
+                    </div> */}
                         <div className='flex flex-col w-auto gap-1'>
                             <label className="text-[12px] sm:text-lg font-roboto-regular-400 text-orange-50">
                             Email Address
