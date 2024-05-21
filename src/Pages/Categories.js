@@ -2,9 +2,7 @@ import React from 'react'
 import '../App.css'
 import chicken from '../Assets/burgers.png'
 import { Link } from 'react-router-dom';
-import logo from '../Assets/logonew.svg';
 import bg from '../Assets/menu.jpg'
-import qlogo from '../Assets/qlogo.png'
 
 const Categories = () => {
   return (
@@ -22,8 +20,6 @@ const Categories = () => {
                 <h1 className='font-serif text-2xl font-bold text-orange-50'>Quality Food</h1>
             </div>
 
-
-
             <div className='w-[300px] h-[150px] bg-slate-900 flex-col flex items-center justify-center rounded-2xl transform transition-transform hover:scale-110'>
                 <h1 className='font-serif text-2xl font-bold text-orange-50'>Original Recipies</h1>
             </div>
@@ -31,7 +27,6 @@ const Categories = () => {
             <div className='w-[300px] h-[150px] bg-slate-900 flex-col flex items-center justify-center rounded-2xl transform transition-transform hover:scale-110'>
                 <h1 className='font-serif text-2xl font-bold text-orange-50'>Quick Process</h1>
             </div>
-
 
             </div>
         </div>

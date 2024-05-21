@@ -16,15 +16,11 @@ import EmailVerification from './Components/EmailVerification';
 import Specials from './Pages/Specials';
 import PlaceOrder from './Pages/PlaceOrder';
 import OrderTracking from './Pages/OrderTracking';
-import { Check } from 'react-bootstrap-icons';
 import Chefs from './Pages/Chefs';
 import Gallery from './Pages/Gallery';
 import Contact from './Pages/Contact';
 import Footer from './Pages/Footer';
 import Cartnew from './Pages/Cartnew';
-
-
-
 
 function App() {
   
