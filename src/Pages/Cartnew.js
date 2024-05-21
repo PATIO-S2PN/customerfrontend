@@ -17,6 +17,50 @@ export default function Cartnew() {
     return total + (item.product.price * item.unit);
   }, 0);
   
+  const [count, setCount] = useState(1); 
+
+  //update acart items
+  function increment(productId) {
+    setCount(function (prevCount) {
+      const newCount = prevCount + 1;
+      updateQuantity(productId, newCount);
+      return newCount;
+    });
+  }
+  
+  function decrement(productId) {
+    setCount(function (prevCount) {
+      const newCount = prevCount > 0 ? prevCount - 1 : 0;
+      updateQuantity(productId, newCount);
+      return newCount;
+    });
+  }
+  
+  function updateQuantity(productId, quantity) {
+    const token = localStorage.getItem('token');
+    axios.post('http://18.234.113.85/shopping/cart', {
+      product_id: productId,
+      qty: quantity
+    }, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(response => {
+      console.log('Cart updated:', response.data);
+      // Update the products state with the new quantity for the updated product
+      setProducts(products.map(item => 
+        item.product._id === productId 
+          ? { ...item, unit: quantity } 
+          : item
+      ));
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+
+  //get the cart items
   useEffect(() => {
     const token = localStorage.getItem('token'); 
     axios.get('http://18.234.113.85/shopping/cart', {
@@ -142,8 +186,16 @@ export default function Cartnew() {
                                       {/* <p className="mt-1 text-sm text-gray-500">{item.color}</p> // Make sure the API response has this property */}
                                     </div>
                                     <div className="flex items-end justify-between flex-1 text-sm">
-                                      <p className="text-gray-500">Qty {item.unit}</p> 
-
+                                      <div className='flex flex-row gap-3'>
+                                          <p className="text-gray-500">Qty </p> 
+                                          <div className='flex flex-row gap-1'>
+                                            <button onClick={() => decrement(item.product._id)} className='items-center justify-center w-4 h-4 bg-gray-300'>- </button>
+                                            <p>{item.unit}</p>
+                                            <button onClick={() => increment(item.product._id)} className='w-4 h-4 bg-gray-300'>+</button>
+                                          </div>
+                                          
+                                      </div>
+                                      
                                       <div className="flex">
                                         <button
                                           onClick={() => deleteItem(item.product._id, localStorage.getItem('token'))}

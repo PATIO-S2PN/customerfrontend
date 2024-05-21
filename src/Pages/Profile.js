@@ -5,78 +5,58 @@ import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../Assets/logonew.svg';
 
-
 function Profile() {
     const [activeTab, setActiveTab] = useState('app');
     const navigate = useNavigate();
-
-    /*const navigate = useNavigate();
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
-    const userIdParam = queryParams.get('userId'); // Change variable name to userIdParam
-  
-    const [user, setUser] = useState({
-      FirstName: '',
-      LastName: '',
-      Email: '',
-      Password: '',
-      Address: '',
-      Phone: ''
-    });
-    
+    const [user, setUser] = useState({});
     const [loading, setLoading] = useState(true); // Add a loading state
-    
+
     useEffect(() => {
+      const token = localStorage.getItem('token'); 
+
       async function fetchUserData() {
         try {
-          const response = await axios.get('http://localhost:8001/profile');
-  
-          if (response.data && response.data.length > 0) {
-            const userData = response.data[0]; // Assuming there's only one user with Status: true
-  
-            setUser({
-              FirstName: userData.FirstName,
-              LastName: userData.LastName,
-              Email: userData.Email,
-              Password: userData.Password,
-              Address: userData.Address,
-              Phone: userData.Phone
-            });
+          const response = await axios.get('http://18.234.113.85/customer/profile', {
+            headers: {
+
+              Authorization: `Bearer ${token}` // Assuming the token is a Bearer token
+            }
+          });
+    
+          if (response.data) {
+            setUser(response.data);
           } else {
-            console.error('No user with Status: true found');
+            console.error('No user data found');
           }
         } catch (error) {
           console.error('Error fetching user data:', error);
         } finally {
-          setLoading(false); // Set loading to false after fetching data
+          setLoading(false);
         }
       }
-  
+    
       fetchUserData();
-    }, []); // No need for userId dependency since we're fetching by Status: true
-  
-    const handleInputChange = (e) => {
-      const { name, value } = e.target;
-      setUser({ ...user, [name]: value });
-    };
-  
-    const handleSave = async () => {
-        try {
-            const response = await axios.put(`http://localhost:3002/api/v1/users/`, user);
-            console.log('User updated:', response.data);
-            navigate('/'); // Redirect to the home page or the appropriate route
-        } catch (error) {
-            console.error('Error updating user:', error);
+    }, []);
+
+    async function editProfile(updatedUser) {
+      try {
+        const token = localStorage.getItem('token'); // Get the token from local storage
+    
+        const response = await axios.put('http://18.234.113.85/customer/profile', updatedUser, {
+          headers: {
+            Authorization: `Bearer ${token}` // Assuming the token is a Bearer token
+          }
+        });
+    
+        if (response.data) {
+          console.log('Profile updated successfully');
+        } else {
+          console.error('Failed to update profile');
         }
+      } catch (error) {
+        console.error('Error updating profile:', error);
+      }
     }
-    const handleDeleteAccount = async () => {
-        try {
-          await axios.delete(`http://localhost:3002/api/v1/users/`);
-          navigate('/'); // Redirect to the home page after successful deletion
-        } catch (error) {
-          console.error('Error deleting user:', error);
-        }
-      };*/
   
     const handleTabClick = (tabId) => {
         setActiveTab(tabId);
@@ -146,43 +126,89 @@ function Profile() {
                                 <p className='font-serif text-4xl font-bold text-black'>Account Information</p>
                                 <div className='flex md:flex-row flex-wrap justify-between md:w-[900px]'>
                                     <div className="mb-5">
-                                        <label for="fname" className="block mb-2 font-serif text-lg text-gray-900 ">First Name</label>
+                                        <label 
+                                            htmlFor="fname" 
+                                            className="block mb-2 font-serif text-lg text-gray-900 ">First Name
+                                        </label>
                                         <input 
-                                        //value={user.FirstName}
-                                        type="fname" id="fname" className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                            value={user && user.firstName ? user.firstName : ''}
+                                            onChange={e => setUser({...user, firstName: e.target.value})}
+                                            type="fname" 
+                                            id="fname" 
+                                            className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
                                     </div>
                                     <div className="mb-5">
-                                        <label for="lname" className="block mb-2 font-serif text-lg text-gray-900 ">Last Name</label>
-                                        <input type="lname" id="lname" className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                        <label 
+                                            htmlFor="lname" 
+                                            className="block mb-2 font-serif text-lg text-gray-900 ">Last Name
+                                        </label>
+                                        <input 
+                                            value={user && user.lastName ? user.lastName : ''}
+                                            onChange={e => setUser({...user, lastName: e.target.value})}
+                                            type="lname" 
+                                            id="lname" 
+                                            className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
                                     </div>
                                 </div>
                                 <div className='flex flex-row flex-wrap justify-between md:w-[900px] w-[300px]'>
                                     <div className="mb-5">
-                                        <label for="address" className="block mb-2 font-serif text-lg text-gray-900 ">Address</label>
-                                        <input type="address" id="address" className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                        <label 
+                                            htmlFor="address" 
+                                            className="block mb-2 font-serif text-lg text-gray-900 ">Address
+                                        </label>
+                                        <input 
+                                            value={user && user.address ? user.address : ''}
+                                            onChange={e => setUser({...user, address: e.target.value})}
+                                            type="address" 
+                                            id="address" 
+                                            className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
                                     </div>
                                     <div className="mb-5">
-                                        <label for="contact" className="block mb-2 font-serif text-lg text-gray-900 ">Contact</label>
-                                        <input type="contact" id="contact" className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                        <label 
+                                            htmlFor="contact" 
+                                            className="block mb-2 font-serif text-lg text-gray-900 ">Contact
+                                        </label>
+                                        <input 
+                                            value={user && user.phone ? user.phone : ''}
+                                            onChange={e => setUser({...user, phone: e.target.value})}
+                                            type="contact"
+                                            id="contact" 
+                                            className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
                                     </div>
                                 </div>
                                 <div className='flex flex-row justify-between w-[900px]'>
                                     <div className="mb-5">
-                                        <label for="email" className="block mb-2 font-serif text-lg text-gray-900 ">Email</label>
-                                        <input type="email" 
-                                               id="email"
-                                               className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[450px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                        <label
+                                            htmlFor="email" 
+                                            className="block mb-2 font-serif text-lg text-gray-900 ">Email
+                                        </label>
+                                        <input 
+                                            value={user && user.email ? user.email : ''}
+                                            onChange={e => setUser({...user, email: e.target.value})}
+                                            type="email" 
+                                            id="email"
+                                            className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[450px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
                                     </div>
                                     
                                 </div>
                                 <div className='flex flex-row justify-between w-[900px]'>
                                     <div className="mb-5">
-                                        <label for="password" className="block mb-2 font-serif text-lg text-gray-900 ">Password</label>
-                                        <input type="password" id="password" className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[450px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                        <label 
+                                          htmlFor="password" 
+                                          className="block mb-2 font-serif text-lg text-gray-900 ">Password
+                                        </label>
+                                        <input 
+                                          value={user && user.password ? user.password : ''}
+                                          onChange={e => setUser({...user, password: e.target.value})}
+                                          type="password" 
+                                          id="password" 
+                                          className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[450px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
                                     </div>
                                     
                                 </div>
-                                <button className='h-10 font-serif w-[200px] bg-green-600 border border-black rounded-full text-white hover:bg-green-900'>SAVE CHANGES</button>
+                                <button 
+                                    onClick={() => editProfile(user)}
+                                        className='h-10 font-serif w-[200px] bg-green-600 border border-black rounded-full text-white hover:bg-green-900'>SAVE CHANGES</button>
                             </div>
                         </div>
                         <div className={activeTab === 'message' ? "block bg-orange-200 opacity-100" : "hidden opacity-0"} id="message" role="tabpanel">

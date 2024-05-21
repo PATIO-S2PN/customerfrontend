@@ -7,7 +7,7 @@ import defaultImage from '../Assets/burgers.png';
 const AddToCart = ({ item }) => {
   const [cartDetails, setCartDetails] = useState({
     product_id: item._id,
-    qty: ''
+    qty: '1'
   });
 
   const navigate = useNavigate(); 

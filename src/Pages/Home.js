@@ -84,7 +84,9 @@ export default function Home() {
               <p style={{fontFamily: slide.text.heading}} className='text-orange-800 font-roboto'></p>
               <p style={{ fontFamily: slide.text.paragraph,}} 
                  className='justify-center text-2xl orange-100 text- font-roboto-Regular-400 md:text-[40px] md:justify-center'>{slide.text.paragraph.text}</p>
-              <button className="px-4 flex py-2 mt-4 text-black border-white border-2 items-center bg-[#FFCF87] 
+              <button 
+                onClick={() => navigate('/categories')} 
+                className="px-4 flex py-2 mt-4 text-black border-white border-2 items-center bg-[#FFCF87] 
                 justify-center h-[40px] w-[200px] font-bold font-serif rounded-full">
                 <span className="mr-2">ORDER NOW</span>
                 <FontAwesomeIcon icon={faAngleDoubleRight} size='lg' />            
