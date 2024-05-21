@@ -42,7 +42,7 @@ const Nav = () => {
         
           </ul>
           <div className='relative inline-block text-left'>
-          <div onClick={() => setShowDropdown(!showDropdown)}>  Dropdown
+          <div onClick={() => setShowDropdown(!showDropdown)}>  Profile
             {/* <FaUser 
               size={25} 
               className='text-white cursor-pointer' 
