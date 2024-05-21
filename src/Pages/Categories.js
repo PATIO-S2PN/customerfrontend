@@ -6,7 +6,7 @@ import bg from '../Assets/menu.jpg'
 
 const Categories = () => {
   return (
-    <div className='flex-row felx'> 
+    <div className='flex-row h-auto felx'> 
         <div className='relative'>
             <img src={bg} alt='menu' className='w-screen h-[400px]' />
 
@@ -35,7 +35,7 @@ const Categories = () => {
             <div className="flex items-center py-12 overflow-x-scroll hide-scroll-bar">
                 <div className="flex ml-10 flex-nowrap lg:ml-40 md:ml-20 ">
                 <div className="inline-block px-3 ">
-                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs overflow-hidden transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
+                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
                         data-aos='fade-down'
                         data-aos-offset = '200'
                         data-aos-delay='50'
@@ -48,7 +48,7 @@ const Categories = () => {
                     </div>
                 </div>
                 <div className="inline-block px-3 ">
-                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs overflow-hidden transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
+                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
                         data-aos='fade-up'
                         data-aos-offset = '200'
                         data-aos-delay='50'
@@ -59,7 +59,7 @@ const Categories = () => {
                     </div>
                 </div>
                 <div className="inline-block px-3 ">
-                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs overflow-hidden transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
+                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
                      data-aos='fade-down'
                      data-aos-offset = '200'
                      data-aos-delay='50'
@@ -70,7 +70,7 @@ const Categories = () => {
                     </div>
                 </div>
                 <div className="inline-block px-3 ">
-                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs overflow-hidden transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
+                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
                      data-aos='fade-up'
                      data-aos-offset = '200'
                      data-aos-delay='50'
@@ -81,7 +81,7 @@ const Categories = () => {
                     </div>
                 </div>
                 <div className="inline-block px-3 ">
-                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs overflow-hidden transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
+                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
                      data-aos='fade-down'
                      data-aos-offset = '200'
                      data-aos-delay='50'
@@ -92,7 +92,7 @@ const Categories = () => {
                     </div>
                 </div>
                 <div className="inline-block px-3 ">
-                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs overflow-hidden transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
+                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
                      data-aos='fade-up'
                      data-aos-offset = '200'
                      data-aos-delay='50'
@@ -103,7 +103,7 @@ const Categories = () => {
                     </div>
                 </div>
                 <div className="inline-block px-3 ">
-                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs overflow-hidden transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
+                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
                      data-aos='fade-down'
                      data-aos-offset = '200'
                      data-aos-delay='50'
@@ -114,7 +114,7 @@ const Categories = () => {
                     </div>
                 </div>
                 <div className="inline-block px-3 ">
-                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs overflow-hidden transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
+                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
                      data-aos='fade-up'
                      data-aos-offset = '200'
                      data-aos-delay='50'

@@ -44,10 +44,10 @@ const Chefs = () => {
   }, []);*/
 
   return (
-    <div className="grid h-screen gap-10 m-10 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid items-center justify-center h-screen gap-10 m-10 sm:grid-cols-2 lg:grid-cols-4">
       {chefs.map((chef, index) => (
         <div key={index} className={index === 0 || index === 2 ? "md:mt-20" : ""}>
-          <div className='flex flex-col items-center justify-center border-4 border-orange-800 lg:h-[700px]'>
+          <div className='flex flex-col items-center justify-center border-4 border-orange-800 lg:h-[600px]'>
             <img src={chef.image} 
                  alt={chef.name} 
                  className='h-[500px]'/>
