@@ -13,6 +13,7 @@ export default function Cartnew() {
   const [products, setProducts] = useState([]); 
   const [cartItems, setCartItems] = useState([]); 
 
+  //calculate the total
   const subtotal = products.reduce((total, item) => {
     return total + (item.product.price * item.unit);
   }, 0);

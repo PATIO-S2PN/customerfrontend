@@ -9,17 +9,18 @@ function Profile() {
     const [activeTab, setActiveTab] = useState('app');
     const navigate = useNavigate();
     const [user, setUser] = useState({});
-    const [loading, setLoading] = useState(true); // Add a loading state
+    const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
       const token = localStorage.getItem('token'); 
 
+      //get profile data
       async function fetchUserData() {
         try {
           const response = await axios.get('http://18.234.113.85/customer/profile', {
             headers: {
 
-              Authorization: `Bearer ${token}` // Assuming the token is a Bearer token
+              Authorization: `Bearer ${token}` 
             }
           });
     
@@ -38,6 +39,7 @@ function Profile() {
       fetchUserData();
     }, []);
 
+    //edit profile
     async function editProfile(updatedUser) {
       try {
         const token = localStorage.getItem('token'); // Get the token from local storage
@@ -50,6 +52,7 @@ function Profile() {
     
         if (response.data) {
           console.log('Profile updated successfully');
+          setUser(response.data); // Update the user state with the response data
         } else {
           console.error('Failed to update profile');
         }
