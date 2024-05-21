@@ -11,20 +11,22 @@ const PlaceOrder = () => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]); 
   const [cartItems, setCartItems] = useState([]); 
-
+  
   //calculate the total
   const subtotal = products.reduce((total, item) => {
     return total + (item.product.price * item.unit);
   }, 0);
   
   //place order
-  const placeOrder = async (customerId, txnNumber) => {
+  const placeOrder = async () => {
     try {
-      const response = await axios.post('http://18.234.113.85/shopping/order', {
-        customerId,
-        txnNumber
+      const token = localStorage.getItem('token'); 
+  
+      const response = await axios.post('http://18.234.113.85/shopping/order', {}, {
+        headers: { Authorization: `Bearer ${token}` }
       });
-      alert('Order placed successfully');
+  
+      console.log("Order placed successfully");
       return response.data;
     } catch (error) {
       console.error(`Error placing order: ${error}`);
@@ -235,15 +237,14 @@ const PlaceOrder = () => {
                             </label>
                         </div>    
                     </div>
-                    <buttton 
+                    <button 
                         onClick = {() => {
-                            placeOrder(user._id, 'txn1234');
-                            
+                            placeOrder();                            
                             navigate('/');
                         }}
                         
                         className='flex items-center justify-center w-64 h-12 ml-32 text-xl font-bold bg-orange-400 mt-3hover:bg-orange-900 font-roboto rounded-2xl'>
-                        Place Order</buttton>
+                        Place Order</button>
             </div>
         </div>     
     </div>
