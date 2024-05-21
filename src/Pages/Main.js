@@ -28,7 +28,7 @@ const Main = () => {
     setIsOpen((prev) => !prev)
   }
   return (
-      <div className=''>
+      <div className='' style={{ overflowY: 'scroll' }}>
         {isLoading ? <Animation /> :(
 
       <div className="">
