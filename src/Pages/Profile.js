@@ -143,7 +143,7 @@ function Profile() {
                                     <div className={activeTab === 'app' ? " bg-[#F7EBE8] h-auto md:h-[80vh] w-screen flex flex-row flex-wrap opacity-100" : "hidden opacity-0"} id="app" role="tabpanel">
                                       <div>
                                         <div className='flex flex-col items-center justify-center h-[380px] rounded-3xl w-[350px] bg-[#D9D9D9] mt-5 ml-14 '>
-                                          <img src={profile} className='h-[200px] w-[200px] mb-5'/>
+                                          <img src={profile} className='h-[200px] w-[200px] mb-5' alt='profile'/>
                                           <p className='font-serif text-3xl'>Good Afternoon,</p>
                                           <p className='font-serif text-4xl font-bold'>{user && user.firstName ? user.firstName : ''}</p>
                                         </div>
@@ -256,7 +256,7 @@ function Profile() {
                                       {
                                         orders.map((order, index) => (
                                           <div key={index} className='flex flex-col p-3 bg-white border-2 border-orange-500 rounded-lg w-[300px] h-[450px]'>
-                                            <img className='w-64 h-64' src={foodOrder}></img>
+                                            <img className='w-64 h-64' src={foodOrder} alt='foodorder'></img>
                                             <div className='flex flex-col justify-between p-2'>
                                               <span>Order ID: {order.orderId}</span>
                                               <span>Ordered Date: {new Date(order.createdAt).toLocaleDateString()}</span>

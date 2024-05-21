@@ -14,19 +14,16 @@ import Footer from './Footer';
 
 const Main = () => {
   const [isOpen,setIsOpen] = useState(false);
-  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   const [isLoading, setIsLoading] = useState(true);
-  //**************************************** */
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000); // Adjust the time as needed
+    }, 3000); 
   
-    return () => clearTimeout(timer); // Clean up the timer
+    return () => clearTimeout(timer); 
   }, []);
 
-  //************************************************************* */
   const toggleMenu = () => {
     setIsOpen((prev) => !prev)
   }

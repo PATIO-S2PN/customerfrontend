@@ -11,7 +11,6 @@ export default function Cartnew() {
   const [open, setOpen] = useState(true);
   const navigate = useNavigate();
   const [products, setProducts] = useState([]); 
-  const [cartItems, setCartItems] = useState([]); 
 
   //calculate the total
   const subtotal = products.reduce((total, item) => {
@@ -167,6 +166,7 @@ export default function Cartnew() {
                               <div className="flex-shrink-0 w-24 h-24 overflow-hidden border border-gray-200 rounded-md">
                                 <img
                                   src={img} 
+                                  alt = 'bgimg'
                                   className="object-cover object-center w-full h-full"
                                 /> 
                                 {/* <img

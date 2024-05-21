@@ -23,7 +23,7 @@ const Nav = () => {
       <div className='fixed left-0 w-full shadow-md top-4'>
         <div className='flex-wrap items-center justify-between bg-transparent md:flex md:px-10 px-7'>
           <a href='/'>
-              <img src = {logo} className='w-[170px] h-[50px] curser-pointer'></img>
+              <img src = {logo} alt='logo' className='w-[170px] h-[50px] curser-pointer'></img>
           </a>
             
           <div onClick={()=>setOpen(!open)} className='absolute text-3xl cursor-pointer right-8 top-6 md:hidden'>

@@ -38,7 +38,7 @@ const Specials = () => {
         data-aos-easing = 'ease-in-out'>
             {foods.map((food) => (
               <div key={food.id} className='flex transition-all duration-500 transform flex-col items-center justify-center my-10 bg-transparent  border-[2px] border-orange-900 h-[450px] w-64 lg:w-72 lg:h-[500px] rounded-3xl hover:shadow-xl hover:scale-110'>
-                <img className='w-40 h-40 m-5 rounded-full' src={food.image}></img>
+                <img alt='food' className='w-40 h-40 m-5 rounded-full' src={food.image}></img>
                 <label className='text-2xl text-orange-400 font-roboto '>{food.name}</label>
                 <label className='text-lg text-orange-200 font-roboto '>Rs. {food.price}</label>
                 <button className='w-48 h-10 mt-3 font-bold text-black border-t border-orange-900 rounded-full font-roboto bg-orange-50 hover:bg-orange-300'>Order Now</button>
