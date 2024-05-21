@@ -154,8 +154,8 @@ function Register() {
             <hr className="flex-grow border-white"/>
         </div> */}
         
-        <input type='text' className='mb-8 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 border-[#FADBCF] focus:outline-none'  value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder='First Name*' required/>
-        <input type='text' className='mb-8 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 border-[#FADBCF] focus:outline-none'  value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder='Last Name*' required/>
+        {/* <input type='text' className='mb-8 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 border-[#FADBCF] focus:outline-none'  value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder='First Name*' required/> */}
+        {/* <input type='text' className='mb-8 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 border-[#FADBCF] focus:outline-none'  value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder='Last Name*' required/> */}
         <input type='text' className='mb-8 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 border-[#FADBCF] focus:outline-none'  value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email*' required/>
         <input type='text' className='mb-8 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 border-[#FADBCF] focus:outline-none'  value={phone} onChange={(e) => setPhone(e.target.value)} placeholder='Phone*' required/>
 
