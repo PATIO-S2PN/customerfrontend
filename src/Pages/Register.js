@@ -1,34 +1,33 @@
 import React, { useState } from 'react';
 import 'tailwindcss/tailwind.css';
 import register from '../Assets/regis.jpeg';
-import { FcGoogle } from "react-icons/fc";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';
-import { useGoogleLogin } from '@react-oauth/google';
-import Swal from 'sweetalert2';
+//import { useGoogleLogin } from '@react-oauth/google';
+//import Swal from 'sweetalert2';
 
-function showToast(status, message) {
-  const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    background: '#fff7ed',
-    didOpen: (toast) => {
-      toast.onmouseenter = Swal.stopTimer;
-      toast.onmouseleave = Swal.resumeTimer;
-    }
-  });
+// function showToast(status, message) {
+//   const Toast = Swal.mixin({
+//     toast: true,
+//     position: 'top-end',
+//     showConfirmButton: false,
+//     timer: 3000,
+//     timerProgressBar: true,
+//     background: '#fff7ed',
+//     didOpen: (toast) => {
+//       toast.onmouseenter = Swal.stopTimer;
+//       toast.onmouseleave = Swal.resumeTimer;
+//     }
+//   });
 
-  Toast.fire({
-    icon: status,
-    title: message
-  });
-}
+//   Toast.fire({
+//     icon: status,
+//     title: message
+//   });
+// }
 
 function Register() {
   const navigate = useNavigate();
@@ -37,7 +36,7 @@ function Register() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
-  const [loginMessage, setLoginMessage] = useState('');
+  //const [loginMessage, setLoginMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const handleToggle = () => {
@@ -64,23 +63,23 @@ function Register() {
   };
 
   // Google sign in
-  const signinClick = useGoogleLogin({
-      onSuccess: async (codeResponse) => {
-        console.log(codeResponse);
-        if (codeResponse && codeResponse.profileObj) {
-          const { email, givenName: firstName, familyName: lastName } = codeResponse.profileObj;
-          // Assuming you have a phone number, otherwise you'll need to handle this
-          const phone = codeResponse.profileObj.phoneNumber || '';
+  // const signinClick = useGoogleLogin({
+  //     onSuccess: async (codeResponse) => {
+  //       console.log(codeResponse);
+  //       if (codeResponse && codeResponse.profileObj) {
+  //         const { email, givenName: firstName, familyName: lastName } = codeResponse.profileObj;
+  //         // Assuming you have a phone number, otherwise you'll need to handle this
+  //         const phone = codeResponse.profileObj.phoneNumber || '';
 
-          try {
-            const response = await axios.post('http://18.234.113.85/customer/signup', { email, password, firstName, lastName, phone });
-            console.log(response);
-          } catch (error) {
-            console.error(error);
-          }
-        }
-      },
-    }); 
+  //         try {
+  //           const response = await axios.post('http://18.234.113.85/customer/signup', { email, password, firstName, lastName, phone });
+  //           console.log(response);
+  //         } catch (error) {
+  //           console.error(error);
+  //         }
+  //       }
+  //     },
+  //   }); 
 
     // Function to handle login
     /*const handleLoginClick = async () => {
