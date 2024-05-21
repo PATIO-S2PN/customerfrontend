@@ -10,7 +10,7 @@ import gallery from '../Assets/gallery.jpg';
 
 const Gallery = () => {
   return (
-    <div>
+    <div className='h-auto'>
       <section className="relative p-16 bg-fixed bg-cover h-60" style={{backgroundImage: `url(${gallery})`}}>
         <div className="container mx-auto text-center">
           <h1 className="p-8 text-5xl font-bold text-yellow-500">Luxdine Gallery</h1>

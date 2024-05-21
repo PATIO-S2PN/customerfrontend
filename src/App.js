@@ -22,8 +22,7 @@ import Contact from './Pages/Contact';
 import Footer from './Pages/Footer';
 import Cartnew from './Pages/Cartnew';
 
-function App() {
-  
+function App() {  
   return (
     <div className="App">
       <Router>
@@ -49,15 +48,6 @@ function App() {
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/footer" element={<Footer/>}/>
         <Route path="/cartnew" element={<Cartnew/>}/>
-
-
-        
-
-
-
-
-
- 
       </Routes>
      </Router>
     </div>

@@ -64,7 +64,7 @@ export default function Home() {
   return (
     <div>
 
-    <div className="w-full h-full min-h-[100vh] bg-white">
+    <div className="w-full h-full min-h-screen bg-white">
 
       <div className="relative w-screen h-[90vh] overflow-hidden">
         {slides.map((slide, i) => (

@@ -5,7 +5,7 @@ import location from '../Assets/location.png'
 
 const Contact = () => {
   return (
-    <div className="relative min-h-screen bg-fixed bg-cover" style={{backgroundImage: "url('https://cdn.pixabay.com/photo/2014/09/17/20/26/restaurant-449952_1280.jpg')"}}>
+    <div className="relative bg-fixed bg-cover min-h-auto" style={{backgroundImage: "url('https://cdn.pixabay.com/photo/2014/09/17/20/26/restaurant-449952_1280.jpg')"}}>
       <div className="absolute inset-0 bg-black opacity-50"></div>
       <div className="relative z-10">
         <div className="container py-20 mx-auto">
