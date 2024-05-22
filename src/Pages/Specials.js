@@ -1,5 +1,7 @@
 import React from 'react'
 import food from '../Assets/burgers.png'
+import ice from '../Assets/icecream.png'  
+import rice from '../Assets/png.png' 
 
 const Specials = () => {
   const foods = [
@@ -11,15 +13,15 @@ const Specials = () => {
     },
     {
       id: 2,
-      name: 'Burger Delight',
-      price: 1200,
-      image: food,
+      name: 'Ice Cream Delight',
+      price: 800,
+      image: ice,
     },
     {
       id: 3,
-      name: 'Burger Delight',
-      price: 1200,
-      image: food,
+      name: 'Mixed Rice Bowl',
+      price: 1450,
+      image: rice,
     },
     // More food items...
   ];
