@@ -5,6 +5,27 @@ import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../Assets/logonew.svg';
 import foodOrder from "../Assets/foodOrder.png"
+import Swal from 'sweetalert2';
+
+function showToast(status, message) {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    background: '#fff7ed',
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
+
+  Toast.fire({
+    icon: status,
+    title: message
+  });
+}
 
 function Profile() {
     const [activeTab, setActiveTab] = useState('app');
@@ -81,6 +102,7 @@ function Profile() {
         });
     
         if (response.data) {
+          showToast('success', 'Saved Successfully!');
           console.log('Profile updated successfully');
           setUser(response.data); 
         } else {

@@ -3,6 +3,27 @@ import axios from 'axios';
 import ReactStars from "react-rating-stars-component";
 import { useNavigate } from 'react-router-dom';
 import defaultImage from '../Assets/burgers.png'; 
+import Swal from 'sweetalert2';
+
+function showToast(status, message) {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    background: '#fff7ed',
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
+
+  Toast.fire({
+    icon: status,
+    title: message
+  });
+}
 
 const AddToCart = ({ item }) => {
   const [cartDetails, setCartDetails] = useState({
@@ -36,6 +57,7 @@ const AddToCart = ({ item }) => {
           'Authorization': `Bearer ${token}` 
         },
       });
+      showToast('success', 'One Item is added to cart!');
       console.log(response.data); 
     } catch (error) {
       console.error(error); 
@@ -45,7 +67,7 @@ const AddToCart = ({ item }) => {
   return (
     <button
       onClick={handleSubmit}
-      className="px-6 py-2 transition ease-in duration-200 uppercase rounded-full w-52 bg-[#ddd7d6] h-10 hover:border-[#a35959] marker:rounded-full hover:bg-[#542822] hover:text-white border-2 border-gray-900 focus:outline-none"
+      className="px-6 py-2 transition ease-in duration-200 uppercase rounded-lg w-56 bg-orange-600 h-10 hover:border-[#a35959] marker:rounded-full hover:bg-[#542822] hover:text-white border-2 focus:outline-none"
     >
       Add to cart
     </button>
