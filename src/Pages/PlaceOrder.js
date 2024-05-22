@@ -3,6 +3,27 @@ import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+
+function showToast(status, message) {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    background: '#fff7ed',
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
+
+  Toast.fire({
+    icon: status,
+    title: message
+  });
+}
 
 const PlaceOrder = () => {
   const servicecharge = 10;
@@ -25,7 +46,7 @@ const PlaceOrder = () => {
       const response = await axios.post('http://18.234.113.85/shopping/order', {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
-  
+      showToast('success', 'Order placed successfully!');
       console.log("Order placed successfully");
       return response.data;
     } catch (error) {
