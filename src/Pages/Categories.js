@@ -3,6 +3,12 @@ import '../App.css'
 import chicken from '../Assets/burgers.png'
 import { Link } from 'react-router-dom';
 import bg from '../Assets/menu.jpg'
+import sub from '../Assets/sub.png'
+import pizza from '../Assets/pizza.jpg'
+import rice from '../Assets/rice1.jpg'
+import kottu from '../Assets/kottu.jpg'
+import juice from '../Assets/juice.jpg'
+import desserts from '../Assets/desserts.jpg'
 
 const Categories = () => {
   return (
@@ -42,7 +48,7 @@ const Categories = () => {
                         data-aos-duration='1000'
                         data-aos-easing = 'ease-in-out'>
                             <Link to="/menuone">
-                                    <img src={chicken} alt="chicken" className="object-cover mb-4 w-36 h-36"/>
+                                    <img src={chicken} alt="chicken" className="object-cover w-48 mb-4 h-36"/>
                             </Link>
                             <p className='font-serif text-xl font-bold text-center'>BURGERS</p>
                     </div>
@@ -54,7 +60,7 @@ const Categories = () => {
                         data-aos-delay='50'
                         data-aos-duration='1000'
                         data-aos-easing = 'ease-in-out'>
-                            <img src={chicken} alt="chicken" className="object-cover mb-4 w-36 h-36"/>
+                            <img src={sub} alt="sub" className="object-cover w-48 mb-4 h-36"/>
                             <p className='font-serif text-xl font-bold text-center'>SUBMARINES</p>
                     </div>
                 </div>
@@ -65,7 +71,7 @@ const Categories = () => {
                      data-aos-delay='50'
                      data-aos-duration='1000'
                      data-aos-easing = 'ease-in-out'>
-                            <img src={chicken} alt="chicken" className="object-cover mb-4 w-36 h-36"/>
+                            <img src={pizza} alt="pizza" className="object-cover w-48 mb-4 h-36"/>
                             <p className='font-serif text-xl font-bold text-center'>PIZZA</p>
                     </div>
                 </div>
@@ -76,7 +82,7 @@ const Categories = () => {
                      data-aos-delay='50'
                      data-aos-duration='1000'
                      data-aos-easing = 'ease-in-out'>
-                            <img src={chicken} alt="chicken" className="object-cover mb-4 w-36 h-36"/>
+                            <img src={rice} alt="rice" className="object-cover w-48 mb-4 h-36"/>
                             <p className='font-serif text-xl font-bold text-center'>RICE BOWLS</p>
                     </div>
                 </div>
@@ -87,7 +93,7 @@ const Categories = () => {
                      data-aos-delay='50'
                      data-aos-duration='1000'
                      data-aos-easing = 'ease-in-out'>
-                            <img src={chicken} alt="chicken" className="object-cover mb-4 w-36 h-36"/>
+                            <img src={kottu} alt="kottu" className="object-cover w-48 mb-4 h-36"/>
                             <p className='font-serif text-xl font-bold text-center'>KOTTU CORNER</p>
                     </div>
                 </div>
@@ -98,7 +104,7 @@ const Categories = () => {
                      data-aos-delay='50'
                      data-aos-duration='1000'
                      data-aos-easing = 'ease-in-out'>
-                            <img src={chicken} alt="chicken" className="object-cover mb-4 w-36 h-36"/>
+                            <img src={juice} alt="juice" className="object-cover w-48 mb-4 h-36"/>
                             <p className='font-serif text-xl font-bold text-center'>BEVERAGES</p>
                     </div>
                 </div>
@@ -109,21 +115,11 @@ const Categories = () => {
                      data-aos-delay='50'
                      data-aos-duration='1000'
                      data-aos-easing = 'ease-in-out'>
-                            <img src={chicken} alt="chicken" className="object-cover mb-4 w-36 h-36"/>
-                            <p className='font-serif text-xl font-bold text-center'>BEVERAGES</p>
+                            <img src={desserts} alt="desserts" className="object-cover w-48 mb-4 h-36"/>
+                            <p className='font-serif text-xl font-bold text-center'>DESSERTS</p>
                     </div>
                 </div>
-                <div className="inline-block px-3 ">
-                    <div className="flex flex-col items-center justify-center w-64 h-64 max-w-xs transition-shadow duration-300 ease-in-out bg-white shadow-md rounded-xl hover:shadow-xl"
-                     data-aos='fade-up'
-                     data-aos-offset = '200'
-                     data-aos-delay='50'
-                     data-aos-duration='1000'
-                     data-aos-easing = 'ease-in-out'>
-                            <img src={chicken} alt="chicken" className="object-cover mb-4 w-36 h-36"/>
-                            <p className='font-serif text-xl font-bold text-center'>BEVERAGES</p>
-                    </div>
-                </div>   
+                 
                 </div>
             </div>
         </div>    

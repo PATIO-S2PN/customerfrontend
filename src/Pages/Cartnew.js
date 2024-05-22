@@ -5,7 +5,7 @@ import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect } from 'react';
-import img from '../Assets/bagels.jpg';
+import img from '../Assets/cheese burger.png';
 
 export default function Cartnew() {
   const [open, setOpen] = useState(true);
