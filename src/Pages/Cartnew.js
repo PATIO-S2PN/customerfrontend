@@ -38,7 +38,7 @@ export default function Cartnew() {
   
   function updateQuantity(productId, quantity) {
     const token = localStorage.getItem('token');
-    axios.post('http://18.234.113.85/shopping/cart', {
+    axios.post('http://34.224.26.99/shopping/cart', {
       product_id: productId,
       qty: quantity
     }, {
@@ -63,7 +63,7 @@ export default function Cartnew() {
   //get the cart items
   useEffect(() => {
     const token = localStorage.getItem('token'); 
-    axios.get('http://18.234.113.85/shopping/cart', {
+    axios.get('http://34.224.26.99/shopping/cart', {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -87,7 +87,7 @@ export default function Cartnew() {
   function deleteItem(id, token) {
     axios({
       method: 'delete',
-      url: `http://18.234.113.85/shopping/cart/${id}`,
+      url: `http://34.224.26.99/shopping/cart/${id}`,
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -165,9 +165,9 @@ export default function Cartnew() {
                             <li key={item._id} className="flex py-6">
                               <div className="flex-shrink-0 w-24 h-24 overflow-hidden border border-gray-200 rounded-md">
                                 <img
-                                  src={img} 
-                                  alt = 'bgimg'
-                                  className="object-cover object-center w-full h-full"
+                                    src={item.product.images && item.product.images[0] ? `http://34.224.26.99/${item.product.images[0]}` : img} 
+                                    className="object-cover object-center w-full h-full"
+                                    alt={item.product.name}
                                 /> 
                                 {/* <img
                                   src={item.imageSrc} // Make sure the API response has this property

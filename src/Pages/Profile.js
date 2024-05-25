@@ -41,7 +41,7 @@ function Profile() {
       //get order history
       async function fetchOrderHistory() {
         try {
-          const response = await axios.get(`http://18.234.113.85/shopping/orders`, {
+          const response = await axios.get(`http://34.224.26.99/shopping/orders`, {
             headers: {
               Authorization: `Bearer ${token}`
             }
@@ -68,7 +68,7 @@ function Profile() {
       //get profile data
       async function fetchUserData() {
         try {
-          const response = await axios.get('http://18.234.113.85/customer/profile', {
+          const response = await axios.get('http://34.224.26.99/customer/profile', {
             headers: {
 
               Authorization: `Bearer ${token}` 
@@ -95,7 +95,7 @@ function Profile() {
       try {
         const token = localStorage.getItem('token'); 
     
-        const response = await axios.put('http://18.234.113.85/customer/profile', updatedUser, {
+        const response = await axios.put('http://34.224.26.99/customer/profile', updatedUser, {
           headers: {
             Authorization: `Bearer ${token}` 
           }
