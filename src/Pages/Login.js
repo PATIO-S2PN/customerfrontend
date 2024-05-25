@@ -44,7 +44,7 @@ function Login() {
 
   const handleLoginClick = async () => {
     try {
-      const response = await axios.post('http://18.234.113.85/customer/login', {
+      const response = await axios.post('http://34.224.26.99/customer/login', {
         email: email,
         password: password,
       });

@@ -45,10 +45,10 @@ function Register() {
 
   const signUp = async () => {
     try {
-      const response = await axios.post('http://18.234.113.85/customer/signup', { email, password, firstName, lastName, phone });
+      const response = await axios.post('http://34.224.26.99/customer/signup', { email, password, firstName, lastName, phone });
       console.log(response.data);
 
-      const loginResponse = await axios.post('http://18.234.113.85/customer/login', { email, password });
+      const loginResponse = await axios.post('http://34.224.26.99/customer/login', { email, password });
       console.log(loginResponse.data);
       console.log("login successful");
     } catch (error) {
@@ -72,7 +72,7 @@ function Register() {
   //         const phone = codeResponse.profileObj.phoneNumber || '';
 
   //         try {
-  //           const response = await axios.post('http://18.234.113.85/customer/signup', { email, password, firstName, lastName, phone });
+  //           const response = await axios.post('http://34.224.26.99/customer/signup', { email, password, firstName, lastName, phone });
   //           console.log(response);
   //         } catch (error) {
   //           console.error(error);
@@ -85,7 +85,7 @@ function Register() {
     /*const handleLoginClick = async () => {
       //navigate('/');
        try {
-         const response = await axios.post('http://18.234.113.85/customer/login', {
+         const response = await axios.post('http://34.224.26.99/customer/login', {
            email: email,
            password: password,
          });
