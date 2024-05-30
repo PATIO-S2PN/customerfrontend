@@ -6,93 +6,93 @@ import home04 from '../Assets/home04.jpg';
 import side01 from '../Assets/side01.jpg';
 import side02 from '../Assets/side02.jpg';
 import side03 from '../Assets/side03.jpg';
-
+import gallery from '../Assets/gallery.jpg';
 
 const Gallery = () => {
   return (
-    <div>
-      <section className="relative p-16 bg-fixed bg-cover h-60" style={{backgroundImage: "url('https://i.pinimg.com/originals/f5/e5/ca/f5e5cabca59e75fe4b54eed93bfa0b3c.jpg')"}}>
+    <div className='h-auto'>
+      <section className="relative p-16 bg-fixed bg-cover h-60" style={{backgroundImage: `url(${gallery})`}}>
         <div className="container mx-auto text-center">
           <h1 className="p-8 text-5xl font-bold text-yellow-500">Luxdine Gallery</h1>
         </div>
       </section>
 
-      <div class="grid grid-cols-2 gap-4 md:grid-cols-4 p-6 bg-orange-50">
-  <div class="grid gap-4">
+      <div className="grid grid-cols-2 gap-4 p-6 md:grid-cols-4 bg-orange-50">
+  <div className="grid gap-4">
     <div>
       <img
-        class="h-auto max-w-full rounded-lg object-cover object-center"
+        className="object-cover object-center h-auto max-w-full rounded-lg"
         src={home01} alt="Home01"
       />
     </div>
     <div>
       <img
-        class="h-auto max-w-full rounded-lg object-cover object-center "
+        className="object-cover object-center h-auto max-w-full rounded-lg "
         src={side01} alt="Side01"
       />
     </div>
     <div>
       <img
-        class="h-auto max-w-full rounded-lg object-cover object-center"
+        className="object-cover object-center h-auto max-w-full rounded-lg"
         src={home02} alt="Home02"
       />
     </div>
   </div>
-  <div class="grid gap-4">
+  <div className="grid gap-4">
     <div>
       <img
-        class="h-auto max-w-full rounded-lg object-cover object-center"
+        className="object-cover object-center h-auto max-w-full rounded-lg"
         src={side03} alt="Side03"
 
       />
     </div>
     <div>
       <img
-        class="h-auto max-w-full rounded-lg object-cover object-center"
+        className="object-cover object-center h-auto max-w-full rounded-lg"
         src={home03} alt="Home03"
 
       />
     </div>
     <div>
       <img
-        class="h-auto max-w-full rounded-lg object-cover object-center "
+        className="object-cover object-center h-auto max-w-full rounded-lg "
         src={side02} alt="Side02"
 
       />
     </div>
   </div>
-  <div class="grid gap-4">
+  <div className="grid gap-4">
     <div>
       <img
-        class="h-auto max-w-full rounded-lg object-cover object-center"
+        className="object-cover object-center h-auto max-w-full rounded-lg"
         src={home04} alt="Home04"
 
       />
     </div>
     <div>
       <img
-        class="h-auto max-w-full rounded-lg object-cover object-center "
+        className="object-cover object-center h-auto max-w-full rounded-lg "
         src={side02} alt="Side02"
 
       />
     </div>
     <div>
       <img
-        class="h-auto max-w-full rounded-lg object-cover object-center"
+        className="object-cover object-center h-auto max-w-full rounded-lg"
         src={side03} alt="Side03"
       />
     </div>
   </div>
-  <div class="grid gap-4">
+  <div className="grid gap-4">
     <div>
       <img
-        class="h-auto max-w-full rounded-lg object-cover object-center"
+        className="object-cover object-center h-auto max-w-full rounded-lg"
         src={side03} alt="Side03"
       />
     </div>
     <div>
       <img
-        class="h-auto max-w-full rounded-lg object-cover object-center"
+        className="object-cover object-center h-auto max-w-full rounded-lg"
         src={side01} alt="Side01"
       />
     </div>

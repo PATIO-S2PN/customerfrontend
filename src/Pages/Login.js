@@ -38,23 +38,21 @@ function Login() {
   const dispatch = useDispatch();
   
   const navigate = useNavigate();
-  const [email, setEmail] = useState(''); // Initialize email and password
+  const [email, setEmail] = useState(''); 
   const [password, setPassword] = useState('');
   const [loginMessage, setLoginMessage] = useState('');
 
   const handleLoginClick = async () => {
     try {
-      const response = await axios.post('http://localhost:8001/login', {
+      const response = await axios.post('http://34.224.26.99/customer/login', {
         email: email,
         password: password,
       });
 
       if (response.status === 200) {
-        // Login was successful
         showToast('success', 'Login Successful!');
         navigate('/');
         console.log(response.data.Email);
-        // token
         const token = response.data.token;
 
         console.log('Token:', token);
@@ -66,9 +64,6 @@ function Login() {
       }
     } catch (error) {
       showToast('error', 'Login Failed!');
-
-      // Handle network or other errors
-
       console.error('Login error:', error);
       setLoginMessage('Login error: ' + error.message);
 
@@ -98,8 +93,12 @@ function Login() {
             <h1 className='font-serif text-3xl text-[#FFFFFF] text-center mb-10 mt-20'>User Login</h1>
         </div>
 
+<<<<<<< HEAD
         <div className='flex justify-center mb-4 space-x-5'>
           {/*
+=======
+        {/* <div className='flex justify-center mb-4 space-x-5'>
+>>>>>>> ff22bf3d51f0f97c57f075cc56016e39b98dc55b
             <a href="#" className="cursor-pointer">
                     <FcGoogle size={30} onClick={() => loginclick()}/>
             </a> 
@@ -123,7 +122,7 @@ function Login() {
             <hr className="flex-grow border-white"/>
             <span className='font-serif'>or</span>
             <hr className="flex-grow border-white"/>
-        </div>
+        </div> */}
         
         <input type='text' 
                className='mb-8 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 border-[#FADBCF] focus:outline-none'  
@@ -155,10 +154,10 @@ function Login() {
         </div>
 
         <div className='flex justify-center mb-5'>
-        <button onClick={handleLoginClick} class="relative h-10 w-60 inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br 
+        <button onClick={handleLoginClick} className="relative h-10 w-60 inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xl font-medium text-gray-900 rounded-lg group bg-gradient-to-br 
         from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white
          dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
-            <span class="relative flex items-center justify-center w-full h-full px-5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+            <span className="relative flex items-center justify-center w-full h-full px-5 transition-all duration-75 ease-in bg-white rounded-md dark:bg-gray-900 group-hover:bg-opacity-0">
               Login
             </span>
             </button>

@@ -4,80 +4,116 @@ import profile from '../Assets/profile2.png';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../Assets/logonew.svg';
+import foodOrder from "../Assets/foodOrder.png"
+import Swal from 'sweetalert2';
 
+function showToast(status, message) {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    background: '#fff7ed',
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
+
+  Toast.fire({
+    icon: status,
+    title: message
+  });
+}
 
 function Profile() {
     const [activeTab, setActiveTab] = useState('app');
     const navigate = useNavigate();
+    const [user, setUser] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [orders, setOrders] = useState([]);
 
-    /*const navigate = useNavigate();
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
-    const userIdParam = queryParams.get('userId'); // Change variable name to userIdParam
-  
-    const [user, setUser] = useState({
-      FirstName: '',
-      LastName: '',
-      Email: '',
-      Password: '',
-      Address: '',
-      Phone: ''
-    });
-    
-    const [loading, setLoading] = useState(true); // Add a loading state
-    
+    //order history
     useEffect(() => {
+      const token = localStorage.getItem('token'); 
+    
+      //get order history
+      async function fetchOrderHistory() {
+        try {
+          const response = await axios.get(`http://34.224.26.99/shopping/orders`, {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+    
+          if (response.data) {
+            setOrders(response.data);
+          } else {
+            console.error('No order history found');
+          }
+        } catch (error) {
+          console.error(`Error fetching order history: ${error}`);
+        }
+      }
+    
+      fetchOrderHistory();
+    }, [user]);
+    
+    
+
+    useEffect(() => {
+      const token = localStorage.getItem('token'); 
+
+      //get profile data
       async function fetchUserData() {
         try {
-          const response = await axios.get('http://localhost:8001/profile');
-  
-          if (response.data && response.data.length > 0) {
-            const userData = response.data[0]; // Assuming there's only one user with Status: true
-  
-            setUser({
-              FirstName: userData.FirstName,
-              LastName: userData.LastName,
-              Email: userData.Email,
-              Password: userData.Password,
-              Address: userData.Address,
-              Phone: userData.Phone
-            });
+          const response = await axios.get('http://34.224.26.99/customer/profile', {
+            headers: {
+
+              Authorization: `Bearer ${token}` 
+            }
+          });
+    
+          if (response.data) {
+            setUser(response.data);
           } else {
-            console.error('No user with Status: true found');
+            console.error('No user data found');
           }
         } catch (error) {
           console.error('Error fetching user data:', error);
         } finally {
-          setLoading(false); // Set loading to false after fetching data
+          setLoading(false);
         }
       }
-  
+    
       fetchUserData();
-    }, []); // No need for userId dependency since we're fetching by Status: true
-  
-    const handleInputChange = (e) => {
-      const { name, value } = e.target;
-      setUser({ ...user, [name]: value });
-    };
-  
-    const handleSave = async () => {
-        try {
-            const response = await axios.put(`http://localhost:3002/api/v1/users/`, user);
-            console.log('User updated:', response.data);
-            navigate('/'); // Redirect to the home page or the appropriate route
-        } catch (error) {
-            console.error('Error updating user:', error);
+    }, []);
+
+    //edit profile
+    async function editProfile(updatedUser) {
+      try {
+        const token = localStorage.getItem('token'); 
+    
+        const response = await axios.put('http://34.224.26.99/customer/profile', updatedUser, {
+          headers: {
+            Authorization: `Bearer ${token}` 
+          }
+        });
+    
+        if (response.data) {
+          showToast('success', 'Saved Successfully!');
+          console.log('Profile updated successfully');
+          setUser(response.data); 
+        } else {
+          console.error('Failed to update profile');
         }
+      } catch (error) {
+        console.error('Error updating profile:', error);
+      }
     }
-    const handleDeleteAccount = async () => {
-        try {
-          await axios.delete(`http://localhost:3002/api/v1/users/`);
-          navigate('/'); // Redirect to the home page after successful deletion
-        } catch (error) {
-          console.error('Error deleting user:', error);
-        }
-      };*/
   
+
     const handleTabClick = (tabId) => {
         setActiveTab(tabId);
     };
@@ -91,115 +127,176 @@ function Profile() {
         </div>
         
         <div>
-        <div className="justify-center">
+          <div className="justify-center">
             <div className="">
                     <div className="relative justify-center">
-                    <ul
-                        className="relative flex flex-wrap items-center justify-center w-screen list-none bg-blue-500 h-[5vh]"
-                        data-tabs="tabs"
-                        role="list"
-                    >
-                        <li className="z-30 flex-auto text-center ">
-                        <a
-                            className="z-30 flex items-center justify-center w-full px-0 py-1 mb-0 font-serif text-lg text-black transition-all ease-in-out border-0 cursor-pointer"
-                            onClick={() => handleTabClick('app')}
-                            active={activeTab === 'app' ? 'true' : 'false'}
-                            role="tab"
-                            aria-selected={activeTab === 'app'}
-                            aria-controls="app"
-                        >
-                            <span className="ml-1">PROFILE</span>
-                        </a>
-                        </li>
-                        <li className="z-30 flex-auto text-center">
-                        <a
-                            className="z-30 flex items-center justify-center w-full px-0 py-1 mb-0 font-serif text-lg text-black transition-all ease-in-out border-0 cursor-pointer"
-                            onClick={() => handleTabClick('message')}
-                            active={activeTab === 'message' ? 'true' : 'false'}
-                            role="tab"
-                            aria-selected={activeTab === 'message'}
-                            aria-controls="message"
-                        >
-                            <span className="ml-1">ORDER HISTORY</span>
-                        </a>
-                        </li>
-                        
-                    </ul>
-                    <div data-tab-content="" className="">
-                        <div className={activeTab === 'app' ? " bg-[#F7EBE8] h-auto md:h-[80vh] w-screen flex flex-row flex-wrap opacity-100" : "hidden opacity-0"} id="app" role="tabpanel">
-                            <div>
-                                <div className='flex flex-col items-center justify-center h-[450px] rounded-3xl w-[400px] bg-[#D9D9D9] m-10 '>
-                                    <img src={profile} className='h-[200px] w-[200px] mb-5'/>
-                                    <p className='font-serif text-3xl'>Good Afternoon,</p>
-                                    <p className='font-serif text-4xl font-bold'>S. Sankha</p>
-                                </div>
-                                <div className='flex flex-col items-center w-[400px] justify-center ml-10 mt-5 rounded-3xl'>
-                                    <p className='font-serif text-3xl  text-[#991C1C]'>GOOD FOOD,</p>
-                                    <p className='font-serif text-3xl text-[#991C1C]'>GOOD MOOD!</p>
-                                    <p className='mt-3 font-serif text-2xl italic text-black'>Welcome to a </p>
-                                    <p className='mb-5 font-serif text-2xl italic text-black'>taste-filled experience!</p>
-                                </div>
-                            </div>
-                            
-                            
-                            <div className='flex flex-col flex-wrap justify-center m-10'>
-                                <p className='font-serif text-4xl font-bold text-black'>Account Information</p>
-                                <div className='flex md:flex-row flex-wrap justify-between md:w-[900px]'>
-                                    <div class="mb-5">
-                                        <label for="fname" class="block mb-2 text-lg font-serif text-gray-900 ">First Name</label>
-                                        <input 
-                                        //value={user.FirstName}
-                                        type="fname" id="fname" class="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
-                                    </div>
-                                    <div class="mb-5">
-                                        <label for="lname" class="block mb-2 text-lg font-serif text-gray-900 ">Last Name</label>
-                                        <input type="lname" id="lname" class="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
-                                    </div>
-                                </div>
-                                <div className='flex flex-row flex-wrap justify-between md:w-[900px] w-[300px]'>
-                                    <div class="mb-5">
-                                        <label for="address" class="block mb-2 text-lg font-serif text-gray-900 ">Address</label>
-                                        <input type="address" id="address" class="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
-                                    </div>
-                                    <div class="mb-5">
-                                        <label for="contact" class="block mb-2 text-lg font-serif text-gray-900 ">Contact</label>
-                                        <input type="contact" id="contact" class="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
-                                    </div>
-                                </div>
-                                <div className='flex flex-row justify-between w-[900px]'>
-                                    <div class="mb-5">
-                                        <label for="email" class="block mb-2 text-lg font-serif text-gray-900 ">Email</label>
-                                        <input type="email" 
-                                               id="email"
-                                               className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[450px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                      <ul
+                          className="relative flex flex-wrap items-center justify-center w-screen list-none bg-blue-500 h-[5vh]"
+                          data-tabs="tabs"
+                          role="list"
+                      >
+                          <li className="z-30 flex-auto text-center ">
+                          <a
+                              className="z-30 flex items-center justify-center w-full px-0 py-1 mb-0 font-serif text-lg text-black transition-all ease-in-out border-0 cursor-pointer"
+                              onClick={() => handleTabClick('app')}
+                              active={activeTab === 'app' ? 'true' : 'false'}
+                              role="tab"
+                              aria-selected={activeTab === 'app'}
+                              aria-controls="app"
+                          >
+                              <span className="ml-1">PROFILE</span>
+                          </a>
+                          </li>
+                          <li className="z-30 flex-auto text-center">
+                          <a
+                              className="z-30 flex items-center justify-center w-full px-0 py-1 mb-0 font-serif text-lg text-black transition-all ease-in-out border-0 cursor-pointer"
+                              onClick={() => handleTabClick('message')}
+                              active={activeTab === 'message' ? 'true' : 'false'}
+                              role="tab"
+                              aria-selected={activeTab === 'message'}
+                              aria-controls="message"
+                                      >
+                                        <span className="ml-1">ORDER HISTORY</span>
+                                      </a>
+                                      </li>
+                                      
+                                    </ul>
+                                  <div data-tab-content="" className="">
+                                    <div className={activeTab === 'app' ? " bg-[#F7EBE8] h-auto md:h-[80vh] w-screen flex flex-row flex-wrap opacity-100" : "hidden opacity-0"} id="app" role="tabpanel">
+                                      <div>
+                                        <div className='flex flex-col items-center justify-center h-[380px] rounded-3xl w-[350px] bg-[#D9D9D9] mt-5 ml-14 '>
+                                          <img src={profile} className='h-[200px] w-[200px] mb-5' alt='profile'/>
+                                          <p className='font-serif text-3xl'>Good Afternoon,</p>
+                                          <p className='font-serif text-4xl font-bold'>{user && user.firstName ? user.firstName : ''}</p>
+                                        </div>
+                                        <div className='flex flex-col items-center w-[400px] justify-center ml-10 mt-5 rounded-3xl'>
+                                          <p className='font-serif text-3xl  text-[#991C1C]'>GOOD FOOD,</p>
+                                          <p className='font-serif text-3xl text-[#991C1C]'>GOOD MOOD!</p>
+                                          <p className='mt-3 font-serif text-2xl italic text-black'>Welcome to a </p>
+                                          <p className='mb-5 font-serif text-2xl italic text-black'>taste-filled experience!</p>
+                                        </div>
+                                      </div>
+                                                                              
+                                                                              
+                                      <div className='flex flex-col flex-wrap justify-center m-10'>
+                                          <p className='font-serif text-4xl font-bold text-black'>Account Information</p>
+                                          <div className='flex md:flex-row flex-wrap justify-between md:w-[900px]'>
+                                            <div className="mb-5">
+                                                <label 
+                                                  htmlFor="fname" 
+                                                  className="block mb-2 font-serif text-lg text-gray-900 ">First Name
+                                                </label>
+                                                <input 
+                                                  value={user && user.firstName ? user.firstName : ''}
+                                                  onChange={e => setUser({...user, firstName: e.target.value})}
+                                                  type="fname" 
+                                                  id="fname" 
+                                                  className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                            </div>
+                                            <div className="mb-5">
+                                                <label 
+                                                  htmlFor="lname" 
+                                                  className="block mb-2 font-serif text-lg text-gray-900 ">Last Name
+                                                </label>
+                                                <input 
+                                                  value={user && user.lastName ? user.lastName : ''}
+                                                  onChange={e => setUser({...user, lastName: e.target.value})}
+                                                  type="lname" 
+                                                  id="lname" 
+                                                  className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                            </div>
+                                          </div>
+                                          <div className='flex flex-row flex-wrap justify-between md:w-[900px] w-[300px]'>
+                                            {/* <div className="mb-5">
+                                                <label 
+                                                  htmlFor="address" 
+                                                  className="block mb-2 font-serif text-lg text-gray-900 ">Address
+                                                </label>
+                                                <input 
+                                                  value={user && user.address ? user.address : ''}
+                                                  onChange={e => setUser({...user, address: e.target.value})}
+                                                  type="address" 
+                                                  id="address" 
+                                                  className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                            </div> */}
+                                            <div className="mb-5">
+                                                <label 
+                                                  htmlFor="contact" 
+                                                  className="block mb-2 font-serif text-lg text-gray-900 ">Contact
+                                                </label>
+                                                <input 
+                                                  value={user && user.phone ? user.phone : ''}
+                                                  onChange={e => setUser({...user, phone: e.target.value})}
+                                                  type="contact"
+                                                  id="contact" 
+                                                  className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[350px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                            </div>
+                                          </div>
+                                          <div className='flex flex-row justify-between w-[900px]'>
+                                            <div className="mb-5">
+                                                <label
+                                                  htmlFor="email" 
+                                                  className="block mb-2 font-serif text-lg text-gray-900 ">Email
+                                                </label>
+                                                <input 
+                                                  value={user && user.email ? user.email : ''}
+                                                  onChange={e => setUser({...user, email: e.target.value})}
+                                                  type="email" 
+                                                  id="email"
+                                                  className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[450px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                            </div>                           
+                                          </div>
+                                          <div className='flex flex-row justify-between w-[900px]'>
+                                            {/* <div className="mb-5">
+                                                <label 
+                                                  htmlFor="password" 
+                                                  className="block mb-2 font-serif text-lg text-gray-900 ">Password
+                                                </label>
+                                                <input 
+                                                  value={user && user.password ? user.password : ''}
+                                                  onChange={e => setUser({...user, password: e.target.value})}
+                                                  type="password" 
+                                                  id="password" 
+                                                  className="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[450px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
+                                            </div> */}
+                                                                                  
+                                            </div>
+                                                <button 
+                                                  onClick={() => editProfile(user)}
+                                                  className='h-10 font-serif w-[200px] bg-green-600 border border-black rounded-full text-white hover:bg-green-900'>SAVE CHANGES</button>
+                                            </div>
+                                          </div>
+
+                                   {/* order history */}
+                                   <div className={activeTab === 'message' ? "block opacity-100" : "hidden opacity-0"} id="message" role="tabpanel">
+                                    <div className='flex flex-col justify-center m-5'>
+                                      <p className='justify-center text-3xl text-orange-500 bold font-roboto'>Happy Dining!</p>
+                                      <p className='text-2xl italic text-orange-800 font-roboto bold'>Explore your culinary journey with LuxeDine in your Order History.</p>
                                     </div>
                                     
-                                </div>
-                                <div className='flex flex-row justify-between w-[900px]'>
-                                    <div class="mb-5">
-                                        <label for="password" class="block mb-2 text-lg font-serif text-gray-900 ">Password</label>
-                                        <input type="password" id="password" class="bg-[#D9D9D9] border border-gray-300 text-gray-900 text-sm rounded-2xl h-10 w-[450px] focus:ring-blue-500 focus:border-blue-500 block p-2.5 "  required />
-                                    </div>
-                                    
-                                </div>
-                                <button className='h-10 font-serif w-[200px] bg-green-600 border border-black rounded-full text-white hover:bg-green-900'>SAVE CHANGES</button>
-                            </div>
-                        </div>
-                        <div className={activeTab === 'message' ? "block bg-orange-200 opacity-100" : "hidden opacity-0"} id="message" role="tabpanel">
-                        <p className="block font-sans text-base antialiased font-light leading-relaxed text-inherit text-blue-gray-500">
-                            The reading of all good books is like a conversation with the finest
-                            minds of past centuries.
-                        </p>
-                        </div>
-                        
-                    </div>
-                    </div>
-                </div>
-                </div>
-                
-    </div>
-    </div>
-  )
-}
+                                    <div className='grid justify-center grid-cols-4 gap-4 p-3 overflow-auto h-[400px]'>
+                                      {
+                                        orders.map((order, index) => (
+                                          <div key={index} className='flex flex-col p-3 bg-white border-2 border-orange-500 rounded-lg w-[300px] h-[450px]'>
+                                            <img className='w-64 h-64' src={foodOrder} alt='foodorder'></img>
+                                            <div className='flex flex-col justify-between p-2'>
+                                              <span>Order ID: {order.orderId}</span>
+                                              <span>Ordered Date: {new Date(order.createdAt).toLocaleDateString()}</span>
+                                              <span>Status: {order.status}</span>
+                                              <span>Total: {order.amount}</span>
+                                            </div>
+                                          </div>
+                                        ))
+                                      }
+                                  </div>
+                                  </div>
+                          </div>                                                 
+                 </div>
+            </div>
+      </div>
+    </div>                
+</div>
+)}
+
 
 export default Profile
