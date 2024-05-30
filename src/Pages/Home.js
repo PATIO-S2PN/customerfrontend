@@ -68,7 +68,7 @@ export default function Home() {
   return (
     <div>
 
-    <div className="w-full h-full min-h-[100vh] bg-white">
+    <div className="w-full h-full min-h-[100vh] bg-white sm:mx-w-xl">
 
       <div className="relative w-screen h-[90vh] overflow-hidden">
         {slides.map((slide, i) => (
@@ -81,17 +81,20 @@ export default function Home() {
               className="object-cover w-full h-full"
             />
             
-            <div className="absolute text-white top-[350px] left-[120px] w-[400px] md:w-[600px]">
-              <p style={{fontFamily: slide.text.heading}} className='text-orange-800 font-roboto'></p>
-              <p style={{ fontFamily: slide.text.paragraph,}} 
-                 className='justify-center text-2xl orange-100 text- font-roboto-Regular-400 md:text-[40px] md:justify-center'>{slide.text.paragraph.text}</p>
-              <button className="px-4 flex py-2 mt-4 text-black border-white border-2 items-center bg-[#FFCF87] 
-                justify-center h-[40px] w-[200px] font-bold font-serif rounded-full">
-                <span className="mr-2">ORDER NOW</span>
-                <FontAwesomeIcon icon={faAngleDoubleRight} size='lg' />            
-              </button>
-            </div>
-            
+            <div className="absolute text-white top-[350px] left-[120px]  max-w-[400px] md:max-w-[600px] ">
+              <p style={{ fontFamily: slide.text.heading }} className="text-orange-800 font-roboto"></p>
+              <p style={{ fontFamily: slide.text.paragraph }} 
+                className="sm:text-center text-xl justify-center text-orange-100 font-roboto-Regular-400 md:text-4xl md:justify-center">
+                {slide.text.paragraph.text}
+              </p>
+              <div className="flex md:justify-center mt-3">
+                <button className="px-4 py-2 text-black border-2 border-white bg-[#FFCF87] 
+                  h-10 w-48 font-bold font-serif rounded-full flex sm:justify-center">
+                  <span className="mr-2">ORDER NOW</span>
+                  <FontAwesomeIcon icon={faAngleDoubleRight} size="lg" />
+                </button>
+              </div>
+            </div>            
           </div>
         ))}
       </div>
