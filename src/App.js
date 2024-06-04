@@ -42,7 +42,7 @@ function App() {
         <Route path="/verify/:token" component={EmailVerification} />
         <Route path="/specials" element={<Specials/>}/>
         <Route path="/place-order" element={<PlaceOrder/>}/>
-        <Route path="/order-tracking" element={<OrderTracking/>}/>
+        <Route path="/order-tracking/:orderId" element={<OrderTracking/>}/>
         <Route path="/chefs" element={<Chefs/>}/>
         <Route path="/gallery" element={<Gallery/>}/>
         <Route path="/contact" element={<Contact/>}/>
