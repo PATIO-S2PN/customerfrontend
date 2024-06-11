@@ -50,7 +50,7 @@ function Login() {
 
   const handleLoginClick = async () => {
     try {
-      const response = await axios.post('http://34.224.26.99/customer/login', {
+      const response = await axios.post('http://localhost:8001/login', {
         email: email,
         password: password,
       });

@@ -45,10 +45,10 @@ function Register() {
 
   const signUp = async () => {
     try {
-      const response = await axios.post('http://34.224.26.99/customer/signup', { email, password, firstName, lastName, phone });
+      const response = await axios.post('http://localhost:8001/signup', { email, password, firstName, lastName, phone });
       console.log(response.data);
 
-      const loginResponse = await axios.post('http://34.224.26.99/customer/login', { email, password });
+      const loginResponse = await axios.post('http://localhost:8001/login', { email, password });
       console.log(loginResponse.data);
       console.log("login successful");
     } catch (error) {

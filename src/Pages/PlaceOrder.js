@@ -43,7 +43,7 @@ const PlaceOrder = () => {
     try {
       const token = localStorage.getItem('token'); 
   
-      const response = await axios.post('http://34.224.26.99/shopping/order', {}, {
+      const response = await axios.post('http://localhost:8005/order', {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       showToast('success', 'Order placed successfully!');
@@ -57,7 +57,7 @@ const PlaceOrder = () => {
   //get cart items
   useEffect(() => {
     const token = localStorage.getItem('token'); 
-    axios.get('http://34.224.26.99/shopping/cart', {
+    axios.get('http://localhost:8005/cart', {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -83,7 +83,7 @@ const PlaceOrder = () => {
     //get profile data
     async function fetchUserData() {
       try {
-        const response = await axios.get('http://34.224.26.99/customer/profile', {
+        const response = await axios.get('http://localhost:8001/profile', {
           headers: {
 
             Authorization: `Bearer ${token}` 
