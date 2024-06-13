@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
+import { customerBackendUrl, shoppingBackendUrl } from '../config';
 
 function showToast(status, message) {
   const Toast = Swal.mixin({
@@ -43,7 +44,7 @@ const PlaceOrder = () => {
     try {
       const token = localStorage.getItem('token'); 
   
-      const response = await axios.post('http://localhost:8005/order', {}, {
+      const response = await axios.post(`${shoppingBackendUrl}/order`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       showToast('success', 'Order placed successfully!');
@@ -57,7 +58,7 @@ const PlaceOrder = () => {
   //get cart items
   useEffect(() => {
     const token = localStorage.getItem('token'); 
-    axios.get('http://localhost:8005/cart', {
+    axios.get(`${shoppingBackendUrl}/cart`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -83,7 +84,7 @@ const PlaceOrder = () => {
     //get profile data
     async function fetchUserData() {
       try {
-        const response = await axios.get('http://localhost:8001/profile', {
+        const response = await axios.get(`${customerBackendUrl}/profile`, {
           headers: {
 
             Authorization: `Bearer ${token}` 

@@ -13,6 +13,8 @@ import { useGoogleLogin } from '@react-oauth/google';
 import Animation from './Animation';
 import { login } from '../Slices/userSlice';
 import { useDispatch } from 'react-redux';
+import { customerBackendUrl } from '../config';
+
 
 function showToast(status, message) {
   const Toast = Swal.mixin({
@@ -50,7 +52,7 @@ function Login() {
 
   const handleLoginClick = async () => {
     try {
-      const response = await axios.post('http://localhost:8001/login', {
+      const response = await axios.post(`${customerBackendUrl}/login`, {
         email: email,
         password: password,
       });

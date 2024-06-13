@@ -6,6 +6,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';
+import { customerBackendUrl } from '../config';
 //import { useGoogleLogin } from '@react-oauth/google';
 //import Swal from 'sweetalert2';
 
@@ -45,10 +46,10 @@ function Register() {
 
   const signUp = async () => {
     try {
-      const response = await axios.post('http://localhost:8001/signup', { email, password, firstName, lastName, phone });
+      const response = await axios.post(`${customerBackendUrl}/signup`, { email, password, firstName, lastName, phone });
       console.log(response.data);
 
-      const loginResponse = await axios.post('http://localhost:8001/login', { email, password });
+      const loginResponse = await axios.post(`${customerBackendUrl}/login`, { email, password });
       console.log(loginResponse.data);
       console.log("login successful");
     } catch (error) {

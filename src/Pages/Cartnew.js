@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect } from 'react';
 import img from '../Assets/cheese burger.png';
+import { shoppingBackendUrl } from '../config';
 
 export default function Cartnew() {
   const [open, setOpen] = useState(true);
@@ -38,7 +39,7 @@ export default function Cartnew() {
   
   function updateQuantity(productId, quantity) {
     const token = localStorage.getItem('token');
-    axios.post('http://localhost:8005/cart', {
+    axios.post(`${shoppingBackendUrl}/cart`, {
       product_id: productId,
       qty: quantity
     }, {
@@ -63,7 +64,7 @@ export default function Cartnew() {
   //get the cart items
   useEffect(() => {
     const token = localStorage.getItem('token'); 
-    axios.get('http://localhost:8005/cart', {
+    axios.get(`${shoppingBackendUrl}/cart`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -87,7 +88,7 @@ export default function Cartnew() {
   function deleteItem(id, token) {
     axios({
       method: 'delete',
-      url: `http://localhost:8005/cart/${id}`,
+      url: `${shoppingBackendUrl}/cart/${id}`,
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -165,7 +166,7 @@ export default function Cartnew() {
                             <li key={item._id} className="flex py-6">
                               <div className="flex-shrink-0 w-24 h-24 overflow-hidden border border-gray-200 rounded-md">
                                 <img
-                                    src={item.product.images && item.product.images[0] ? `http://localhost:8005/${item.product.images[0]}` : img} 
+                                    src={item.product.images && item.product.images[0] ? `${shoppingBackendUrl}/${item.product.images[0]}` : img} 
                                     className="object-cover object-center w-full h-full"
                                     alt={item.product.name}
                                 /> 

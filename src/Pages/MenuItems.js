@@ -4,6 +4,7 @@ import ReactStars from "react-rating-stars-component";
 import { useNavigate } from 'react-router-dom';
 import defaultImage from '../Assets/burgers.png'; 
 import Swal from 'sweetalert2';
+import { productBackendUrl, shoppingBackendUrl } from '../config';
 
 function showToast(status, message) {
   const Toast = Swal.mixin({
@@ -51,7 +52,7 @@ const AddToCart = ({ item }) => {
     try {
       const token = localStorage.getItem('token');
 
-      const response = await axios.post('http://localhost:8005/cart', cartDetails, {
+      const response = await axios.post(`${shoppingBackendUrl}/cart`, cartDetails, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}` 
@@ -80,7 +81,7 @@ export default function MenuItems() {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:8002/');
+        const response = await axios.get(`${productBackendUrl}/`);
         setMenuItems(response.data.products);  
         console.log(response.data.products);
 
@@ -99,7 +100,7 @@ export default function MenuItems() {
           <div className='flex flex-col'>
           <img 
             className='w-64 mb-2 transition-all duration-500 transform h-52 hover:scale-110' 
-            src={item.images && item.images[0] ? `http://localhost:8002/${item.images[0]}` : defaultImage}
+            src={item.images && item.images[0] ? `${productBackendUrl}/${item.images[0]}` : defaultImage}
             alt={item.name} 
           />
 

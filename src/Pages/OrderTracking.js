@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { shoppingBackendUrl } from '../config';
 
 function OrderTracking() {
     const { orderId } = useParams();
@@ -15,7 +16,7 @@ function OrderTracking() {
 
     useEffect(() => {
         const token = localStorage.getItem('token'); // replace 'token' with the key you used to store the token
-        axios.get(`http://34.224.26.99/shopping/order/${orderId}`, {
+        axios.get(`${shoppingBackendUrl}/order/${orderId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

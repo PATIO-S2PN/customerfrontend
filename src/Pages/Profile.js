@@ -6,6 +6,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../Assets/logonew.svg';
 import foodOrder from "../Assets/foodOrder.png"
 import Swal from 'sweetalert2';
+import { shoppingBackendUrl } from '../config';
 
 function showToast(status, message) {
   const Toast = Swal.mixin({
@@ -41,7 +42,7 @@ function Profile() {
       //get order history
       async function fetchOrderHistory() {
         try {
-          const response = await axios.get(`http://34.224.26.99/shopping/orders`, {
+          const response = await axios.get(`${shoppingBackendUrl}/orders`, {
             headers: {
               Authorization: `Bearer ${token}`
             }
@@ -68,7 +69,7 @@ function Profile() {
       //get profile data
       async function fetchUserData() {
         try {
-          const response = await axios.get('http://34.224.26.99/customer/profile', {
+          const response = await axios.get(`${shoppingBackendUrl}/profile`, {
             headers: {
 
               Authorization: `Bearer ${token}` 
@@ -95,7 +96,7 @@ function Profile() {
       try {
         const token = localStorage.getItem('token'); 
     
-        const response = await axios.put('http://34.224.26.99/customer/profile', updatedUser, {
+        const response = await axios.put(`${shoppingBackendUrl}/profile`, updatedUser, {
           headers: {
             Authorization: `Bearer ${token}` 
           }
