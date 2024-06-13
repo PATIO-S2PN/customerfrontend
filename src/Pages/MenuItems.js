@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import defaultImage from '../Assets/burgers.png'; 
 import Swal from 'sweetalert2';
 import { productBackendUrl, shoppingBackendUrl } from '../config';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 function showToast(status, message) {
   const Toast = Swal.mixin({
@@ -26,7 +27,7 @@ function showToast(status, message) {
   });
 }
 
-const AddToCart = ({ item }) => {
+export const AddToCart = ({ item }) => {
   const [cartDetails, setCartDetails] = useState({
     product_id: item._id,
     qty: '1'
@@ -75,6 +76,38 @@ const AddToCart = ({ item }) => {
   );
 };
 
+const AddToWishlist = ({ item }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      navigate('/login');
+    }
+  }, [navigate]);
+
+  const handleAddToWishlist = async () => {
+    try {
+      const token = localStorage.getItem('token');
+
+      const response = await axios.post(`${shoppingBackendUrl}/wishlist`, { product_id: item._id }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      });
+      showToast('success', 'Item added to wishlist!');
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <FavoriteBorderIcon className='hover:cursor-pointer' onClick={handleAddToWishlist} />
+  );
+};
+
 export default function MenuItems() {
   const [menuItems, setMenuItems] = useState([]);
 
@@ -106,7 +139,7 @@ export default function MenuItems() {
 
             <label className='text-xl font-bold text-center'>{item.name}</label>
             <label className='text-center text-md'>LKR {item.price}.000</label>
-            <div className='flex justify-center'>
+            <div className='flex justify-between mx-5'>
               <ReactStars 
                 classNames="items-center" 
                 count={5} 
@@ -118,6 +151,7 @@ export default function MenuItems() {
                 activeColor="#ffd700" 
                 value={item.rating || 0}
               />
+              <AddToWishlist item={item} />
             </div>
             <div className='flex justify-around'>
               <AddToCart item={item} />          
@@ -128,3 +162,4 @@ export default function MenuItems() {
     </div>
   );
 }
+
