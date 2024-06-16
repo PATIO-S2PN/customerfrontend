@@ -47,25 +47,24 @@ const Chefs = () => {
   }, []);*/
 
   return (
-    <div className="grid items-center justify-center h-screen gap-10 m-10 sm:grid-cols-2 lg:grid-cols-4">
-      {chefs.map((chef, index) => (
-        <div key={index} className={index === 0 || index === 2 ? "md:mt-20" : ""}
-        data-aos='fade-down'
-        data-aos-offset = '200'
-        data-aos-delay='50'
-        data-aos-duration='1000'
-        data-aos-easing = 'ease-in-out'>
-          <div className='flex flex-col items-center justify-center shadow bg-gray-200 lg:h-[600px] rounded-lg hover:shadow-xl hover:scale-110 transition-all duration-500 transform'>
-            <img src={chef.image} 
-                 alt={chef.name} 
-                 className='h-[500px]'/>
-            <h3 className='mb-1 text-3xl font-bold font-roboto-Regular-400'>{chef.name}</h3>
-            <p className='mb-1 text-lg font-roboto-Regular-400'>{chef.position}</p>
-            <p className="text-sm">{chef.description}</p>
-
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 py-10">
+      <h1 className="text-4xl font-bold text-gray-800 mb-8">Our Chefs</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        {chefs.map((chef, index) => (
+          <div key={index}
+            className={`flex flex-col items-center justify-center bg-white shadow-lg rounded-lg p-6 transform transition-all duration-500 hover:scale-105 hover:shadow-2xl ${index === 0 || index === 2 ? "md:mt-20" : ""}`}
+            data-aos='fade-down'
+            data-aos-offset='200'
+            data-aos-delay='50'
+            data-aos-duration='1000'
+            data-aos-easing='ease-in-out'
+            style={{ height: '500px' }}>
+            <img src={chef.image} alt={chef.name} className='h-64 w-64 object-cover rounded-full mb-4 transition-transform duration-500 hover:scale-110' />
+            <h3 className='text-2xl font-bold text-gray-700 mb-2'>{chef.name}</h3>
+            <p className='text-lg text-gray-500 mb-1'>{chef.position}</p>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
