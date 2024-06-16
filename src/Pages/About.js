@@ -1,37 +1,68 @@
-import React from 'react'
-import chef from '../Assets/chef.jpg'
+import React from 'react';
+import chef from '../Assets/chef.jpg';
 import { useNavigate } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
 
 const About = () => {
   const navigate = useNavigate();
 
   return (
-    <div className='flex items-center justify-around bg-[#101E21] h-screen'>
-      <div className='flex flex-col justify-between w-full max-w-6xl p-4 md:flex-row md:space-x-4'>
-        <div className='w-full md:w-[80vw] rounded-xl mb-4 md:mb-0 mr-10'
-        data-aos='fade-down'
-        data-aos-offset = '200'
-        data-aos-delay='50'
-        data-aos-duration='1000'
-        data-aos-easing = 'ease-in-out'>
-          <img src={chef} alt='Chef' className='w-full h-auto'></img>
+    <div 
+      className='flex items-center justify-center min-h-screen p-8' 
+      style={{ backgroundColor: '#101E21' }}
+    >
+      <div 
+        className='flex flex-col md:flex-row w-full max-w-6xl rounded-xl shadow-lg overflow-hidden' 
+        style={{ backgroundColor: '#1B2A30', animation: 'fade-in 1s ease-in-out' }}
+      >
+        <div 
+          className='w-full md:w-1/2' 
+          data-aos='fade-right' 
+          data-aos-duration='1000'
+        >
+          <img 
+            src={chef} 
+            alt='Chef' 
+            className='w-full h-full object-cover rounded-xl' 
+          />
         </div>
-
-        <div className='flex flex-col items-start justify-center w-full md:w-[80vw] ml-10'
-        data-aos='fade-up'
-        data-aos-offset = '200'
-        data-aos-delay='50'
-        data-aos-duration='1000'
-        data-aos-easing = 'ease-in-out'>
-          <h1 className='mb-5 font-serif text-4xl font-bold text-orange-800 transition duration-500 transform hover:scale-110'>About Our Restaurant</h1>
-          <p className='font-serif text-orange-100'>LuxeDine is a unique dining destination in the city center. We offer a variety of dishes crafted with fresh, locally-sourced ingredients. Our team is dedicated to providing excellent service in a contemporary setting. Join us for a memorable dining experience at LuxeDine.</p>
-          <button className='px-4 py-2 mt-4 text-white bg-transparent border border-orange-800 rounded hover:bg-orange-400'
-                            onClick={() => navigate('/contact')} 
-                            >Contact Us</button>
+        
+        <div 
+          className='flex flex-col justify-center p-8 md:w-1/2' 
+          data-aos='fade-left' 
+          data-aos-duration='1000'
+        >
+          <h1 
+            className='mb-4 font-serif text-4xl font-bold transition duration-500 transform hover:scale-105' 
+            style={{ color: '#FFCF87' }}
+          >
+            About Our Restaurant
+          </h1>
+          <p 
+            className='mb-6 font-serif leading-relaxed' 
+            style={{ color: 'white' }}
+          >
+            LuxeDine is a unique dining destination in the city center. We offer a variety of dishes crafted with fresh, locally-sourced ingredients. Our team is dedicated to providing excellent service in a contemporary setting. Join us for a memorable dining experience at LuxeDine.
+          </p>
+          <button
+            className='self-start px-6 py-2 rounded transition duration-300'
+            style={{ 
+              color: 'black', 
+              backgroundColor: '#FFCF87', 
+              border: '1px solid #FF7043', 
+              hover: { backgroundColor: '#FF5722' } 
+            }}
+            onClick={() => navigate('/contact')}
+          >
+            Contact Us
+          </button>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default About
+export default About;
