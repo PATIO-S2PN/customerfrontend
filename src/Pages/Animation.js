@@ -3,7 +3,7 @@ import './Animation.scss'; // Import the CSS file
 
 const Animation = () => {
   return (
-    <div id="cooking">
+    <div className="animation-container">
       <div id="cooking">
         {[...Array(5)].map((_, i) => (
           <div key={i} className="bubble" />
