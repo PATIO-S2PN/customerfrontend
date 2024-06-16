@@ -27,7 +27,7 @@ const Contact = () => {
                              
             </div>
             <div className="px-8 py-6 mb-4 bg-gray-800 bg-opacity-50 rounded-lg lg:w-1/2 lg:ml-4">
-              <h2 className="mb-4 text-xl font-bold text-yellow-500">Sent a Message</h2>
+              <h2 className="mb-4 text-xl font-bold text-yellow-500">Send a Message</h2>
               <form>
             <div className="mb-4">
               <label htmlFor="name" className="block text-white">Name</label>
