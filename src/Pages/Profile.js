@@ -6,6 +6,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../Assets/logonew.svg';
 import foodOrder from "../Assets/foodOrder.png"
 import Swal from 'sweetalert2';
+import { shoppingBackendUrl } from '../config';
 
 function showToast(status, message) {
   const Toast = Swal.mixin({
@@ -41,7 +42,7 @@ function Profile() {
       //get order history
       async function fetchOrderHistory() {
         try {
-          const response = await axios.get(`http://34.224.26.99/shopping/orders`, {
+          const response = await axios.get(`${shoppingBackendUrl}/orders`, {
             headers: {
               Authorization: `Bearer ${token}`
             }
@@ -68,7 +69,7 @@ function Profile() {
       //get profile data
       async function fetchUserData() {
         try {
-          const response = await axios.get('http://34.224.26.99/customer/profile', {
+          const response = await axios.get(`${shoppingBackendUrl}/profile`, {
             headers: {
 
               Authorization: `Bearer ${token}` 
@@ -95,7 +96,7 @@ function Profile() {
       try {
         const token = localStorage.getItem('token'); 
     
-        const response = await axios.put('http://34.224.26.99/customer/profile', updatedUser, {
+        const response = await axios.put(`${shoppingBackendUrl}/profile`, updatedUser, {
           headers: {
             Authorization: `Bearer ${token}` 
           }
@@ -117,7 +118,12 @@ function Profile() {
     const handleTabClick = (tabId) => {
         setActiveTab(tabId);
     };
-
+    
+ //tracking
+    const handleSubmit = async (orderId) => {
+      navigate(`/order-tracking/${orderId}`);
+    };
+   
   return (
     <div>
         <img src={logo} alt='logo' className='absolute z-10 h-[50px] w-[170px] top-10 left-10' onClick={() => navigate("/")} />
@@ -274,16 +280,20 @@ function Profile() {
                                       <p className='text-2xl italic text-orange-800 font-roboto bold'>Explore your culinary journey with LuxeDine in your Order History.</p>
                                     </div>
                                     
-                                    <div className='grid justify-center grid-cols-4 gap-4 p-3 overflow-auto h-[400px]'>
+                                    <div className='grid justify-center md:grid-cols-4 gap-4 p-3 overflow-auto h-[400px]'>
                                       {
                                         orders.map((order, index) => (
-                                          <div key={index} className='flex flex-col p-3 bg-white border-2 border-orange-500 rounded-lg w-[300px] h-[450px]'>
+                                          <div key={index} className='flex flex-col p-3 bg-white border-2 border-orange-500 rounded-lg w-[300px] h-[500px]'>
                                             <img className='w-64 h-64' src={foodOrder} alt='foodorder'></img>
                                             <div className='flex flex-col justify-between p-2'>
                                               <span>Order ID: {order.orderId}</span>
                                               <span>Ordered Date: {new Date(order.createdAt).toLocaleDateString()}</span>
                                               <span>Status: {order.status}</span>
                                               <span>Total: {order.amount}</span>
+                                              <button 
+                                                  onClick={() => handleSubmit(order._id)}
+                                                  className="px-6 py-2 transition ease-in duration-200 uppercase rounded-lg w-56 bg-orange-600 h-10 hover:border-[#a35959] marker:rounded-full hover:bg-[#542822] hover:text-white border-2 focus:outline-none"
+                                                >Track my Order</button>
                                             </div>
                                           </div>
                                         ))
