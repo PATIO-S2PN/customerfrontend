@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ReactStars from "react-rating-stars-component";
 import { useNavigate } from 'react-router-dom';
-import defaultImage from '../Assets/burgers.png';
+import defaultImage from '../Assets/burgers.webp';
 import Swal from 'sweetalert2';
 import { productBackendUrl, shoppingBackendUrl } from '../config';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';

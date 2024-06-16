@@ -1,11 +1,11 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import cart from '../Assets/cart.jpg'
+import cart from '../Assets/cart.webp'
 import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect } from 'react';
-import img from '../Assets/cheese burger.png';
+import img from '../Assets/cheese burger.webp';
 import { shoppingBackendUrl } from '../config';
 
 export default function Cartnew() {

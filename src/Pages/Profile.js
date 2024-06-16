@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import bg from '../Assets/profile.jpg';
-import profile from '../Assets/profile2.png';
+import bg from '../Assets/profile.webp';
+import profile from '../Assets/profile2.webp';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import logo from '../Assets/logonew.svg';
-import foodOrder from '../Assets/foodOrder.png';
+import foodOrder from '../Assets/foodOrder.webp';
 import Swal from 'sweetalert2';
 import { shoppingBackendUrl } from '../config';
 

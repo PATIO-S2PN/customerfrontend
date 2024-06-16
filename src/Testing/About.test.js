@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import About from '../Pages/About';
-import chef from '../Assets/chef.jpg'; 
+import chef from '../Assets/chef.webp'; 
 
 describe('About Component', () => {
   beforeEach(() => {

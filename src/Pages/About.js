@@ -1,5 +1,5 @@
 import React from 'react';
-import chef from '../Assets/chef.jpg';
+import chef from '../Assets/chef.webp';
 import { useNavigate } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
