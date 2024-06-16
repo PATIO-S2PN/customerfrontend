@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaFacebookSquare, FaFacebookMessenger } from "react-icons/fa";
 import { FaSquareInstagram, FaSquareTwitter } from "react-icons/fa6";
-import Paymentcard from '../Assets/paymentcard.jpg';
+import Paymentcard from '../Assets/paymentcard.webp';
 
 const Footer = () => {
   return (

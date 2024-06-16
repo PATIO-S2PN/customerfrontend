@@ -1,9 +1,9 @@
 import React from 'react';
-import bg3 from '../Assets/burgerBg.jpg';
+import bg3 from '../Assets/burgerBg.webp';
 import MenuItems from './MenuItems';
 import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';
-import cart from '../Assets/cartIcon.jpeg';
+import cart from '../Assets/cartIcon.webp';
 
 export default function MenuOne() {
   const navigate = useNavigate();

@@ -1,5 +1,5 @@
 import React from 'react';
-import location from '../Assets/location.png'
+import location from '../Assets/location.webp'
 
 
 

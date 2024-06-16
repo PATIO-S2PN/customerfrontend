@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import bgTwo from '../Assets/B2.jpg';
-import bgThree from '../Assets/B3.jpg';
-import bgFour from '../Assets/B5.jpg';
+import bgTwo from '../Assets/B2.webp';
+import bgThree from '../Assets/B3.webp';
+import bgFour from '../Assets/B5.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
-import cart from '../Assets/cartIcon.jpeg';
+import cart from '../Assets/cartIcon.webp';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useNavigate } from 'react-router-dom';

@@ -1,14 +1,14 @@
 import React from 'react';
 import '../App.css';
-import chicken from '../Assets/burgers.png';
+import chicken from '../Assets/burgers.webp';
 import { Link } from 'react-router-dom';
-import bg from '../Assets/menu.jpg';
-import sub from '../Assets/sub.png';
-import pizza from '../Assets/pizza.jpg';
-import rice from '../Assets/rice1.jpg';
-import kottu from '../Assets/kottu.jpg';
-import juice from '../Assets/juice.jpg';
-import desserts from '../Assets/desserts.jpg';
+import bg from '../Assets/menu.webp';
+import sub from '../Assets/sub.webp';
+import pizza from '../Assets/pizza.webp';
+import rice from '../Assets/rice1.webp';
+import kottu from '../Assets/kottu.webp';
+import juice from '../Assets/juice.webp';
+import desserts from '../Assets/desserts.webp';
 
 const Categories = () => {
   return (

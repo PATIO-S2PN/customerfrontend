@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import resetbg from '../Assets/resetbg.jpg';
+import resetbg from '../Assets/resetbg.webp';
 import logo from '../Assets/logonew.svg';
 
 export default function ResetPassword() {

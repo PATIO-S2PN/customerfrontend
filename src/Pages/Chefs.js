@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import chef from '../Assets/chef.png';
-import chef3 from '../Assets/chef3.png';
-import chef4 from '../Assets/chef4.png';
-import chef5 from '../Assets/chef5.png';
+import chef from '../Assets/chef1.webp';
+import chef3 from '../Assets/chef3.webp';
+import chef4 from '../Assets/chef4.webp';
+import chef5 from '../Assets/chef5.webp';
 
 const Chefs = () => {
   //const [chefs, setChefs] = useState([]);
