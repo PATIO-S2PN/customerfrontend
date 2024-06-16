@@ -67,15 +67,9 @@ const Footer = () => {
                   <div className="shrink-0 mt-2.5 h-px bg-amber-500 border border-amber-500 border-solid" />
                   <img src={Paymentcard} className="h-40 max-w-full pt-6" alt="paymentcard" />
                 </div>
-
-                
-
               </div>
             </div>
           </div>
-
-
-    
   </footer>
   );
 };
