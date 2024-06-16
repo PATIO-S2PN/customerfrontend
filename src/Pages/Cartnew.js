@@ -5,13 +5,13 @@ import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect } from 'react';
-import img from '../Assets/bagels.jpg';
+import img from '../Assets/cheese burger.png';
+import { shoppingBackendUrl } from '../config';
 
 export default function Cartnew() {
   const [open, setOpen] = useState(true);
   const navigate = useNavigate();
   const [products, setProducts] = useState([]); 
-  const [cartItems, setCartItems] = useState([]); 
 
   //calculate the total
   const subtotal = products.reduce((total, item) => {
@@ -39,7 +39,7 @@ export default function Cartnew() {
   
   function updateQuantity(productId, quantity) {
     const token = localStorage.getItem('token');
-    axios.post('http://18.234.113.85/shopping/cart', {
+    axios.post(`${shoppingBackendUrl}/cart`, {
       product_id: productId,
       qty: quantity
     }, {
@@ -64,7 +64,7 @@ export default function Cartnew() {
   //get the cart items
   useEffect(() => {
     const token = localStorage.getItem('token'); 
-    axios.get('http://18.234.113.85/shopping/cart', {
+    axios.get(`${shoppingBackendUrl}/cart`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -88,7 +88,7 @@ export default function Cartnew() {
   function deleteItem(id, token) {
     axios({
       method: 'delete',
-      url: `http://18.234.113.85/shopping/cart/${id}`,
+      url: `${shoppingBackendUrl}/cart/${id}`,
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -166,8 +166,9 @@ export default function Cartnew() {
                             <li key={item._id} className="flex py-6">
                               <div className="flex-shrink-0 w-24 h-24 overflow-hidden border border-gray-200 rounded-md">
                                 <img
-                                  src={img} 
-                                  className="object-cover object-center w-full h-full"
+                                    src={item.product.images && item.product.images[0] ? `${shoppingBackendUrl}/${item.product.images[0]}` : img} 
+                                    className="object-cover object-center w-full h-full"
+                                    alt={item.product.name}
                                 /> 
                                 {/* <img
                                   src={item.imageSrc} // Make sure the API response has this property

@@ -12,6 +12,8 @@ import { useGoogleLogin } from '@react-oauth/google';
 import Animation from './Animation';
 import { login } from '../Slices/userSlice';
 import { useDispatch } from 'react-redux';
+import { customerBackendUrl } from '../config';
+
 
 function showToast(status, message) {
   const Toast = Swal.mixin({
@@ -41,9 +43,15 @@ function Login() {
   const [password, setPassword] = useState('');
   const [loginMessage, setLoginMessage] = useState('');
 
+  const handleKeyPress = (event) => {
+    if(event.key === 'Enter'){
+      handleLoginClick();
+    }
+  }
+
   const handleLoginClick = async () => {
     try {
-      const response = await axios.post('http://18.234.113.85/customer/login', {
+      const response = await axios.post(`${customerBackendUrl}/login`, {
         email: email,
         password: password,
       });
@@ -119,6 +127,7 @@ function Login() {
         <input type='text' 
                className='mb-8 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 border-[#FADBCF] focus:outline-none'  
                placeholder='Email*' required
+               onKeyPress={handleKeyPress}
                onChange={(e) => setEmail(e.target.value)}/>        
         
         <div className='relative'>
@@ -127,6 +136,7 @@ function Login() {
             className='mb-3 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 w-full border-[#FADBCF] focus:outline-none'
             placeholder='Password*'
             required
+            onKeyPress={handleKeyPress}
             onChange={(e) => setPassword(e.target.value)}       
 
           />

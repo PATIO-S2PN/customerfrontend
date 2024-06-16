@@ -14,7 +14,6 @@ const slides = [
   { 
     image: bgTwo, 
     text: {
-      heading: { text: 'Flavor Flavor Haven: Take-Away Bliss!'},
       paragraph: { text: 'Flavor Haven: Take-Away Bliss\nIndulge in a symphony of flavors,\nnow available for take-away.', fontFamily: 'Roboto'},
     },
   },
@@ -49,7 +48,7 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % slides.length);
-    }, 2000); 
+    }, 3000); 
 
     return () => clearInterval(interval);
   }, []);
@@ -65,7 +64,7 @@ export default function Home() {
   return (
     <div>
 
-    <div className="w-full h-full min-h-[100vh] bg-white">
+    <div className="w-full h-full min-h-screen bg-white">
 
       <div className="relative w-screen h-[90vh] overflow-hidden">
         {slides.map((slide, i) => (
@@ -81,9 +80,10 @@ export default function Home() {
             />
             
             <div className="absolute text-white top-[350px] left-[120px] w-[400px] md:w-[600px]">
-              <p style={{fontFamily: slide.text.heading}} className='text-orange-800 font-roboto'></p>
-              <p style={{ fontFamily: slide.text.paragraph,}} 
-                 className='justify-center text-2xl orange-100 text- font-roboto-Regular-400 md:text-[40px] md:justify-center'>{slide.text.paragraph.text}</p>
+            <p style={{ fontFamily: slide.text.paragraph, fontSize: '35px' }} 
+               className='justify-center md:text-[40px] md:justify-center italic font-roboto-regular text-orange-300'>
+               {slide.text.paragraph.text}
+            </p>
               <button 
                 onClick={() => navigate('/categories')} 
                 className="px-4 flex py-2 mt-4 text-black border-white border-2 items-center bg-[#FFCF87] 

@@ -31,7 +31,7 @@ export default function ResetPassword() {
   return (
     <div className='flex items-center justify-center w-screen h-screen bg-center bg-cover bg-opacity-80' style={{backgroundImage:`url(${resetbg})`}}>
       <div className='flex flex-col items-center justify-center bg-opacity-80 shadow bg-[#D9D4D0] rounded-2xl hover:shadow-3xl'>
-        <img className='w-[250px] h-[80px] ' src={logo}></img>
+        <img className='w-[250px] h-[80px] ' src={logo} alt='logo'></img>
         <div className='flex flex-col items-center justify-center px-10 py-2 bg-transparent border shadow w-[500px] rounded-b-2xl hover:shadow-lg'>
             <label className='font-serif text-2xl text-black transform hover:scale-x-[-1] text-bold duration-500 mb-3'>Reset Password</label>
             <form onSubmit={handleSubmit} className='w-[400px]'>

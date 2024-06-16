@@ -6,28 +6,29 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';
-import { useGoogleLogin } from '@react-oauth/google';
-import Swal from 'sweetalert2';
+import { customerBackendUrl } from '../config';
+//import { useGoogleLogin } from '@react-oauth/google';
+//import Swal from 'sweetalert2';
 
-function showToast(status, message) {
-  const Toast = Swal.mixin({
-    toast: true,
-    position: 'top-end',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    background: '#fff7ed',
-    didOpen: (toast) => {
-      toast.onmouseenter = Swal.stopTimer;
-      toast.onmouseleave = Swal.resumeTimer;
-    }
-  });
+// function showToast(status, message) {
+//   const Toast = Swal.mixin({
+//     toast: true,
+//     position: 'top-end',
+//     showConfirmButton: false,
+//     timer: 3000,
+//     timerProgressBar: true,
+//     background: '#fff7ed',
+//     didOpen: (toast) => {
+//       toast.onmouseenter = Swal.stopTimer;
+//       toast.onmouseleave = Swal.resumeTimer;
+//     }
+//   });
 
-  Toast.fire({
-    icon: status,
-    title: message
-  });
-}
+//   Toast.fire({
+//     icon: status,
+//     title: message
+//   });
+// }
 
 function Register() {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ function Register() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
-  const [loginMessage, setLoginMessage] = useState('');
+  //const [loginMessage, setLoginMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const handleToggle = () => {
@@ -45,10 +46,10 @@ function Register() {
 
   const signUp = async () => {
     try {
-      const response = await axios.post('http://18.234.113.85/customer/signup', { email, password, firstName, lastName, phone });
+      const response = await axios.post(`${customerBackendUrl}/signup`, { email, password, firstName, lastName, phone });
       console.log(response.data);
 
-      const loginResponse = await axios.post('http://18.234.113.85/customer/login', { email, password });
+      const loginResponse = await axios.post(`${customerBackendUrl}/login`, { email, password });
       console.log(loginResponse.data);
       console.log("login successful");
     } catch (error) {
@@ -63,29 +64,29 @@ function Register() {
   };
 
   // Google sign in
-  const signinClick = useGoogleLogin({
-      onSuccess: async (codeResponse) => {
-        console.log(codeResponse);
-        if (codeResponse && codeResponse.profileObj) {
-          const { email, givenName: firstName, familyName: lastName } = codeResponse.profileObj;
-          // Assuming you have a phone number, otherwise you'll need to handle this
-          const phone = codeResponse.profileObj.phoneNumber || '';
+  // const signinClick = useGoogleLogin({
+  //     onSuccess: async (codeResponse) => {
+  //       console.log(codeResponse);
+  //       if (codeResponse && codeResponse.profileObj) {
+  //         const { email, givenName: firstName, familyName: lastName } = codeResponse.profileObj;
+  //         // Assuming you have a phone number, otherwise you'll need to handle this
+  //         const phone = codeResponse.profileObj.phoneNumber || '';
 
-          try {
-            const response = await axios.post('http://18.234.113.85/customer/signup', { email, password, firstName, lastName, phone });
-            console.log(response);
-          } catch (error) {
-            console.error(error);
-          }
-        }
-      },
-    }); 
+  //         try {
+  //           const response = await axios.post('http://34.224.26.99/customer/signup', { email, password, firstName, lastName, phone });
+  //           console.log(response);
+  //         } catch (error) {
+  //           console.error(error);
+  //         }
+  //       }
+  //     },
+  //   }); 
 
     // Function to handle login
     /*const handleLoginClick = async () => {
       //navigate('/');
        try {
-         const response = await axios.post('http://18.234.113.85/customer/login', {
+         const response = await axios.post('http://34.224.26.99/customer/login', {
            email: email,
            password: password,
          });
@@ -154,8 +155,8 @@ function Register() {
             <hr className="flex-grow border-white"/>
         </div> */}
         
-        <input type='text' className='mb-8 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 border-[#FADBCF] focus:outline-none'  value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder='First Name*' required/>
-        <input type='text' className='mb-8 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 border-[#FADBCF] focus:outline-none'  value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder='Last Name*' required/>
+        {/* <input type='text' className='mb-8 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 border-[#FADBCF] focus:outline-none'  value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder='First Name*' required/> */}
+        {/* <input type='text' className='mb-8 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 border-[#FADBCF] focus:outline-none'  value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder='Last Name*' required/> */}
         <input type='text' className='mb-8 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 border-[#FADBCF] focus:outline-none'  value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email*' required/>
         <input type='text' className='mb-8 text-sm font-serif p-2.5 text-white bg-slate-800 rounded-lg h-10 border-b-2 border-[#FADBCF] focus:outline-none'  value={phone} onChange={(e) => setPhone(e.target.value)} placeholder='Phone*' required/>
 

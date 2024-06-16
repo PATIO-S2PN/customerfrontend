@@ -16,18 +16,14 @@ import EmailVerification from './Components/EmailVerification';
 import Specials from './Pages/Specials';
 import PlaceOrder from './Pages/PlaceOrder';
 import OrderTracking from './Pages/OrderTracking';
-import { Check } from 'react-bootstrap-icons';
 import Chefs from './Pages/Chefs';
 import Gallery from './Pages/Gallery';
 import Contact from './Pages/Contact';
 import Footer from './Pages/Footer';
 import Cartnew from './Pages/Cartnew';
+import Wishlist from './Pages/Wishlist';
 
-
-
-
-function App() {
-  
+function App() {  
   return (
     <div className="App">
       <Router>
@@ -47,21 +43,14 @@ function App() {
         <Route path="/verify/:token" component={EmailVerification} />
         <Route path="/specials" element={<Specials/>}/>
         <Route path="/place-order" element={<PlaceOrder/>}/>
-        <Route path="/order-tracking" element={<OrderTracking/>}/>
+        <Route path="/order-tracking/:orderId" element={<OrderTracking/>}/>
         <Route path="/chefs" element={<Chefs/>}/>
         <Route path="/gallery" element={<Gallery/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/footer" element={<Footer/>}/>
         <Route path="/cartnew" element={<Cartnew/>}/>
+        <Route path="/wishlist" element={<Wishlist/>}/>
 
-
-        
-
-
-
-
-
- 
       </Routes>
      </Router>
     </div>

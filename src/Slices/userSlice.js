@@ -1,6 +1,4 @@
-import React from 'react'
 import { createSlice } from '@reduxjs/toolkit'
-import { init } from 'aos'
 
 const userSlice = createSlice({
     name: "user",
@@ -22,7 +20,6 @@ const userSlice = createSlice({
 export const { login, logout } = userSlice.actions; 
 
 export const selectUser = (state) => {
-    const stateTest = state.user.user;
     return JSON.parse(localStorage.getItem("user"));
 }
 

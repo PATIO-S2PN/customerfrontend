@@ -3,6 +3,28 @@ import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import { customerBackendUrl, shoppingBackendUrl } from '../config';
+
+function showToast(status, message) {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    background: '#fff7ed',
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
+
+  Toast.fire({
+    icon: status,
+    title: message
+  });
+}
 
 const PlaceOrder = () => {
   const servicecharge = 10;
@@ -11,20 +33,22 @@ const PlaceOrder = () => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]); 
   const [cartItems, setCartItems] = useState([]); 
-
+  
   //calculate the total
   const subtotal = products.reduce((total, item) => {
     return total + (item.product.price * item.unit);
   }, 0);
   
   //place order
-  const placeOrder = async (customerId, txnNumber) => {
+  const placeOrder = async () => {
     try {
-      const response = await axios.post('http://18.234.113.85/shopping/order', {
-        customerId,
-        txnNumber
+      const token = localStorage.getItem('token'); 
+  
+      const response = await axios.post(`${shoppingBackendUrl}/order`, {}, {
+        headers: { Authorization: `Bearer ${token}` }
       });
-      alert('Order placed successfully');
+      showToast('success', 'Order placed successfully!');
+      console.log("Order placed successfully");
       return response.data;
     } catch (error) {
       console.error(`Error placing order: ${error}`);
@@ -34,7 +58,7 @@ const PlaceOrder = () => {
   //get cart items
   useEffect(() => {
     const token = localStorage.getItem('token'); 
-    axios.get('http://18.234.113.85/shopping/cart', {
+    axios.get(`${shoppingBackendUrl}/cart`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -60,7 +84,7 @@ const PlaceOrder = () => {
     //get profile data
     async function fetchUserData() {
       try {
-        const response = await axios.get('http://18.234.113.85/customer/profile', {
+        const response = await axios.get(`${customerBackendUrl}/profile`, {
           headers: {
 
             Authorization: `Bearer ${token}` 
@@ -112,7 +136,7 @@ const PlaceOrder = () => {
                             />
                         </div>
                     </div>
-                    <div className='flex flex-col w-auto gap-1'>
+                    {/* <div className='flex flex-col w-auto gap-1'>
                             <label className="text-[12px] sm:text-lg font-roboto-regular-400 text-orange-50">
                               Address</label>
                             <input
@@ -120,9 +144,9 @@ const PlaceOrder = () => {
                                 onChange={e => setUser({...user, address: e.target.value})}
                                 className="w-64 h-8 pl-2 bg-transparent border-2 border-orange-200 rounded-lg md:h-10 focus:border-orange-500 md:w-72 text-orange-50"                            
                             />
-                        </div>
+                    </div> */}
                     <div className='flex flex-row flex-wrap justify-between gap-2'>
-                    <div className='flex flex-col w-auto gap-1'>
+                    {/* <div className='flex flex-col w-auto gap-1'>
                             <label className="text-[12px] sm:text-lg font-roboto-regular-400 text-orange-50">
                             Card Number
                             </label>
@@ -130,7 +154,7 @@ const PlaceOrder = () => {
                                // onChange={e => setUser({...user, address: e.target.value})}
                                 className="w-64 h-8 pl-2 bg-transparent border-2 border-orange-200 rounded-lg md:h-10 focus:border-orange-500 md:w-72 text-orange-50"                            
                             />
-                        </div>
+                    </div>
                         <div className='flex flex-col w-auto gap-1'>
                             <label className="text-[12px] sm:text-lg font-roboto-regular-400 text-orange-50">
                             CVV
@@ -139,8 +163,8 @@ const PlaceOrder = () => {
                                 // onChange={e => setUser({...user, address: e.target.value})}
                                 className="w-64 h-8 pl-2 bg-transparent border-2 border-orange-200 rounded-lg md:h-10 focus:border-orange-500 md:w-72 text-orange-50"                            
                             />
-                        </div>
-                        </div>
+                        </div> */}
+                    </div>
                     <div className='flex flex-row flex-wrap justify-between gap-2'>
                     <div className='flex flex-col w-auto gap-1'>
                             <label className="text-[12px] sm:text-lg font-roboto-regular-400 text-orange-50">
@@ -152,24 +176,24 @@ const PlaceOrder = () => {
                                 className="w-64 h-8 pl-2 bg-transparent border-2 border-orange-200 rounded-lg md:h-10 focus:border-orange-500 md:w-72 text-orange-50"                            
                             />
                         </div>
-                        <div className='flex flex-col w-auto gap-1'>
+                        {/* <div className='flex flex-col w-auto gap-1'>
                             <label className="text-[12px] sm:text-lg font-roboto-regular-400 text-orange-50">
                             Post Code
                             </label>
                             <input
                                 className="w-64 h-8 pl-2 bg-transparent border-2 border-orange-200 rounded-lg md:h-10 focus:border-orange-500 md:w-72 text-orange-50"                            
                             />
-                        </div>
+                        </div> */}
                     </div>
                     <div className='flex flex-row flex-wrap justify-between gap-2'>
-                    <div className='flex flex-col w-auto gap-1'>
+                    {/* <div className='flex flex-col w-auto gap-1'>
                             <label className="text-[12px] sm:text-lg font-roboto-regular-400 text-orange-50">
                             Apartment
                             </label>
                             <input
                                 className="w-64 h-8 pl-2 bg-transparent border-2 border-orange-200 rounded-lg md:h-10 focus:border-orange-500 md:w-72 text-orange-50 "                            
                             />
-                        </div>
+                    </div> */}
                         <div className='flex flex-col w-auto gap-1'>
                             <label className="text-[12px] sm:text-lg font-roboto-regular-400 text-orange-50">
                             Email Address
@@ -235,15 +259,14 @@ const PlaceOrder = () => {
                             </label>
                         </div>    
                     </div>
-                    <buttton 
+                    <button 
                         onClick = {() => {
-                            placeOrder(user._id, 'txn1234');
-                            
+                            placeOrder();                            
                             navigate('/');
                         }}
                         
                         className='flex items-center justify-center w-64 h-12 ml-32 text-xl font-bold bg-orange-400 mt-3hover:bg-orange-900 font-roboto rounded-2xl'>
-                        Place Order</buttton>
+                        Place Order</button>
             </div>
         </div>     
     </div>
