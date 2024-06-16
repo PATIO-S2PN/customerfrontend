@@ -43,7 +43,7 @@ export default function Home() {
         let newIndex = prevIndex + direction;
         if (newIndex >= slides.length || newIndex < 0) {
           setDirection(-direction);
-          newIndex = prevIndex - direction; // revert the increment to stay within bounds
+          newIndex = prevIndex - direction;
         }
         return newIndex;
       });
