@@ -27,6 +27,7 @@ import Pizza from './Pages/Pizza';
 import Rice from './Pages/Rice';
 import Desserts from './Pages/Desserts';
 import Kottu from './Pages/Kottu';
+import Beverages from './Pages/Beverages';
 
 function App() {  
   return (
@@ -60,6 +61,7 @@ function App() {
         <Route path="/rice" element={<Rice/>}/>
         <Route path="/desserts" element={<Desserts/>}/>
         <Route path="/kottu" element={<Kottu/>}/>
+        <Route path="/beverages" element={<Beverages/>}/>
 
 
 
