@@ -1,5 +1,5 @@
 import React from 'react';
-import bg3 from '../Assets/burgerBg.webp';
+import bg3 from '../Assets/burgerbgnew.jpg';
 import MenuItems from './MenuItems';
 import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';
