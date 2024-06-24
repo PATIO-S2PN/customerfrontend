@@ -92,7 +92,9 @@ const Categories = () => {
             data-aos-delay='50'
             data-aos-duration='1000'
             data-aos-easing='ease-in-out'>
-            <img src={kottu} alt="kottu" className="object-contain h-40 mb-4 rounded-2xl" />
+              <Link to="/kottu">
+              <img src={kottu} alt="kottu" className="object-contain h-40 mb-4 rounded-2xl" />
+              </Link>
             <p className='font-serif text-lg font-bold text-center'>KOTTU CORNER</p>
           </div>
 

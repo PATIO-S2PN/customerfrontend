@@ -26,6 +26,7 @@ import Submarines from './Pages/Submarines';
 import Pizza from './Pages/Pizza';
 import Rice from './Pages/Rice';
 import Desserts from './Pages/Desserts';
+import Kottu from './Pages/Kottu';
 
 function App() {  
   return (
@@ -58,6 +59,8 @@ function App() {
         <Route path="/pizza" element={<Pizza/>}/>
         <Route path="/rice" element={<Rice/>}/>
         <Route path="/desserts" element={<Desserts/>}/>
+        <Route path="/kottu" element={<Kottu/>}/>
+
 
 
       </Routes>
