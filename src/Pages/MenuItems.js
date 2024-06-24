@@ -62,7 +62,7 @@ export const AddToCart = ({ item }) => {
   return (
     <button
       onClick={handleSubmit}
-      className="px-6 py-2 transition ease-in duration-200 uppercase rounded-lg w-56 bg-orange-600 h-10 hover:bg-orange-800 hover:text-white border-2 focus:outline-none"
+      className="w-56 h-10 px-6 py-2 uppercase transition duration-200 ease-in bg-orange-600 border-2 rounded-lg hover:bg-orange-800 hover:text-white focus:outline-none"
     >
       Add to cart
     </button>
@@ -101,35 +101,43 @@ const AddToWishlist = ({ item }) => {
   );
 };
 
-export default function MenuItems() {
+export default function MenuItems({category}) {
   const [menuItems, setMenuItems] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const response = await axios.get(`${productBackendUrl}/`);
-        setMenuItems(response.data.products);
+        const url = category ? `${productBackendUrl}/category/${category}` : `${productBackendUrl}`;
+        console.log(`Requesting URL: ${url}`); // Log the URL being requested
+
+        const response = await axios.get(url);
+        console.log('Response Status:', response.status); // Log response status
+        console.log('Response Data:', response.data); // Log response data
+        
+        setMenuItems(response.data);
+        //console.log('Menu Items:', menuItems);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
     };
 
     getProducts();
-  }, []);
+  }, [category]);
 
   return (
-    <div className='grid justify-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 p-6 bg-orange-50'>
-      {menuItems.map((item) => (
-        <div key={item._id} className='w-full bg-white shadow hover:shadow-lg rounded-lg overflow-hidden'>
+    <div className='grid justify-center grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 bg-orange-50'>
+     {menuItems && menuItems.length > 0 ? (
+      menuItems.map((item) => (
+        <div key={item._id} className='w-full overflow-hidden bg-white rounded-lg shadow hover:shadow-lg'>
           <img
-            className='w-full h-52 object-cover transition-transform duration-500 transform hover:scale-110'
+            className='object-cover w-full transition-transform duration-500 transform h-52 hover:scale-110'
             src={item.images && item.images[0] ? `${productBackendUrl}/${item.images[0]}` : defaultImage}
             alt={item.name}
           />
           <div className='p-4'>
             <h3 className='text-xl font-bold text-center'>{item.name}</h3>
             <p className='text-center text-md'>LKR {item.price}.000</p>
-            <div className='flex justify-between items-center mt-2'>
+            <div className='flex items-center justify-between mt-2'>
               <ReactStars
                 classNames="items-center"
                 count={5}
@@ -148,7 +156,11 @@ export default function MenuItems() {
             </div>
           </div>
         </div>
-      ))}
-    </div>
+      ))
+      ): (
+        <p>No items found.</p>
+
+    )}
+    </div>  
   );
 }

@@ -22,6 +22,7 @@ import Contact from './Pages/Contact';
 import Footer from './Pages/Footer';
 import Cartnew from './Pages/Cartnew';
 import Wishlist from './Pages/Wishlist';
+import Submarines from './Pages/Submarines';
 
 function App() {  
   return (
@@ -50,6 +51,7 @@ function App() {
         <Route path="/footer" element={<Footer/>}/>
         <Route path="/cartnew" element={<Cartnew/>}/>
         <Route path="/wishlist" element={<Wishlist/>}/>
+        <Route path="/submarines" element={<Submarines/>}/>
 
       </Routes>
      </Router>
