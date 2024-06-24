@@ -80,7 +80,9 @@ const Categories = () => {
             data-aos-delay='50'
             data-aos-duration='1000'
             data-aos-easing='ease-in-out'>
-            <img src={rice} alt="rice" className="object-contain h-40 mb-4 rounded-2xl" />
+              <Link to="/rice">
+              <img src={rice} alt="rice" className="object-contain h-40 mb-4 rounded-2xl" />
+              </Link>
             <p className='font-serif text-lg font-bold text-center'>RICE BOWLS</p>
           </div>
 

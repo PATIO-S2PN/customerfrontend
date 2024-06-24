@@ -24,6 +24,7 @@ import Cartnew from './Pages/Cartnew';
 import Wishlist from './Pages/Wishlist';
 import Submarines from './Pages/Submarines';
 import Pizza from './Pages/Pizza';
+import Rice from './Pages/Rice';
 
 function App() {  
   return (
@@ -54,6 +55,7 @@ function App() {
         <Route path="/wishlist" element={<Wishlist/>}/>
         <Route path="/submarines" element={<Submarines/>}/>
         <Route path="/pizza" element={<Pizza/>}/>
+        <Route path="/rice" element={<Rice/>}/>
 
 
       </Routes>
