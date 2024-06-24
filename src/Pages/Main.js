@@ -23,10 +23,13 @@ const Main = () => {
       
       sections.forEach((section) => {
         const sectionElement = document.getElementById(section);
-        const { top, bottom } = sectionElement.getBoundingClientRect();
         
-        if (top <= 50 && bottom >= 50) {
-          currentSection = section;
+        if (sectionElement) {
+          const { top, bottom } = sectionElement.getBoundingClientRect();
+          
+          if (top <= 50 && bottom >= 50) {
+            currentSection = section;
+          }
         }
       });
       
