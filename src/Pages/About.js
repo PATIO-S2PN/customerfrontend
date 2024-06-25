@@ -15,7 +15,7 @@ const About = () => {
       style={{ backgroundColor: '#101E21' }}
     >
       <div 
-        className='flex flex-col md:flex-row w-full max-w-6xl rounded-xl shadow-lg overflow-hidden' 
+        className='flex flex-col w-full max-w-6xl overflow-hidden shadow-lg md:flex-row rounded-xl' 
         style={{ backgroundColor: '#1B2A30', animation: 'fade-in 1s ease-in-out' }}
       >
         <div 
@@ -26,7 +26,7 @@ const About = () => {
           <img 
             src={chef} 
             alt='Chef' 
-            className='w-full h-full object-cover rounded-xl' 
+            className='object-cover w-full h-full rounded-xl' 
           />
         </div>
         
@@ -36,7 +36,7 @@ const About = () => {
           data-aos-duration='1000'
         >
           <h1 
-            className='mb-4 font-serif text-4xl font-bold transition duration-500 transform hover:scale-105' 
+            className='mb-4 text-3xl transition duration-500 transform font-roboto hover:scale-105' 
             style={{ color: '#FFCF87' }}
           >
             About Our Restaurant
@@ -48,7 +48,7 @@ const About = () => {
             LuxeDine is a unique dining destination in the city center. We offer a variety of dishes crafted with fresh, locally-sourced ingredients. Our team is dedicated to providing excellent service in a contemporary setting. Join us for a memorable dining experience at LuxeDine.
           </p>
           <button
-            className='self-start px-6 py-2 rounded transition duration-300'
+            className='self-start px-6 py-2 transition duration-300 rounded'
             style={{ 
               color: 'black', 
               backgroundColor: '#FFCF87', 

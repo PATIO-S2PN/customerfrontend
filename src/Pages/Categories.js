@@ -12,33 +12,33 @@ import desserts from '../Assets/desserts.webp';
 
 const Categories = () => {
   return (
-    <div className='min-h-screen flex flex-col'>
+    <div className='flex flex-col min-h-screen'>
       <div className='relative'>
-        <img src={bg} alt='menu' className='w-full h-64 sm:h-80 md:h-96 object-cover' />
+        <img src={bg} alt='menu' className='object-cover w-full h-64 sm:h-80 md:h-96' />
 
-        <div className='absolute inset-0 flex flex-col sm:flex-row items-center justify-around gap-4 sm:gap-0 p-4'
+        <div className='absolute inset-0 flex flex-col items-center justify-around gap-4 p-4 sm:flex-row sm:gap-0'
           data-aos='fade-down'
           data-aos-offset='200'
           data-aos-delay='50'
           data-aos-duration='1000'
           data-aos-easing='ease-in-out'>
-          <div className='w-64 h-32 bg-slate-900 flex flex-col items-center justify-center rounded-2xl transform transition-transform hover:scale-110'>
-            <h1 className='font-serif text-xl md:text-2xl font-bold text-orange-50'>Quality Food</h1>
+          <div className='flex flex-col items-center justify-center w-64 h-32 transition-transform transform bg-slate-900 rounded-2xl hover:scale-110'>
+            <h1 className='font-serif text-xl font-bold md:text-2xl text-orange-50'>Quality Food</h1>
           </div>
 
-          <div className='w-64 h-32 bg-slate-900 flex flex-col items-center justify-center rounded-2xl transform transition-transform hover:scale-110'>
-            <h1 className='font-serif text-xl md:text-2xl font-bold text-orange-50'>Original Recipes</h1>
+          <div className='flex flex-col items-center justify-center w-64 h-32 transition-transform transform bg-slate-900 rounded-2xl hover:scale-110'>
+            <h1 className='font-serif text-xl font-bold md:text-2xl text-orange-50'>Original Recipes</h1>
           </div>
 
-          <div className='w-64 h-32 bg-slate-900 flex flex-col items-center justify-center rounded-2xl transform transition-transform hover:scale-110'>
-            <h1 className='font-serif text-xl md:text-2xl font-bold text-orange-50'>Quick Process</h1>
+          <div className='flex flex-col items-center justify-center w-64 h-32 transition-transform transform bg-slate-900 rounded-2xl hover:scale-110'>
+            <h1 className='font-serif text-xl font-bold md:text-2xl text-orange-50'>Quick Process</h1>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col bg-orange-50 py-20 px-4 flex-grow">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <div className="bg-white shadow-md rounded-2xl transform transition-shadow hover:shadow-xl flex flex-col items-center justify-center p-4 h-64"
+      <div className="flex flex-col flex-grow px-4 py-20 bg-orange-50">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="flex flex-col items-center justify-center h-64 p-4 transition-shadow transform bg-white shadow-md rounded-2xl hover:shadow-xl"
             data-aos='fade-down'
             data-aos-offset='200'
             data-aos-delay='50'
@@ -50,63 +50,75 @@ const Categories = () => {
             <p className='font-serif text-lg font-bold text-center'>BURGERS</p>
           </div>
 
-          <div className="bg-white shadow-md rounded-2xl transform transition-shadow hover:shadow-xl flex flex-col items-center justify-center p-4 h-64"
+          <div className="flex flex-col items-center justify-center h-64 p-4 transition-shadow transform bg-white shadow-md rounded-2xl hover:shadow-xl"
             data-aos='fade-up'
             data-aos-offset='200'
             data-aos-delay='50'
             data-aos-duration='1000'
             data-aos-easing='ease-in-out'>
-            <img src={sub} alt="sub" className="object-contain h-40 mb-4 rounded-2xl" />
+            <Link to="/submarines">
+              <img src={sub} alt="sub" className="object-contain h-40 mb-4 rounded-2xl" />
+            </Link>
             <p className='font-serif text-lg font-bold text-center'>SUBMARINES</p>
           </div>
 
-          <div className="bg-white shadow-md rounded-2xl transform transition-shadow hover:shadow-xl flex flex-col items-center justify-center p-4 h-64"
+          <div className="flex flex-col items-center justify-center h-64 p-4 transition-shadow transform bg-white shadow-md rounded-2xl hover:shadow-xl"
             data-aos='fade-down'
             data-aos-offset='200'
             data-aos-delay='50'
             data-aos-duration='1000'
             data-aos-easing='ease-in-out'>
-            <img src={pizza} alt="pizza" className="object-contain h-40 mb-4 rounded-2xl" />
+              <Link to="/pizza">
+              <img src={pizza} alt="pizza" className="object-contain h-40 mb-4 rounded-2xl" />
+              </Link>
             <p className='font-serif text-lg font-bold text-center'>PIZZA</p>
           </div>
 
-          <div className="bg-white shadow-md rounded-2xl transform transition-shadow hover:shadow-xl flex flex-col items-center justify-center p-4 h-64"
+          <div className="flex flex-col items-center justify-center h-64 p-4 transition-shadow transform bg-white shadow-md rounded-2xl hover:shadow-xl"
             data-aos='fade-up'
             data-aos-offset='200'
             data-aos-delay='50'
             data-aos-duration='1000'
             data-aos-easing='ease-in-out'>
-            <img src={rice} alt="rice" className="object-contain h-40 mb-4 rounded-2xl" />
+              <Link to="/rice">
+              <img src={rice} alt="rice" className="object-contain h-40 mb-4 rounded-2xl" />
+              </Link>
             <p className='font-serif text-lg font-bold text-center'>RICE BOWLS</p>
           </div>
 
-          <div className="bg-white shadow-md rounded-2xl transform transition-shadow hover:shadow-xl flex flex-col items-center justify-center p-4 h-64"
+          <div className="flex flex-col items-center justify-center h-64 p-4 transition-shadow transform bg-white shadow-md rounded-2xl hover:shadow-xl"
             data-aos='fade-down'
             data-aos-offset='200'
             data-aos-delay='50'
             data-aos-duration='1000'
             data-aos-easing='ease-in-out'>
-            <img src={kottu} alt="kottu" className="object-contain h-40 mb-4 rounded-2xl" />
+              <Link to="/kottu">
+              <img src={kottu} alt="kottu" className="object-contain h-40 mb-4 rounded-2xl" />
+              </Link>
             <p className='font-serif text-lg font-bold text-center'>KOTTU CORNER</p>
           </div>
 
-          <div className="bg-white shadow-md rounded-2xl transform transition-shadow hover:shadow-xl flex flex-col items-center justify-center p-4 h-64"
+          <div className="flex flex-col items-center justify-center h-64 p-4 transition-shadow transform bg-white shadow-md rounded-2xl hover:shadow-xl"
             data-aos='fade-up'
             data-aos-offset='200'
             data-aos-delay='50'
             data-aos-duration='1000'
             data-aos-easing='ease-in-out'>
-            <img src={juice} alt="juice" className="object-contain h-40 mb-4 rounded-2xl" />
+              <Link to="/beverages">
+              <img src={juice} alt="juice" className="object-contain h-40 mb-4 rounded-2xl" />
+              </Link>
             <p className='font-serif text-lg font-bold text-center'>BEVERAGES</p>
           </div>
 
-          <div className="bg-white shadow-md rounded-2xl transform transition-shadow hover:shadow-xl flex flex-col items-center justify-center p-4 h-64"
+          <div className="flex flex-col items-center justify-center h-64 p-4 transition-shadow transform bg-white shadow-md rounded-2xl hover:shadow-xl"
             data-aos='fade-down'
             data-aos-offset='200'
             data-aos-delay='50'
             data-aos-duration='1000'
             data-aos-easing='ease-in-out'>
-            <img src={desserts} alt="desserts" className="object-contain h-40 mb-4 rounded-2xl" />
+               <Link to="/desserts">
+               <img src={desserts} alt="desserts" className="object-contain h-40 mb-4 rounded-2xl" />
+               </Link>
             <p className='font-serif text-lg font-bold text-center'>DESSERTS</p>
           </div>
         </div>

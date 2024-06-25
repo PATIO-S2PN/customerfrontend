@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import About from './About';
 import Home from './Home';
 import Navbar from '../Components/Navbar';
@@ -9,12 +8,46 @@ import Chefs from './Chefs';
 import Gallery from './Gallery';
 import Contact from './Contact';
 import Animation from './Animation';
-import { useEffect } from 'react';
 import Footer from './Footer';
 
 const Main = () => {
-  const [isOpen,setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [navbarColor, setNavbarColor] = useState('transparent');
+  const [navbarPosition, setNavbarPosition] = useState('top-2');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'categories', 'specials', 'chefs', 'gallery', 'contact'];
+      let currentSection = 'home';
+      
+      sections.forEach((section) => {
+        const sectionElement = document.getElementById(section);
+        
+        if (sectionElement) {
+          const { top, bottom } = sectionElement.getBoundingClientRect();
+          
+          if (top <= 50 && bottom >= 50) {
+            currentSection = section;
+          }
+        }
+      });
+      
+      if (currentSection === 'home') {
+        setNavbarColor('transparent');
+        setNavbarPosition('top-2');
+      } else {
+        setNavbarColor('#101E21'); 
+        setNavbarPosition('top-0');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -25,64 +58,44 @@ const Main = () => {
   }, []);
 
   const toggleMenu = () => {
-    setIsOpen((prev) => !prev)
-  }
+    setIsOpen((prev) => !prev);
+  };
+
   return (
-      <div className='' style={{ overflowY: 'scroll' }}>
-        {isLoading ? <Animation /> :(
-
-      <div className="">
+    <div className='' style={{ overflowY: 'scroll' }}>
+      {isLoading ? <Animation /> : (
         <div className="">
-          
-            <Navbar isOpen={isOpen}
-                    toggleMenu={toggleMenu}
-            />
-
-            <section id="home" 
-                     className="">
+          <div className="">
+            <Navbar backgroundColor={navbarColor} positionClass={navbarPosition} isOpen={isOpen} toggleMenu={toggleMenu} />
+            <section id="home" className="">
               <Home/>
             </section>
+          </div>
+          <section id='about' className="">
+            <About/>
+          </section>
+          <section id='categories' className="">
+            <Categories/>
+          </section>
+          <section id='specials' className="">
+            <Specials/>
+          </section>
+          <section id='chefs' className="">
+            <Chefs/>
+          </section>
+          <section id='gallery' className="">
+            <Gallery/>
+          </section>
+          <section id='contact' className="">
+            <Contact/>
+          </section>
+          <section id='footer' className="">
+            <Footer/>
+          </section>
         </div>
-        
-        <section  id='about'
-                  className="">
-          <About/>
-        </section>
-
-        <section  id='categories'
-                  className="">
-          <Categories/>
-        </section>
-
-        <section  id='specials'
-                  className="">
-          <Specials/>
-        </section>
-
-        <section  id='chefs'
-                  className="">
-          <Chefs/>
-        </section>
-
-        <section  id='gallery'
-                  className="">
-          <Gallery/>
-        </section>
-
-        <section  id='contact'
-                  className="">
-          <Contact/>
-        </section>
-
-        <section  id='footer'
-                  className="">
-          <Footer/>
-        </section>
-
-</div>
-)}
-</div>
-  )
+      )}
+    </div>
+  );
 }
 
-export default Main
+export default Main;
