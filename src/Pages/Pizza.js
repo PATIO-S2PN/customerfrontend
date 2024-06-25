@@ -1,5 +1,5 @@
 import React from 'react';
-import pizza from '../Assets/pizzabg.jpeg';
+import pizza from '../Assets/pizzabg.webp';
 import MenuItems from './MenuItems';
 import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';

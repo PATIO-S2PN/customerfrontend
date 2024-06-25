@@ -1,5 +1,5 @@
 import React from 'react';
-import rice from '../Assets/ricebg.jpg';
+import rice from '../Assets/ricebg.webp';
 import MenuItems from './MenuItems';
 import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';

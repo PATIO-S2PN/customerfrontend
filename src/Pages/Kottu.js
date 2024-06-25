@@ -1,5 +1,5 @@
 import React from 'react';
-import sub from '../Assets/kottubg.jpg';
+import sub from '../Assets/kottubg.webp';
 import MenuItems from './MenuItems';
 import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';
