@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../Assets/logonew.svg';
 import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const Nav = () => {
+const Nav = ({ backgroundColor, positionClass }) => {
     const [showDropdown, setShowDropdown] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [showProfileSubmenu, setShowProfileSubmenu] = useState(false);
@@ -21,7 +21,7 @@ const Nav = () => {
     ];
 
     return (
-        <nav className='sticky top-0 z-50 w-full bg-[#101E21] shadow-md'>
+        <nav style={{ backgroundColor }} className={`fixed ${positionClass} z-50 w-full shadow-md transition-all duration-300`}>
             <div className='flex items-center justify-between px-7 md:px-10'>
                 <a href='/'>
                     <img src={logo} alt='logo' className='w-[170px] h-[50px] cursor-pointer' />

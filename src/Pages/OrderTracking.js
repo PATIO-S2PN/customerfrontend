@@ -1,5 +1,5 @@
 import React from 'react'
-import background from '../Assets/OrderTracking.jpg'
+import background from '../Assets/OrderTracking.webp'
 import './OrderTracking.css'
 import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';

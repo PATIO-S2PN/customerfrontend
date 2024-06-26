@@ -1,6 +1,6 @@
 // import React, { useState } from 'react';
 // import 'tailwindcss/tailwind.css';
-// import loginI from '../Assets/Login.jpg';
+// import loginI from '../Assets/Login.webp';
 // import { FcGoogle } from "react-icons/fc";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';

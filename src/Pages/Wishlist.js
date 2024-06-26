@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { shoppingBackendUrl, productBackendUrl} from '../config';
-import defaultImage from '../Assets/burgers.png'; 
+import defaultImage from '../Assets/burgers.webp'; 
 import logo from '../Assets/logonew.svg';
 import { useNavigate } from 'react-router-dom';
 import { AddToCart } from './MenuItems'; 

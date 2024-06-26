@@ -1,7 +1,7 @@
 import React from 'react';
-import food from '../Assets/burgers.png';
-import ice from '../Assets/icecream.png';
-import rice from '../Assets/png.png';
+import food from '../Assets/burgers.webp';
+import ice from '../Assets/icecream.webp';
+import rice from '../Assets/png.webp';
 
 const Specials = () => {
   const foods = [

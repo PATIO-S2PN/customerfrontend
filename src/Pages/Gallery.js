@@ -1,12 +1,12 @@
 import React from 'react'
-import home01 from '../Assets/home01.jpg';
-import home02 from '../Assets/home02.jpg';
-import home03 from '../Assets/home03.jpg';
-import home04 from '../Assets/home04.jpg';
-import side01 from '../Assets/side01.jpg';
-import side02 from '../Assets/side02.jpg';
-import side03 from '../Assets/side03.jpg';
-import gallery from '../Assets/gallery.jpg';
+import home01 from '../Assets/home01.webp';
+import home02 from '../Assets/home02.webp';
+import home03 from '../Assets/home03.webp';
+import home04 from '../Assets/home04.webp';
+import side01 from '../Assets/side01.webp';
+import side02 from '../Assets/side02.webp';
+import side03 from '../Assets/side03.webp';
+import gallery from '../Assets/gallery.webp';
 
 const Gallery = () => {
   return (
