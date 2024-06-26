@@ -118,7 +118,7 @@ describe('Cartnew Component', () => {
     );
 
     fireEvent.click(screen.getByText('Checkout'));
-    expect(screen.getByRole('link', { name: /checkout/i }).closest('a')).toHaveAttribute('href', '/place-order');
+    expect(screen.getByRole('link', { name: /checkout/i }).closest('a')).toHaveAttribute('href', '/placeorder');
   });
 
   test('continue shopping', () => {

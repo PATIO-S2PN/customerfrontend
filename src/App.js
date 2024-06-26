@@ -48,7 +48,7 @@ function App() {
         <Route path="/categories" element={<Categories/>}/>
         <Route path="/verify/:token" component={EmailVerification} />
         <Route path="/specials" element={<Specials/>}/>
-        <Route path="/place-order" element={<PlaceOrder/>}/>
+        <Route path="/placeorder" element={<PlaceOrder/>}/>
         <Route path="/order-tracking/:orderId" element={<OrderTracking/>}/>
         <Route path="/chefs" element={<Chefs/>}/>
         <Route path="/gallery" element={<Gallery/>}/>

@@ -224,7 +224,7 @@ export default function Cartnew() {
                       <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                       <div className="mt-6">
                         <a
-                          href="/place-order"
+                          href="/placeorder"
                           className="flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-orange-700 border border-transparent rounded-md shadow-sm hover:bg-orange-900"
                         >
                           Checkout
