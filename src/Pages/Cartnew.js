@@ -222,11 +222,11 @@ export default function Cartnew() {
                         <p>${subtotal.toFixed(2)}</p>
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
-                      <div className="mt-6">
+                      <div className="flex justify-center w-full mt-6 ">
                         <button
                           // href="/placeorder"
                           onClick = {() => navigate('/placeorder')}
-                          className="flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-orange-700 border border-transparent rounded-md shadow-sm hover:bg-orange-900"
+                          className="flex items-center justify-center w-full px-6 py-3 text-base font-medium text-white bg-orange-700 border border-transparent rounded-md shadow-sm hover:bg-orange-900"
                         >
                           Checkout
                         </button>
