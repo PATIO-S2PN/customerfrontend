@@ -82,7 +82,7 @@ function Register() {
           </button>
         </div>
 
-        <div className="flex items-center mb-4 space-x-4 text-white">
+        {/* <div className="flex items-center mb-4 space-x-4 text-white">
           <hr className="flex-grow border-white" />
           <span className='font-serif'>or</span>
           <hr className="flex-grow border-white" />
@@ -97,7 +97,7 @@ function Register() {
             cookiePolicy={'single_host_origin'}
             className="relative h-10 w-60 inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-lg text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-black focus:ring-pink-200 dark:focus:ring-pink-800"
           />
-        </div>
+        </div> */}
 
         <div className='flex justify-center'>
           <p className='text-[#E3D0D0] font-serif'>Already have an account?</p>
